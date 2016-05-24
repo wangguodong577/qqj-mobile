@@ -1,0 +1,36 @@
+<ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
+	<button class="button button-clear button-assertive button-back" ng-click="goBackView()">
+        <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <h1 class="title">修改餐馆</h1>
+</ion-header-bar>
+
+<ion-content scroll="false" class="has-header" id="restaurant-detail">
+	<div class="list">
+		<label class="item item-input border-top-none border-bottom-none">
+		    <span class="input-label">餐馆名称</span>
+		    <input type="text" ng-model="restaurant.name">
+		</label>
+		<label class="item item-input border-bottom-none">
+		    <span class="input-label">收货人</span>
+		    <input type="text" ng-model="restaurant.receiver">
+		</label>
+		<label class="item item-input border-bottom-none">
+		    <span class="input-label">联系电话</span>
+		    <input type="tel" ng-model="restaurant.telephone">
+		</label>
+		<label class="item item-input item-icon-right border-bottom-none">
+		    <span class="input-label">收货地址</span>
+		    <input type="text" ng-model="restaurant.restaurantAddress" id="restaurantDetailAddress" ng-click="toMap()">
+		    <i class="icon ion-ios-arrow-right" style="right: 3px;color: #969696;"></i>
+		</label>
+		<label class="item item-input border-bottom-none">
+            <span class="input-label">详细地址</span>
+            <input type="text" ng-model="restaurant.restaurantStreetNumber" id="restaurantStreetNumber">
+        </label>
+	</div>
+
+	<div class="padding">
+        <button class="button button-block button-light button-restaurant-modify" ng-click="updateRestaurant(restaurant)">申请修改</button>
+    </div>
+</ion-content>

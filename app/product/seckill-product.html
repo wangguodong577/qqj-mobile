@@ -1,0 +1,61 @@
+<ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
+    <button class="button button-clear button-assertive" ng-click="back()">
+        <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <h1 class="title miaosha" id="miaoShaTitle">秒杀</h1>
+    <button id='carBtn' class="button icon ion-ios-cart-outline badge" ng-click="gotoCart()">
+        <div>{{orderItemsCount}}</div>
+    </button>
+</ion-header-bar>
+
+
+<div id='customToast' class='hide'>添加成功</div>
+<div id='find' class='hide'></div>
+
+<ion-content id='searchText' scroll="true" class="has-bottom">
+    <ion-list can-swipe="true">
+        <ion-item id="btnBox" collection-repeat="data in datas" class="item item-thumbnail-left">
+            <img ng-click="productDetail(data.id)" class="productImg" ng-src="{{data.sku.mediaFileUrls[0]}}" style="top: 19%;"/>
+            <span ng-if="data.num-data.takeNum<=0" id="circle">
+                已抢光
+            </span>
+            <h2 ng-click="productDetail(data.id)" style="margin:0 0 0 6px">{{data.sku.name}}</h2>
+            <h3 style="margin:12px 0 -2px 6px">
+                <div style="height: 30px;">
+                    <span ng-if="data.bundle==true" class="price">打包价:</span>
+                    <span ng-if="data.bundle==false" class="price">单品价:</span>
+                    <font style="color: #eb2927">{{data.price | currency : "￥"}}</font>/<font class="price">{{data.unit}}</font></span>&nbsp;
+                </div>
+            </h3>
+            <span class="xianGou">
+                每个账户限购{{data.perMaxNum}}件
+            </span>
+            <div class="btnBox" style="margin: 1px 0 0 6px;border-color: #e2e2e2">
+                <a class="button button-small button-outline button-dark button-icon icon ion-ios-minus-empty mirror-number-button minus-btn-left"
+                   ng-click="lessQuantity(data)" ng-disabled="data.quantity==1" id="reduces"></a>
+                <a class="num">{{data.quantity}}</a>
+                <a class="button button-small button-outline button-dark button-icon icon ion-ios-plus-empty mirror-number-button minus-btn-right"
+                   ng-click="moreQuantity(data)" id="add"></a>
+
+                <div id="gouwuche">
+                    <span ng-click="addSkuIntoCart(data);" class="cart" ng-if="data.num-data.takeNum>0"></span>
+                    <span ng-if="data.num-data.takeNum<=0" class="msCart"></span>
+                </div>
+                <!--<button ng-if="sku.stock <= 0" class="button button-small button-stable mirror-button-joincar">暂时无库存</button>-->
+            </div>
+            <ion-option-button class="button-assertive mirror-button-collect" ng-click="markFavorite(sku)">
+                <div id="collect-text">收藏</div>
+            </ion-option-button>
+        </ion-item>
+    </ion-list>
+
+    <ion-infinite-scroll
+            ng-if="moreDataCanBeLoaded"
+            on-infinite="loadMore()"
+            distance="5%"
+            icon="ion-load-d">
+    </ion-infinite-scroll>
+</ion-content>
+
+
+

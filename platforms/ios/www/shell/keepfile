@@ -1,0 +1,12 @@
+../lib/angular-google-analytics/dist/angular-google-analytics.min.js
+../lib/angular-ui/common/module.js
+../lib/angular-ui/modules/filters/unique/unique.js
+../lib/cordova-promise-fs/dist/CordovaPromiseFS.js
+../lib/ion-image-lazy-load/ionic-image-lazy-load.js
+../lib/ionic/css/ionic.min.css
+../lib/ionic/fonts/ionicons.eot
+../lib/ionic/fonts/ionicons.svg
+../lib/ionic/fonts/ionicons.ttf
+../lib/ionic/fonts/ionicons.woff
+../lib/ionic/js/ionic.bundle.min.js
+../lib/ngCordova/dist/ng-cordova.min.js

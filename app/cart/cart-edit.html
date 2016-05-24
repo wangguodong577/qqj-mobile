@@ -1,0 +1,49 @@
+<ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
+    <button class="button button-clear button-assertive button-back" back>
+        <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <h1 class="title">购物车</h1>
+</ion-header-bar>
+
+<div ng-if="profile && !isNullCart" id="cartEdit">
+
+    <div id="shopping-tip" ng-if="shoopingTips">
+        <div class="bar bar-subheader shopping-tip">
+            <center style="margin-top:0px;">{{shoppingTip}}</center>
+        </div>
+    </div>
+
+    <ion-content scroll="true" lazy-scroll id="subheader-tip" ng-class="{false:'subheader-not-tip',true:'subheader-tip'}[shoopingTips]">
+        <ion-list class="carList">
+            <ion-item ng-repeat="orderItem in cart.orderItems | orderBy:'id':true" class="item" id="cart_edtiItem">
+                <div class="checkBox">
+                    <ion-checkbox ng-model="orderItem.chosen" ng-change="checkChosen()"></ion-checkbox>
+                </div>
+                <div class="productImg" style="margin-left: -10px;">
+                    <img ng-src="{{orderItem.sku.mediaFileUrls[0]}}" height="80px" style="margin-top: 0px;"/>
+                </div>
+                <div class="productInfo">
+                    <h2>{{orderItem.sku.name}}</h2>
+                    <div class="infoBox">
+                        <h3 ng-click="productDetail(orderItem.sku.id)">
+                                <span  class="cart-dabaojia" ng-if="orderItem.bundle"><font color="red">{{orderItem.price | currency : "￥"}}</font>/<font style="font-size: 12px">{{orderItem.unit}}</font></span>
+                                <span  class="cart-dabaojia" ng-if="orderItem.bundle===false"><font color="red">{{orderItem.price | currency : "￥"}}</font>/<font style="font-size: 12px">{{orderItem.unit}}</font></span>
+                            </h3>
+                        <div>
+                            <a ng-click="lessQuantity(orderItem)" class="button button-small button-outline button-dark button-icon icon ion-ios-minus-empty minus-btn-left" style="padding-top: 3px;height: 29px;width:30px;border-color: #e2e2e2;" ng-disabled="orderItem.quantity==1"></a>
+                            <a class="num">{{orderItem.quantity}}</a>
+                            <a ng-click="moreQuantity(orderItem)" class="button button-small button-outline button-dark button-icon icon ion-ios-plus-empty minus-btn-right" style="padding-top: 3px;height: 29px;width:30px;border-color: #e2e2e2;"></a>
+                        </div>
+                    </div>
+                </div>
+
+            </ion-item>
+        </ion-list>
+    </ion-content>
+
+    <ion-footer-bar align-title="center" class="submit bar bar-footer bar-stable">
+        <ion-checkbox ng-model="dataModel.selectAll" ng-change="onSelectAllChange()">全选</ion-checkbox>
+        <h1 class="title">&nbsp;</h1>
+        <button class="button button-light button-footer" style="padding: 0 24px;" ng-click="removeSelectedOrderItem()">删&nbsp;&nbsp;除</button>
+    </ion-footer-bar>
+</div>

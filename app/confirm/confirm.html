@@ -1,0 +1,104 @@
+<ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
+    <button class="button button-clear button-assertive button-back" ui-sref="cart">
+        <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <h1 class="title">确认订单</h1>
+</ion-header-bar>
+
+<ion-content scroll="true" lazy-scroll id="order-confirm">
+	<ion-list>
+        <!-- 确认订单信息 -->
+        <ion-item class="order-confirm-info"> 
+            <div class="order-info-head">订单信息</div>
+            <div class="order-info-div">
+                <span class="order-info-name">收货人：</span><span class="order-info-name">{{myRestaurant.receiver}}</span>
+                <span class="order-info-value" style="float: right;">{{myRestaurant.telephone}}</span>
+                <br>
+                <span class="order-info-name">收货地址：</span><span class="order-info-value">{{myRestaurant.address.address}}</span>
+
+                <div class="item order-info-item">
+                    <span class="order-info-name">支付方式</span>
+                    <span class="order-info-pay" style="color: #6e6e6e;">货到付款</span>
+                </div>
+                <div class="item order-info-item"> 
+                    <span class="order-info-name">商品金额</span>
+                    <span class="order-info-pay" style="color: #eb2828;">{{subTotal | currency: '￥'}}</span>
+                </div>
+                <div class="item order-info-item"> 
+                    <span class="order-info-name">运费</span>
+                    <span class="order-info-pay" style="color: #eb2828;">+{{shipping | currency: '￥'}}</span>
+                </div>
+                <div class="item order-info-item" ng-if="promotions.length > 0 && promotions[0].discount > 0">
+                    <span class="order-info-name">满减优惠</span>
+                    <span class="order-info-pay" style="color: #6e6e6e;">-{{promotions[0].discount | currency : "￥"}}</span>
+                </div>
+                <div class="item order-info-item confirm_coupon" ng-class="{'sel': cId != undefined}" ng-click="gotoCouponEdit()" ng-if="promotions.length==0">
+                    <span class="order-info-name">无忧券</span>
+                    <span class='sin'>{{coupons.length}}张可用</span>
+                    <span class='btn order-info-pay' style="color: #6e6e6e;">未使用<i class="ion-ios-arrow-right" style="margin-left: 8px;"></i></span>
+                    <span class='btn1 order-info-pay' style="color: #6e6e6e;">已抵用{{thisCoupon.coupon.discount}}元<i class="ion-ios-arrow-right" style="margin-left: 8px;"></i></span>
+                </div>
+                <div class="item order-info-item" style="border-bottom: none;"> 
+                    <span class="order-info-name">实付款</span>
+                    <span class="order-info-pay" style="color: #eb2828;">{{total | currency: '￥'}}</span>
+                </div>
+            </div>
+        </ion-item>           
+
+        <!-- 配送方式 -->
+		<ion-item class="order-expected-item">
+            <span class="order-info-name">配送方式</span>
+			<span class="order-info-pay" style="color: #6e6e6e;">预计{{expectedArrivedDate}}送达</span>
+		</ion-item>
+
+        <!-- 确认订单-优惠商品信息 -->
+        <div class="item order-product-head">
+            <div class="order-info-head">商品明细</div>
+        </div>
+        <ion-item ng-repeat="promotion in promotions" class="item item-thumbnail-left order-sku-item" ng-if="promotion.sku && hasPromotion" ui-sref="product-detail({id:promotion.sku.id, backUrl: currentUrl})">
+            <img ng-src="{{promotion.sku.mediaFileUrls[0]}}" class="order-sku-img"/>
+            <div class="product-info">
+                <h2 class="order-sku-name">{{promotion.sku.name}}</h2>
+                <h4 class="order-sku-quantity">数量：× {{promotion.quantity}}&nbsp;{{promotion.bundle? promotion.sku.bundleUnit : promotion.sku.singleUnit}}</h4>
+                <h3>
+                    <span class="order-sku-price">{{0 | currency : "￥"}}</span>
+                </h3>
+            </div>
+        </ion-item>
+
+        <!-- 确认订单-无忧券赠品 -->
+        <ion-item ng-repeat="customerCoupon in order.customerCoupons" class="item item-thumbnail-left order-sku-item" ng-if="customerCoupon.coupon.sku" ui-sref="product-detail({id:customerCoupon.coupon.sku.id, backUrl: currentUrl})">
+            <img ng-src="{{customerCoupon.coupon.sku.mediaFileUrls[0]}}" class="order-sku-img"/>
+            <div class="product-info">
+                <h2 class="order-sku-name">{{customerCoupon.coupon.sku.name}}</h2>
+                <h4 class="order-sku-quantity">数量：× {{customerCoupon.coupon.quantity}}</h4>
+                <h3>
+                    <span class="order-sku-price">{{0 | currency : "￥"}}</span>
+                </h3>
+            </div>
+        </ion-item>
+
+        <!-- 确认订单-商品信息 -->
+        <ion-item ng-repeat="orderItem in chosenItem" class="item item-thumbnail-left order-sku-item" ng-if="orderItem.chosen" ng-click="productDetail(orderItem.sku.id,orderItem.spikeItem)" >
+			<img ng-src="{{orderItem.sku.mediaFileUrls[0]}}" class="order-sku-img" style="top:11px;left: 17px;"/>
+            <div class="product-info" style="margin:3% 0 0 35%;">
+                <h2 class="order-sku-name">{{orderItem.sku.name}}</h2>
+                <h4 class="order-sku-quantity">数量：× {{orderItem.quantity}}&nbsp;{{orderItem.unit}}</h4>
+                <h3>
+                    <span class="order-sku-price">{{orderItem.totalPrice | currency : "￥"}}
+                    </span>
+                </h3>
+            </div>
+		</ion-item>
+    </ion-list>
+</ion-content>
+
+<ion-footer-bar align-title="left" class="bar bar-footer bar-stable">
+    <center style="margin-top:8px;margin-left:10px;">
+        <span style="font-size: 16px;line-height: 26px;">
+            实付款：<span style="color: #eb2828;">{{total | currency : "￥"}}</span>
+        </span>
+	</center>
+	<h3 class="title"></h3>
+    <button class="button button-light button-footer" ng-click="submitOrder(cart)">确认订单</button>
+</ion-footer-bar>

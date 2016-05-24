@@ -1,0 +1,70 @@
+<ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
+    <button class="button button-clear button-assertive button-back" ui-sref="main.profile">
+        <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <h1 class="title">常购清单</h1>
+    <button class="button button-clear button-assertive" ng-if="hasFavorites" ui-sref="favorite-edit" ng-cloak>编辑</button>
+</ion-header-bar>
+
+<div ng-if="hasFavorites === true">
+    <ion-content id='searchText' class="has-header" scroll="true" lazy-scroll>
+        <ion-list class="favorite-list">
+            <ion-item ng-repeat="favorite in favorites" class="item item-thumbnail-left chang">
+                <img ng-src="{{favorite.sku.mediaFileUrls[0]}}" height="100px" ng-click="productDetail(favorite.sku.id)" style="top: 30px;"/>
+                <h2 class="favorite-head-name"  ng-click="productDetail(favorite.sku.id)">{{favorite.sku.name}}</h2>
+                <h3  ng-click="productDetail(favorite.sku.id)" class="price" >
+                    <p class="favorite-dabao" ng-if="favorite.sku.bundlePrice.bundleAvailable && favorite.sku.bundlePrice.bundleInSale">
+                        <span ng-if="favorite.sku.singlePrice.singleAvailable && favorite.sku.singlePrice.singleInSale">打包价:</span><font style="color: #eb2927">{{favorite.sku.bundlePrice.bundleSalePrice | currency : "￥"}}</font>/{{favorite.sku.bundleUnit}}
+                    </p>&nbsp;
+                    <p class="favorite-dabao danpin" ng-if="favorite.sku.singlePrice.singleAvailable && favorite.sku.singlePrice.singleInSale">
+                        <span ng-if="favorite.sku.bundlePrice.bundleAvailable && favorite.sku.bundlePrice.bundleInSale">单品价:</span><font style="color: #eb2927">{{favorite.sku.singlePrice.singleSalePrice | currency : "￥"}}</font>/{{favorite.sku.singleUnit}}
+                    </p>&nbsp;
+                </h3>
+                <h3 ng-show="profile"style="height: 17px;"><span class="history-buy" style="display: inline-block;height: 16px;" ng-if="favorite.sku.bundlePrice.bundleAvailable && favorite.sku.bundlePrice.bundleInSale">曾购买打包品:&nbsp;{{favorite.bundleCount}}&nbsp;次&nbsp;&nbsp;&nbsp;{{favorite.bundleQuantity}}件</span></h3>
+                <h3 ng-show="profile" style="height: 17px;"><span class="history-buy" style="display: inline-block;height: 16px;" ng-if="favorite.sku.singlePrice.singleAvailable && favorite.sku.singlePrice.singleInSale">曾购买单品:&nbsp;{{favorite.singleCount}}&nbsp;次&nbsp;&nbsp;&nbsp;{{favorite.singleQuantity}}件</span></h3>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+
+    <ion-footer-bar align-title="center" class="submit bar bar-footer bar-stable">
+        <h1 class="title">&nbsp;</h1>
+        <button class="button button-light button-favorite-rebuy" ui-sref="favorite-rebuy({selectAll:true})" ng-cloak>再次购买</button>
+    </ion-footer-bar>
+</div>
+
+<div ng-if="hasFavorites === false">
+    <ion-content class="has-header" >
+        <center>
+            <br>
+            <h4>欢迎来到餐馆无忧</h4>
+            <br/>
+            <h4>亲，你可以去收藏商品哦</h4>
+            <br/>
+            <br>
+            <button class="button button-small button-assertive button-go-favorite" ui-sref="main.category">去收藏商品</button>
+        </center>
+    </ion-content>
+</div>
+
+<div class="spinner-page" ng-if="showLoading === true">
+    <div class="spinner-container container1">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+    </div>
+    <div class="spinner-container container2">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+    </div>
+    <div class="spinner-container container3">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+    </div>
+
+    <p>加载中...</p>
+</div>

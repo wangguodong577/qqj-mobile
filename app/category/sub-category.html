@@ -1,0 +1,62 @@
+<ion-view class="sub">
+    <ion-content scroll="true">
+        <ion-list show-delete="false" ng-if="id!=1"
+                  show-reorder="false"
+                  can-swipe="false">
+            <ion-item ng-repeat="category in categories" ui-sref="search({categoryId:category.id,parentCategoryId:category.parentCategoryId,mainParentCategoryId:category.mainParentCategoryId})">
+                {{category.name}}
+            </ion-item>
+        </ion-list>
+        <ion-list show-delete="false" ng-if="id==1"
+                  show-reorder="false"
+                  can-swipe="false">
+            <div class="first">
+                <ion-list show-delete="false">
+                    <ion-item ng-repeat="category in categoriesOne" ui-sref="search({categoryId:category.id,parentCategoryId:category.parentCategoryId,mainParentCategoryId:category.mainParentCategoryId})">
+                        {{category.name}}
+                    </ion-item>
+                    <div class="border" ng-if="categoriesTwo.length>0"></div>
+                </ion-list>
+                <div class="itemBox">
+                    <ion-list show-delete="false">
+                        <ion-item ng-repeat="category in categoriesTwo" ui-sref="search({categoryId:category.id,parentCategoryId:category.parentCategoryId,mainParentCategoryId:category.mainParentCategoryId})">
+                            {{category.name}}
+                        </ion-item>
+                        <div class="border" ng-if="categoriesThree.length>0"></div>
+                    </ion-list>
+                </div>
+                <div class="itemBox">
+                    <ion-list show-delete="false">
+                        <ion-item ng-repeat="category in categoriesThree" ui-sref="search({categoryId:category.id,parentCategoryId:category.parentCategoryId,mainParentCategoryId:category.mainParentCategoryId})">
+                            {{category.name}}
+                        </ion-item>
+                        <div class="border" ng-if="categoriesFour.length>0"></div>
+                    </ion-list>
+                </div>
+                <div class="itemBox">
+                    <ion-list show-delete="false">
+                        <ion-item ng-repeat="category in categoriesFour" ui-sref="search({categoryId:category.id,parentCategoryId:category.parentCategoryId,mainParentCategoryId:category.mainParentCategoryId})">
+                            {{category.name}}
+                        </ion-item>
+                        <div class="border" ng-if="categoriesFive.length>0"></div>
+                    </ion-list>
+                </div>
+                <div class="itemBox">
+                    <ion-list show-delete="false">
+                        <ion-item ng-repeat="category in categoriesFive" ui-sref="search({categoryId:category.id,parentCategoryId:category.parentCategoryId,mainParentCategoryId:category.mainParentCategoryId})">
+                            {{category.name}}
+                        </ion-item>
+                        <div class="border" ng-if="categoriesSix.length>0"></div>
+                    </ion-list>
+                </div>
+                <div class="itemBox">
+                    <ion-list show-delete="false">
+                        <ion-item ng-repeat="category in categoriesSix" ui-sref="search({categoryId:category.id,parentCategoryId:category.parentCategoryId,mainParentCategoryId:category.mainParentCategoryId})">
+                            {{category.name}}
+                        </ion-item>
+                     </ion-list>
+                </div>
+            </div>
+        </ion-list>
+    </ion-content>
+</ion-view>

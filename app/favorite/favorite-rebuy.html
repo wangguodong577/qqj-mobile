@@ -1,0 +1,51 @@
+<ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
+    <button class="button button-clear button-assertive button-back" back>
+        <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <h1 class="title">再次购买</h1>
+</ion-header-bar>
+
+<ion-content scroll="true" lazy-scroll ng-show="hasFavorites">
+    <ion-list class="carList rebuyList">
+        <ion-item id="delete-f" ng-repeat="favorite in favorites" class="item item-thumbnail-left" style="min-height: 160px;">
+            <div class="checkBox" style="padding-left: 5px;">
+                <ion-checkbox ng-model="favorite.chosen" ng-change="checkChosen()"></ion-checkbox>
+            </div>
+            <div class="productImg">
+                <img ng-src="{{favorite.sku.mediaFileUrls[0]}}" height="80px"/>
+            </div>
+            <div class="productInfo">
+                <h2 style="margin-top: -21px;height: 45px;">{{favorite.sku.name}}</h2>
+                <div class="infoBox">
+                    <div class="checkboxBox" style="height: 30px;">
+                        <div class="product-checkBox" ng-if="favorite.sku.bundlePrice.bundleAvailable && favorite.sku.bundlePrice.bundleInSale">
+                            <div class="checkBox" style="height: 30px;display: inline-block;" ng-click="oneChange(favorite.id,favorite.bundleName,favorite.checkboxModel.bundle,favorite.checkboxModel.single)" ng-if="favorite.sku.singlePrice.singleAvailable && favorite.sku.singlePrice.singleInSale" >
+                                <ion-checkbox ng-model="favorite.checkboxModel.bundle"></ion-checkbox>
+                            </div>
+                            <span class="product-danpinjia" style="font-size: 14px;" ng-class="{true:'show',false:'bundleShow'}[sku.s]"><span ng-if="favorite.sku.singlePrice.singleAvailable && favorite.sku.singlePrice.singleInSale">打包价:</span><font style="color: #eb2927">{{favorite.sku.bundlePrice.bundleSalePrice | currency : "￥"}}</font>/{{favorite.sku.bundleUnit}}</span>&nbsp;
+                        </div>
+                    </div>
+                    <div class="checkboxBox"  style="height: 30px;">
+                        <div class="product-checkBox" ng-if="favorite.sku.singlePrice.singleAvailable && favorite.sku.singlePrice.singleInSale">
+                            <div class="checkBox" style="height: 30px;display: inline-block;"  ng-click="oneChange(favorite.id,favorite.singleName,favorite.checkboxModel.bundle,favorite.checkboxModel.single)"  ng-if="favorite.sku.bundlePrice.bundleAvailable && favorite.sku.bundlePrice.bundleInSale">
+                                <ion-checkbox ng-model="favorite.checkboxModel.single"></ion-checkbox>
+                            </div>
+                            <span class="product-danpinjia" style="font-size: 14px;" ng-class="{true:'show',false:'unshow'}[sku.b]"><span ng-if="favorite.sku.bundlePrice.bundleAvailable && favorite.sku.bundlePrice.bundleInSale">单品价:</span><font style="color: #eb2927">{{favorite.sku.singlePrice.singleSalePrice | currency : "￥"}}</font>/{{favorite.sku.singleUnit}}</span>&nbsp;
+                        </div>
+                    </div>
+                    <div>
+                        <a ng-click="lessQuantity(favorite)" class="button button-small button-outline button-dark button-icon icon ion-ios-minus-empty minus-btn-left" ng-disabled="favorite.rebuyQuantity==1" style="padding-top: 3px;height: 29px;border-color: #e2e2e2;width: 35px;"></a>
+                        <a class="num">{{favorite.rebuyQuantity}}</a>
+                        <a ng-click="moreQuantity(favorite)" class="button button-small button-outline button-dark button-icon icon ion-ios-plus-empty minus-btn-right" style="padding-top: 3px;height: 29px;border-color: #e2e2e2;width: 35px;"></a>
+                    </div>
+                </div>
+            </div>
+        </ion-item>
+    </ion-list>
+</ion-content>
+
+<ion-footer-bar align-title="left" class="submit bar bar-footer bar-stable" ng-show="profile && !isNullCart">
+    <ion-checkbox ng-model="selectAll" ng-change="clickSelectAll(selectAll)">全选</ion-checkbox>
+    <h1 class="title">&nbsp;</h1>
+    <button class="button button-light button-footer" ng-click="addToCart()" >加入购物车</button>
+</ion-footer-bar>

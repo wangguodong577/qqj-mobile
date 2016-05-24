@@ -1,0 +1,52 @@
+<ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
+    <button class="button button-clear button-assertive button-back" ui-sref="membership-point">
+        <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <h1 class="title">积分兑换纪录</h1>
+</ion-header-bar>
+
+<ion-content scroll="true" id="exchange-records">
+	<ion-list>
+		<div class="head-wrapper">
+			<div class="current-point">{{availableScore ? availableScore : "暂无"}}</div>
+		</div>
+		<div class="exchange-list-head">积分兑换明细</div>
+		<div class="exchange-list">
+			<div class="exchange-item" ng-repeat="exchangeScore in exchangeScoreLogs">
+				<div style="margin-bottom: 16px;">
+					<span class="exchange-coupon">{{exchangeScore.coupon.discount}}元无忧券</span>
+					<span class="exchange-date">{{exchangeScore.createTime | date : "yyyy-MM-dd HH:mm"}}</span>
+				</div>
+				<div>
+					<span class="exchange-result">兑换完成</span>
+					<span class="exchange-point">－{{exchangeScore.integral}}积分</span>
+				</div>
+			</div>
+		</div>
+	</ion-list>
+
+	<ion-infinite-scroll ng-if="moreDataCanBeLoaded" on-infinite="loadMore()" distance="5%"></ion-infinite-scroll>
+</ion-content>
+
+<div class="spinner-page" ng-if="showLoading === true">
+    <div class="spinner-container container1">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+    </div>
+    <div class="spinner-container container2">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+    </div>
+    <div class="spinner-container container3">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+    </div>
+
+    <p>加载中...</p>
+</div>

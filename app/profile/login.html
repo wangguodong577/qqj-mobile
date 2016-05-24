@@ -1,0 +1,36 @@
+<ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
+    <button class="button button-clear button-assertive button-back" ui-sref="main.home">
+        <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <h1 class="title">登录</h1>
+</ion-header-bar>
+
+<ion-content>
+    <ion-item id="login" class="item item-button-center"  style="background-size: 100% 100%; border-top-style: none;">
+        <div class="logoBox">
+            <center><img src="img/login-logo.png" class="login-logo"></center>
+        </div>
+
+        <form ng-submit="login(user)" id="loginForm">
+            <div class="list list-inset formBox">
+                <label class="item item-input loginLabel">
+                    <i class="mirror-phone-icon"></i>
+                    <input class="mirror-phone" type="tel" ng-model="user.username" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="手机号">
+                </label>
+                <label class="item item-input loginLabel">
+                    <i class="mirror-pwd-icon"></i>
+                    <input class="mirror-pwd" type="password" ng-model="user.password" placeholder="输入密码">
+                </label>
+            </div>
+
+            <div class="padding">
+                <button class="button button-block button-assertive" type="submit" ng-disabled="isLoginState">
+                    <span ng-if="!isLoginState" class="paddingFont">登录</span>
+                    <span ng-if="isLoginState">正在登录...</span>
+                </button>
+                <!-- <button class="button button-block button-outline button-assertive paddingFont" ui-sref="register" id="reg">注册</button>
+                <a class="login-link-button" id="forget" ui-sref="forgot-password">找回密码</a> -->
+            </div>
+        </form>
+    </ion-item>
+</ion-content>

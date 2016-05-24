@@ -1,0 +1,77 @@
+<ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
+    <button class="button button-clear button-assertive button-back" ui-sref="membership-point">
+        <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <h1 class="title">积分兑换</h1>
+</ion-header-bar>
+
+<ion-content scroll="true" id="redeem-point">
+	<ion-list>
+		<div class="head-wrapper">
+			<div class="current-tip">您当前可用积分</div>
+			<div class="current-point">{{originAvailableScore ? originAvailableScore : 0}}</div>
+			<div class="restaurant-name">{{restaurantName}}</div>
+		</div>
+
+		<div class="select-tip">
+			<span ng-if="exchangeCoupons.length > 0">请选择可兑换的无忧券</span>
+			<span ng-if="exchangeCoupons.length == 0">暂无可兑换的无忧券</span>
+		</div>
+		<div class="select-coupon-wrapper">
+			<div class="coupon-box" ng-repeat="exchangeCoupon in exchangeCoupons" ng-click="couponSelected(exchangeCoupon)">
+				<div ng-class="{'point-coupon-selected': exchangeCoupon.id == couponSelectedId}"></div>
+				<div class="logo-img"></div>
+				<div class="coupon-point-box">
+					<div class="coupon-name">{{exchangeCoupon.discount}}元无忧券</div>
+					<div class="point-score"><span style="color: #787878;">积分</span>&nbsp;<span style="color: #d43030;">{{exchangeCoupon.score}}</span></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="redeem-box">
+			<div class="redeem-item">
+				<span class="redeem-info">兑换数量</span>
+				<div class="count-group">
+                    <a ng-click="lessQuantity(exchangeCouponQuantity)" class="button button-small button-outline button-dark button-icon icon ion-ios-minus-empty minus-btn-left" ng-disabled="exchangeCouponQuantity.quantity == 1"></a>
+                    <a class="num">{{exchangeCouponQuantity.quantity}}</a>
+                    <a ng-click="moreQuantity(exchangeCouponQuantity)" class="button button-small button-outline button-dark button-icon icon ion-ios-plus-empty minus-btn-right" ng-disabled="buttonDisabled || exchangeCoupons.length==0"></a>
+                </div>
+			</div>
+			<div class="redeem-item">
+				<span class="redeem-info">兑换需消费积分</span>
+				<span class="redeem-value">{{exchangeRedeemPoint}}</span>
+			</div>
+			<div class="redeem-item">
+				<span class="redeem-info">可用积分</span>
+				<span class="redeem-value">{{availableScore ? availableScore : 0}}</span>
+			</div>
+		</div>
+
+		<div class="next-btn-padding">
+	        <button class="button button-block button-light button-next" style="border-radius: 4px;" ng-click="toExchangePoint()" ng-disabled="showLoading || buttonDisabled || exchangeCoupons.length==0">下一步</button>
+	    </div>
+	</ion-list>
+</ion-content>
+
+<div class="spinner-page" ng-if="showLoading === true">
+    <div class="spinner-container container1">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+    </div>
+    <div class="spinner-container container2">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+    </div>
+    <div class="spinner-container container3">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+    </div>
+
+    <p>加载中...</p>
+</div>

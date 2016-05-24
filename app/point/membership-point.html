@@ -1,0 +1,95 @@
+<ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
+    <button class="button button-clear button-assertive button-back" ui-sref="main.profile">
+        <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <h1 class="title">我的积分</h1>
+</ion-header-bar>
+
+<ion-content scroll="true" id="membership-point">
+	<ion-list>
+		<div class="restaurant-box">{{restaurantName}}</div>
+		<div class="base-info">基本信息</div>
+		<div class="point-wrapper">
+			<div class="point-item">
+				<span class="item-text">可用积分</span>
+				<span class="item-value" style="color: #E43B3D;">{{score.availableScore ? score.availableScore : 0}}</span>
+			</div>
+			<div class="point-item">
+				<span class="item-text">上月产生积分</span>
+				<span class="item-value">{{score.lastMonthObtainScore ? score.lastMonthObtainScore : 0}}</span>
+			</div>
+			<div class="point-item">
+				<span class="item-text">已兑换积分</span>
+				<span class="item-value">{{score.exchangeScore ? score.exchangeScore : 0}}</span>
+			</div>
+			<div class="point-item" style="background-image: none;">
+				<span class="item-text">累计产生积分</span>
+				<span class="item-value">{{score.totalScore ? score.totalScore : 0}}</span>
+			</div>
+		</div>
+		<div class="redeem-tip">您有一些积分，去看看能兑换什么礼品吧。</div>
+	</ion-list>
+
+	<div class="point-btn-padding">
+        <button class="button button-block button-light button-toredeem" style="border-radius: 4px;" ui-sref="redeem-point({restaurantName: restaurantName,availableScore: score.availableScore})" ng-disabled="score.availableScore === null">点击立即去兑换</button>
+        <button class="button button-block button-light button-toredeem btn-redeem-share" style="border-radius: 4px;" ng-click="pointSharePopover.show()">分享给朋友赚积分</button>
+    </div>
+
+    <div class="divider-wrapper">
+    	<div class="divider-left"></div>
+    	<div class="divider-center">您可能需要</div>
+    	<div class="divider-right"></div>
+    </div>
+
+    <div class="point-list-wrapper">
+    	<div class="row">
+    		<div class="col col-left" ui-sref="generate-records({availableScore: score.availableScore})">
+    			<div class="list-icon"></div>
+    			<div class="list-text">积分产生纪录</div>
+    		</div>
+    		<div class="col" ui-sref="exchange-records({availableScore: score.availableScore})">
+    			<div class="redeem-icon"></div>
+    			<div class="redeem-text">积分兑换纪录</div>
+    		</div>
+    	</div>
+    </div>
+
+    <div class="rule-tip">温馨提示：<span style="color: #0096ff;" ui-sref="point-rule">积分规则</span></div>
+</ion-content>
+
+<div id="fxGuidePage" class='fxGuidePage'>
+	<img src="img/fx-ts1.png">
+	<img id="hideBtn" src="img/fx-ts2.png">
+</div>
+
+<script id="templates/pointSharePopover.html" type="text/ng-template">
+    <div id="point-share-popover">
+        <ion-popover-view>
+            <ion-content scroll="false">
+                <ion-list>
+                    <ion-item>
+						<p class="share-head-text">分享至</p>
+						<div class="share-way">
+							<div class='fxIcon'>
+								<div class="friends" ng-click="toWeChatFriends();" id='onMenuShareAppMessage'></div>
+								<div class="share-way-tip">微信好友</div>
+							</div>
+							<div class='fxIcon'>
+								<div class="wechat" ng-click="toWeChatTimeline();"></div>
+								<div class="share-way-tip">朋友圈</div>
+							</div>
+							<div class='fxIcon'>
+								<div class="message" ng-click="toSendMessage();"></div>
+								<div class="share-way-tip">短信</div>
+							</div>
+						</div>
+
+						<div class="share-padding">
+					        <button class="button button-block button-light btn-share-cancel" ng-click="pointSharePopover.hide()">取消</button>
+					    </div>
+					</ion-item>
+                </ion-list>
+            </ion-content>
+        </ion-popover-view>
+    </div>
+</script>

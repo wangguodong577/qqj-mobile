@@ -1,0 +1,28 @@
+<form ng-submit="toQuerySearch()">
+    <ion-header-bar class="bar-stable nav-title-slide-ios7 item-input-inset" align-title="center">
+        <button class="button button-clear button-assertive" back>
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <p>&nbsp;&nbsp;</p>
+        <span class="item-input-wrapper mySpan">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="text" placeholder="寻找调料、食材" ng-model="query.keywords">
+            <div id="myIon">
+            <i class="icon ion-ios-close placeholder-icon" ng-if="hasQuery" ng-click="clearQuery()" id="mySearch"></i>
+        </div>
+        </span>
+        <button class="button button-clear button-assertive" type="submit" style="font-weight: 500;">搜索</button>
+    </ion-header-bar>
+</form>
+
+<ion-content id="history-query">
+    <div class="item history-query-head">搜索历史</div>
+    <ion-list>
+        <ion-item ng-repeat="historyKeyWord in localStorageHistoryQuery" ui-sref="search({query:historyKeyWord})">
+            {{historyKeyWord}}
+        </ion-item>
+    </ion-list>
+    <button class="button button-block button-light" ng-click="clearHistoryQuery()"
+            ng-if="hasHistoryQuery">清空历史纪录
+    </button>
+</ion-content>

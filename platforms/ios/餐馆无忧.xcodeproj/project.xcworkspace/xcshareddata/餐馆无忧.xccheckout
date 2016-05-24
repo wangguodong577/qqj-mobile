@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>49E8A1F6-3B37-4592-8F6A-FAF9442C4597</string>
+	<key>IDESourceControlProjectName</key>
+	<string>餐馆无忧</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8565DF1CA16B87BAF2C9464297BE2A38E44D19B4</key>
+		<string>https://github.com/Mishu-Technology/cgwy-mobile.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>platforms/ios/餐馆无忧.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8565DF1CA16B87BAF2C9464297BE2A38E44D19B4</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Mishu-Technology/cgwy-mobile.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8565DF1CA16B87BAF2C9464297BE2A38E44D19B4</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8565DF1CA16B87BAF2C9464297BE2A38E44D19B4</string>
+			<key>IDESourceControlWCCName</key>
+			<string>cgwy-mobile</string>
+		</dict>
+	</array>
+</dict>
+</plist>

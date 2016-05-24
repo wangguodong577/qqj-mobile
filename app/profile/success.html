@@ -1,0 +1,46 @@
+<ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
+    <button class="button button-clear button-assertive button-back" back>
+        <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <h1 class="title">申请成功</h1>
+</ion-header-bar>
+
+<!-- 分享注册成功 -->
+<div ng-if="isShareRegistSuccess">
+    <ion-content id="regist-success">
+        <center>
+            <br>
+            <h4>欢迎{{profile.username}}来到餐馆无忧</h4>
+            <div class="share-regist-success-caption" ng-if="currentCityId==2">［审核通过后，就送10元无忧券放入您的“我的无忧券”中］</div>
+            <div class="share-regist-success-caption" ng-if="currentCityId==1">［审核通过后，就送35元无忧券放入您的“我的无忧券”中］</div>
+            <div class="share-regist-success-coupon"></div>
+            <div class="padding">
+            	<button class="button button-block button-assertive" ng-click="downloadApp();">下载手机应用</button>
+            </div>
+            <br>
+            <hr class="regist-success-page" style="margin-bottom: 0px;"/>
+            <br>
+            <h4 class="regist-success-page">现在您可以浏览商品页,随后有客服人员会跟您联系,如有任何问题,欢迎拨打:<span ng-href="tel: '{{servicePhone}}'">{{servicePhone}}</span></h4>
+        </center>
+    </ion-content>
+</div>
+
+<!-- 常规注册成功 -->
+<div ng-if="!isShareRegistSuccess">
+    <ion-content id="app-regist-success">
+        <center>
+            <div class="regist-progress">
+                <div class="progress-img"></div>
+                <div class="step-one">注册申请成功</div>
+                <div class="step-two">客服进行审核</div>
+            </div>
+            <br>
+            <h4 class="regist-success-page">恭喜您申请成功，稍后会有客服员跟您联系进行餐馆审核确认</h4>
+            <h4 class="regist-success-page">如有任何问题，欢迎拨打：<span ng-href="tel: '{{servicePhone}}'">{{servicePhone}}</span></h4>
+            <h4 class="regist-success-page">现在，您可以浏览商品页：</h4>
+            <div class="padding">
+                <button class="button button-block button-assertive button-stroll" ui-sref="main.category">去逛逛</button>
+            </div>
+        </center>
+    </ion-content>
+</div>

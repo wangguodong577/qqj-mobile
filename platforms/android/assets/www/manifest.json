@@ -1,0 +1,167 @@
+{
+  "files": {
+    "templates": {
+      "version": "88fb493574f27442f593a3e7e53aff8cb95e34e8",
+      "filename": "templates.js"
+    },
+    "app": {
+      "version": "838e1a231f5cd1eef3439a8a3bc105504c7d6761",
+      "filename": "app.js"
+    },
+    "style": {
+      "version": "8086b35470fc1d6a78189272fb7b6a55f259c454",
+      "filename": "css/style.css"
+    },
+    "up": {
+      "version": "374f3fe59ba8cb61f53e288bac031d9a49b61045",
+      "filename": "img/xiangshang_03.png"
+    },
+    "down": {
+      "version": "e147a8ca57b7438dabad0da2038516b8db851ea0",
+      "filename": "img/xiangxia_03.png"
+    },
+    "price": {
+      "version": "50f055635db8504181cf6afb9c96f030a585bc3b",
+      "filename": "img/jiage_03.png"
+    },
+    "brand": {
+      "version": "cb2b52fc0f5fdadc9492c1563fe4391ddd0fd302",
+      "filename": "img/brand.png"
+    },
+    "category_select": {
+      "version": "9e0cdfb71f686d54c72a477b30e0548f0d9966f0",
+      "filename": "img/header-select.png"
+    },
+    "selected": {
+      "version": "608945c0635738bb5a8c8464d3e50b97dbac1f68",
+      "filename": "img/xuanzhong.png"
+    },
+    "mobile": {
+      "version": "e6d56ed9523f7316cb15a370415b67b3e28e328c",
+      "filename": "img/shouji_03.png"
+    },
+    "password": {
+      "version": "b330f4d36d630d4552b0fc6107586bb19ea4845e",
+      "filename": "img/mima_03.png"
+    },
+    "coupon": {
+      "version": "f50f0e86d0d6a5b393355c3a7b157bb5894be24a",
+      "filename": "img/coupon.png"
+    },
+    "couponbg0": {
+      "version": "c1c1983b90a3f350d25dfb6a96b76c94c523ce35",
+      "filename": "img/couponbg.png"
+    },
+    "couponbg1": {
+      "version": "a56a6cf63d1c6ed94f0b5523e21142921421329a",
+      "filename": "img/couponbg1.jpg"
+    },
+    "feedback": {
+      "version": "d8beb752e926353fd0cf8edd49a88cd18dab392f",
+      "filename": "img/feedback.png"
+    },
+    "youhuihuodong": {
+      "version": "421f7f4742ee46ab15ecb301b9e54d5aeea1687a",
+      "filename": "img/tejiaicon_03.png"
+    },
+    "favoriteguide": {
+      "version": "89ed0f5eec0f945bd15ef0f0fdbacc568c08eaeb",
+      "filename": "img/shoucangyindaoye.png"
+    },
+    "header-select-up": {
+      "version": "0713a9e5249e8368d73476be55db5e0197a7a04c",
+      "filename": "img/header-select-up.png"
+    },
+    "fenxiang_03": {
+      "version": "9646f24ff5fae3acec252595481935f25888a812",
+      "filename": "img/fenxiang_03.png"
+    },
+    "wuyouquan_03": {
+      "version": "1523bc10bff5f557616e3a84aa12f6e392f7eb98",
+      "filename": "img/wuyouquan_03.png"
+    },
+    "saoyisao_03": {
+      "version": "9156eb672ffc234774b10ae916a37521526484d7",
+      "filename": "img/saoyisao_03.png"
+    },
+    "duanxin_03": {
+      "version": "0d6205035d01c0184e2876d1df3fc345f6893198",
+      "filename": "img/duanxin_03.png"
+    },
+    "weixinhaoyou_03": {
+      "version": "0e47784aa15307c373c682733cdd65059c26df09",
+      "filename": "img/weixinhaoyou_03.png"
+    },
+    "pengyouquan_03": {
+      "version": "9a67a26cec921582104bc1f77f00ec5c8c6d0efa",
+      "filename": "img/pengyouquan_03.png"
+    },
+    "cgwy_03": {
+      "version": "2f7b68e3e4452fa5b00943ccdc18415b820dca0e",
+      "filename": "img/cgwy_03.png"
+    },
+    "fenxiangye_03": {
+      "version": "a973f3b5396d41f6a860522bce58a8f0173bd3fb",
+      "filename": "img/fenxiangye_03.png"
+    },
+    "logo_weixin_03": {
+      "version": "918cf204d7bb4c0cedcac4c72bfa93cc15fda87e",
+      "filename": "img/logo_weixin_03.png"
+    },
+    "homepagefenxiang": {
+      "version": "f671191a548b77e34c4b2ba8dec1903937a75b7d",
+      "filename": "img/homepagefenxiang.png"
+    },
+    "duigou": {
+      "version": "a3d33f1d1ad7306e9cb764360e689e8a969f77ed",
+      "filename": "img/duigou.png"
+    },
+    "wodedingdan-shouye": {
+      "version": "a397b7e14dcbc664d327f06cad43ff51866e0563",
+      "filename": "img/wodedingdan-shouye.png"
+    },
+    "location": {
+      "version": "92d0275a5569a333818aa7c3277ba3a86e6c4b5c",
+      "filename": "img/location.png"
+    },
+    "overdue": {
+      "version": "e3c64a72693fba39f2b3da7e57b517db62903ddf",
+      "filename": "img/overdue.png"
+    }
+  },
+  "load": [
+    "templates.js",
+    "app.js",
+    "css/style.css",
+    "img/xiangshang_03.png",
+    "img/xiangxia_03.png",
+    "img/jiage_03.png",
+    "img/brand.png",
+    "img/header-select.png",
+    "img/xuanzhong.png",
+    "img/shouji_03.png",
+    "img/mima_03.png",
+    "img/coupon.png",
+    "img/couponbg.png",
+    "img/couponbg1.jpg",
+    "img/feedback.png",
+    "img/tejiaicon_03.png",
+    "img/shoucangyindaoye.png",
+    "img/header-select-up.png",
+    "img/fenxiang_03.png",
+    "img/wuyouquan_03.png",
+    "img/saoyisao_03.png",
+    "img/duanxin_03.png",
+    "img/weixinhaoyou_03.png",
+    "img/pengyouquan_03.png",
+    "img/cgwy_03.png",
+    "img/fenxiangye_03.png",
+    "img/logo_weixin_03.png",
+    "img/homepagefenxiang.png",
+    "img/duigou.png",
+    "img/wodedingdan-shouye.png",
+    "img/location.png",
+    "img/overdue.png"
+  ],
+  "version": "89705ada77a5ec2c11628edc72640f0cbd96f4a4"
+}

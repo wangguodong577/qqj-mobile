@@ -1,0 +1,157 @@
+<ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
+    <button class="button button-clear button-assertive" ng-click="back()">
+        <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <h1 class="title">商品详情</h1>
+    <button id='carBtn' class="button icon ion-ios-cart-outline badge" ng-click="gotoCart()">
+        <div>{{orderItemsCount}}</div>
+    </button>
+</ion-header-bar>
+<div id='customToast' class='hide'>添加成功</div>
+<ion-content class="product" scroll="true" direction="y">
+
+      <ion-slide-box style="background-color: #fff;" on-slide-changed="slideHasChanged($index)" id="productDetaiLunbo" ng-if="product.mediaFileUrls && product.mediaFileUrls.length >0 ">
+            <ion-slide  ng-repeat="mediaFileUrl in product.mediaFileUrls">
+                <div class="product-img"><img src="{{mediaFileUrl}}" style="height: 150px;" ng-click="shouBigImage(mediaFileUrl)"></div>
+            </ion-slide>
+      </ion-slide-box>
+
+    <!--<ion-item>
+        <div class="product-img"><img src="{{product.mediaFileUrls[0]}}" style="height: 150px;" ng-click="shouBigImage(product.mediaFileUrls[0])"></div>
+    </ion-item>-->
+
+    <ion-item id="shouPrice">
+        <h2 id="product-h2">{{product.name}}</h2>
+        <span class="showPrice" ng-if="bundle"><span ng-if="single">打包价:</span><font style="color: #eb2927">{{product.bundlePrice.bundleSalePrice | currency : "￥"}}</font>/{{product.bundleUnit}}</span><br />
+        <span class="showPrice" ng-if="single"><span ng-if="bundle">单品价:</span><font style="color: #eb2927">{{product.singlePrice.singleSalePrice | currency : "￥"}}</font>/{{product.singleUnit}}</span>
+    </ion-item>
+    <ion-item class="product-remark" ng-if="product.propertyMap.details">
+        <h2>备注说明</h2>
+        <pre class="product-others" style="color: #000">
+            {{product.propertyMap.details}}</pre>
+    </ion-item>
+    <ion-item id="product-detail">
+        <h2>商品详情</h2>
+        <ul class="ul-one">
+            <li ng-if="product.brand.brandName">品牌：{{product.brand.brandName}}</li>
+            <li ng-if="product.propertyMap.specification">规格：{{product.propertyMap.specification}}</li>
+            <li ng-if="product.propertyMap.unit">包装：{{product.propertyMap.unit}}</li>
+            <li ng-if="product.propertyMap.gross_wight">大箱包装：{{product.propertyMap.gross_wight}}</li>
+            <li ng-if="product.propertyMap.shelf_life && product.propertyMap.shelf_life!=0 ">保质期：{{product.propertyMap.shelf_life}}</li>
+            <li ng-if="product.propertyMap.origin">产地：{{product.propertyMap.origin}}</li>
+            <li ng-if="product.propertyMap.net_weight">净重：{{product.propertyMap.net_weight}}</li>
+        </ul>
+        <p>
+            <span ng-if="product.propertyMap.executive_standard">产品执行标准：{{product.propertyMap.executive_standard}}</span>
+        </p>
+
+        <p>
+            <span ng-if="product.propertyMap.save_condition">保存条件：{{product.propertyMap.save_condition}}</span>
+        </p>
+
+        <p>
+            <span ng-if="product.propertyMap.create_company">生产商：{{product.propertyMap.create_company}}</span>
+        </p>
+
+        <p>
+            <span ng-if="product.propertyMap.licence">生产许可证：{{product.propertyMap.licence}}</span>
+        </p>
+
+        <p class="custom product-others product-font" ng-if="product.propertyMap.ingredient">
+            配料:&nbsp; {{product.propertyMap.ingredient}}
+        </p>
+    </ion-item>
+</ion-content>
+
+<div id="rightDisplay" ng-show="bigImage" class="popover-backdrop"
+     style="position: fixed;top: 0;left: 0;z-index: 10; width: 100%;height: 100%;background: #000;"
+     ng-click="hideBigImage()">
+    <img class="img-responsive" ng-show="bigImage"
+         style="position: absolute;top: 10%;left: 50%;z-index: 10;display: block;margin-top: 18px;
+         margin-left: -165px;height: 420px;width: 330px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);"
+         src="{{bigUrl}}"/>
+</div>
+
+<ion-footer-bar id="product-Box" style="border-top: none">
+    <div id="product-cart">
+        <button  class="button button-small button-assertive product-add product"
+                style="background-color: #eb2927;font-size: 14px;" ng-click="productCartPopover.show();">添加到购物车
+        </button>
+       <!-- <button ng-if="product.stock <= 0 " class="button button-small button-stable mirror-button-joincar product-add">
+            暂时无库存
+        </button>-->
+    </div>
+    <div id="changgouqingdan" ng-click="markFavorite(product.name)" id="product-button">
+        <button class="button button-small button-assertive product-add" style="background-color: #f78d00;font-size: 14px;border-color: #f78d00"
+                ng-click="markFavorite();">加入常购清单
+        </button>
+    </div>
+    <!--<div class="btnBox">
+        <a class="button button-small button-outline button-dark button-icon icon ion-ios-minus-empty product-small minus-btn-left" ng-click="lessQuantity(product)" ng-disabled="product.quantity==1" id="detail-red"></a>
+        <a id="number">{{product.quantity}}</a>
+        <a class="button button-small button-outline button-dark button-icon icon ion-ios-plus-empty product-small minus-btn-right" ng-click="moreQuantity(product)" id="detail-add"></a>
+    </div>
+   <div class="product-cart">
+       <div id="gouwucheTwo"  ng-if="product.stock > 0">
+            <span class="product-detail" ng-click="addSkuIntoCart(product, product.quantity);"></span>
+        </div>
+    &lt;!&ndash;<button  ng-if="product.stock > 0" class="button button-small button-assertive product-add" ng-click="addSkuIntoCart(product, product.quantity);">加入购物车</button>&ndash;&gt;
+        <button  ng-if="product.stock <= 0 " class="button button-small button-stable mirror-button-joincar product-add">暂时无库存</button>
+    </div>-->
+</ion-footer-bar>
+
+<script id="templates/productCartPopover.html" type="text/ng-template">
+    <div id="product-cart-popover">
+        <ion-popover-view>
+            <ion-content style="height: 320px;">
+                <div id="productCartPop" ng-if = "productSaleStatus === true">
+                    <ion-list>
+                        <ion-item>
+                            <span class="title">{{product.name}}</span>
+                            <div id="close" ng-click="productCartPopover.hide()">
+                                <i class="icon"  id="detail-close">
+                                    <span class="close"></span>
+                                </i>
+                            </div>
+                        </ion-item>
+                        <ion-item style="height: 63px;">
+                            <div class="dabaojia" ng-if="bundle">
+                                <div class="checkBox" ng-if="single" style="display: inline-block;width: 50px;margin-left: -3%;" ng-click="oneChange(product.bundleName,checkboxModel.bundle,checkboxModel.single)">
+                                    <ion-checkbox ng-model="checkboxModel.bundle"></ion-checkbox>
+                                </div>
+                                <span  ng-class="{true:'dabaojiaShow',false:'notShow'}[single]"><span ng-if="single">打包价:</span><font style="color: #eb2927">{{product.bundlePrice.bundleSalePrice | currency : "￥"}}</font>/{{product.bundleUnit}}</span>&nbsp;
+                            </div>
+                        </ion-item>
+                        <ion-item class="danpinjiaItem" style="height: 63px;">
+                            <div class="danpinjia"  ng-if="single" style="margin-top: 15px;">
+                                <div class="checkBox" ng-if="bundle"style="display: inline-block;width: 50px;margin-left: -3%;" ng-click="oneChange(product.singleName,checkboxModel.bundle,checkboxModel.single)">
+                                    <ion-checkbox ng-model="checkboxModel.single"></ion-checkbox>
+                                </div>
+                                <span id="danpinjia"><span ng-if="bundle">单品价:</span><font style="color: #eb2927">{{product.singlePrice.singleSalePrice | currency : "￥"}}</font>/{{product.singleUnit}}</span>&nbsp;
+                            </div>
+                        </ion-item>
+                        <ion-item style="height: 60px;">
+                            <span class="buyNumber">购买数量</span>
+                            <div class="addNumber">
+                                <a class="button button-small button-outline button-dark button-icon icon ion-ios-minus-empty product-small minus-btn-left" ng-click="lessQuantity(product)" ng-disabled="product.quantity==1" id="product-detail-red"></a>
+                                <a id="product-detail-number">{{product.quantity}}</a>
+                                <a class="button button-small button-outline button-dark button-icon icon ion-ios-plus-empty product-small minus-btn-right" ng-click="moreQuantity(product)" id="product-detail-add"></a>
+                            </div>
+                        </ion-item>
+                    </ion-list>
+                </div>
+                <div id="productDetailNotice" ng-if = 'productSaleStatus===false'>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="notice">
+                        亲，抱歉！当前产品暂无库存，暂时无法购买，请过几天再来看看吧!
+                    </span>
+                    <div id = "productClose" ng-class="{false:'productDetailBtnNot',true:'productDetailBtn'}[bundle]">
+                        <button class="button button-small button-assertive product-add" ng-click="productCartPopover.hide()">确定</button>
+                    </div>
+                </div>
+                <div id="productDetailBtn" ng-class="{false:'productDetailBtnNot',true:'productDetailBtn'}[bundle]" ng-if = 'productSaleStatus'>
+                    <button class="button button-small button-assertive product-add" ng-click="addSkuIntoCart(product,product.quantity,productBundle);">确定</button>
+                </div>
+            </ion-content>
+        </ion-popover-view>
+    </div>
+</script>

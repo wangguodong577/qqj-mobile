@@ -1,0 +1,47 @@
+<ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
+    <button class="button button-clear button-assertive" back>
+        <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <h1 class="title">新品反馈</h1>
+</ion-header-bar>
+
+<ion-content id="feedback-content" scroll="false">
+    <div class="list list-inset fbBox">
+        <label><strong>反馈内容:</strong></label>
+        <br>
+        <label class="item item-input fbInput">
+            <textarea placeholder="如您在商城内没买到需要的商品，请反馈给我们" rows="6" ng-model="form.content"></textarea>
+        </label>
+        <br>
+        <div class='addImgbox'>
+            <img src="img/fankui_03.png" ng-src="{{lastPhoto}}" ng-click="addPicture()">
+        </div>
+        <div class="feedback-img-tip" ng-if="!lastPhoto">添加您需要的产品图片</div>
+    </div>
+    <div class="padding">
+        <button class="button button-block button-light button-regist" ng-click="upload(lastPhoto)" ng-disabled="isCommitState">提交</button>
+    </div>
+</ion-content>
+
+<div class="spinner-page" ng-if="showLoading === true">
+    <div class="spinner-container container1">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+    </div>
+    <div class="spinner-container container2">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+    </div>
+    <div class="spinner-container container3">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+    </div>
+
+    <p>加载中...</p>
+</div>

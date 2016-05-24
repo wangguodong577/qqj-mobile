@@ -1,0 +1,321 @@
+{
+  "files": {
+    "templates": {
+      "version": "6fda962b38bfa74935a8cc4618bd158524b5869b",
+      "filename": "templates.js"
+    },
+    "app": {
+      "version": "8d64699ee61b88c0368f597bb8e28c1fd4de7a39",
+      "filename": "app.js"
+    },
+    "style": {
+      "version": "c8e46b472fd6cf65d930a36411f0ee51dc695ffd",
+      "filename": "css/style.css"
+    },
+    "up": {
+      "version": "374f3fe59ba8cb61f53e288bac031d9a49b61045",
+      "filename": "img/xiangshang_03.png"
+    },
+    "down": {
+      "version": "e147a8ca57b7438dabad0da2038516b8db851ea0",
+      "filename": "img/xiangxia_03.png"
+    },
+    "price": {
+      "version": "50f055635db8504181cf6afb9c96f030a585bc3b",
+      "filename": "img/jiage_03.png"
+    },
+    "brand": {
+      "version": "92540bda3ca4437d68a74f7fe084a7f1fdddadc1",
+      "filename": "img/brand.png"
+    },
+    "category_select": {
+      "version": "9e0cdfb71f686d54c72a477b30e0548f0d9966f0",
+      "filename": "img/header-select.png"
+    },
+    "selected": {
+      "version": "608945c0635738bb5a8c8464d3e50b97dbac1f68",
+      "filename": "img/xuanzhong.png"
+    },
+    "mobile": {
+      "version": "e6d56ed9523f7316cb15a370415b67b3e28e328c",
+      "filename": "img/shouji_03.png"
+    },
+    "password": {
+      "version": "b330f4d36d630d4552b0fc6107586bb19ea4845e",
+      "filename": "img/mima_03.png"
+    },
+    "coupon": {
+      "version": "f50f0e86d0d6a5b393355c3a7b157bb5894be24a",
+      "filename": "img/coupon.png"
+    },
+    "couponbg0": {
+      "version": "c1c1983b90a3f350d25dfb6a96b76c94c523ce35",
+      "filename": "img/couponbg.png"
+    },
+    "couponbg1": {
+      "version": "a56a6cf63d1c6ed94f0b5523e21142921421329a",
+      "filename": "img/couponbg1.jpg"
+    },
+    "feedback": {
+      "version": "d8beb752e926353fd0cf8edd49a88cd18dab392f",
+      "filename": "img/feedback.png"
+    },
+    "favoriteguide": {
+      "version": "89ed0f5eec0f945bd15ef0f0fdbacc568c08eaeb",
+      "filename": "img/shoucangyindaoye.png"
+    },
+    "header-select-up": {
+      "version": "0713a9e5249e8368d73476be55db5e0197a7a04c",
+      "filename": "img/header-select-up.png"
+    },
+    "fenxiang_03": {
+      "version": "9646f24ff5fae3acec252595481935f25888a812",
+      "filename": "img/fenxiang_03.png"
+    },
+    "wuyouquan_03": {
+      "version": "1523bc10bff5f557616e3a84aa12f6e392f7eb98",
+      "filename": "img/wuyouquan_03.png"
+    },
+    "saoyisao_03": {
+      "version": "9156eb672ffc234774b10ae916a37521526484d7",
+      "filename": "img/saoyisao_03.png"
+    },
+    "duanxin_03": {
+      "version": "0d6205035d01c0184e2876d1df3fc345f6893198",
+      "filename": "img/duanxin_03.png"
+    },
+    "weixinhaoyou_03": {
+      "version": "0e47784aa15307c373c682733cdd65059c26df09",
+      "filename": "img/weixinhaoyou_03.png"
+    },
+    "pengyouquan_03": {
+      "version": "9a67a26cec921582104bc1f77f00ec5c8c6d0efa",
+      "filename": "img/pengyouquan_03.png"
+    },
+    "cgwy_03": {
+      "version": "2f7b68e3e4452fa5b00943ccdc18415b820dca0e",
+      "filename": "img/cgwy_03.png"
+    },
+    "fenxiangye_03": {
+      "version": "a973f3b5396d41f6a860522bce58a8f0173bd3fb",
+      "filename": "img/fenxiangye_03.png"
+    },
+    "logo_weixin_03": {
+      "version": "918cf204d7bb4c0cedcac4c72bfa93cc15fda87e",
+      "filename": "img/logo_weixin_03.png"
+    },
+    "duigou": {
+      "version": "a3d33f1d1ad7306e9cb764360e689e8a969f77ed",
+      "filename": "img/duigou.png"
+    },
+    "location": {
+      "version": "92d0275a5569a333818aa7c3277ba3a86e6c4b5c",
+      "filename": "img/location.png"
+    },
+    "jindutiao": {
+      "version": "dc2b34966a99c285cc718e26c326bbe614461936",
+      "filename": "img/jindutiao.png"
+    },
+    "overdue": {
+      "version": "e3c64a72693fba39f2b3da7e57b517db62903ddf",
+      "filename": "img/overdue.png"
+    },
+    "resIcon": {
+      "version": "4d6f8c96ae48fa98435957ee24cb30ccee0457ee",
+      "filename": "img/resIcon.png"
+    },
+    "friendIcon": {
+      "version": "56591fd10f42fa6cabb3c628b841d69a4c7a8e9b",
+      "filename": "img/friendIcon.png"
+    },
+    "newIcon": {
+      "version": "e30b03953b207e2c4cd4cfd437eb187f00e786fb",
+      "filename": "img/newIcon.png"
+    },
+    "settingIcon": {
+      "version": "66e1a1ffe271b2f2e0f364aa6f6e000a61d47b10",
+      "filename": "img/settingIcon.png"
+    },
+    "quanIcon": {
+      "version": "0cbc60cbd302449e5c320a7a344e43a2304223fb",
+      "filename": "img/quanIcon.png"
+    },
+    "phone": {
+      "version": "39c74037139a791fb4a9f31bad7dbefcfab87af4",
+      "filename": "img/phone.png"
+    },
+    "complain": {
+      "version": "f196d85f4d2e2d39450cc4e53d618e368da29bc8",
+      "filename": "img/complain.png"
+    },
+    "wuIcon": {
+      "version": "af1e45157dd8c135bdab178fa3be5fa3c1585c17",
+      "filename": "img/wuIcon.png"
+    },
+    "quanpinlei_03": {
+      "version": "6e30d82ca20dfc3d05051b5219da0621769897fa",
+      "filename": "img/quanpinlei_03.png"
+    },
+    "gouwuche-shouye_03": {
+      "version": "a166b7725401360b58f617cf410cc3dec20ab695",
+      "filename": "img/gouwuche-shouye_03.png"
+    },
+    "wuyoutehui_03": {
+      "version": "ce11aaa5c59487aba8e0b1c9970ce5985d1d7871",
+      "filename": "img/wuyoutehui_03.png"
+    },
+    "changgouqingdan": {
+      "version": "546983f94043b3b106d9f3260013efb5c0317fa3",
+      "filename": "img/changgouqingdan.png"
+    },
+    "map-icon_04.png": {
+      "version": "88d68093302ff5dd0a4bbaf91d2d16e74ecdcd69",
+      "filename": "img/map-icon_04.png"
+    },
+    "map-icon_03.png": {
+      "version": "044125b4bbb680c6e1f6c3395f60283f4f78723e",
+      "filename": "img/map-icon_03.png"
+    },
+    "fangdajing": {
+      "version": "1523bc10bff5f557616e3a84aa12f6e392f7eb98",
+      "filename": "img/fangdajing.png"
+    },
+    "xin": {
+      "version": "2fb5e492a6def295bfd4e75f37096b392ebe3151",
+      "filename": "img/xin.png"
+    },
+    "tuoyuan": {
+      "version": "a6c27b285288e1d22bc2f0fbe2e247d80e11c89c",
+      "filename": "img/tuoyuan.png"
+    },
+    "line": {
+      "version": "a1658e8dbb47dbd9d42486df47067c32f944ee14",
+      "filename": "img/line.png"
+    },
+    "gouwucheicon": {
+      "version": "6660e1dda49671853ad1644c56042556f7cb2f4e",
+      "filename": "img/gouwucheicon.png"
+    },
+    "gouwuche": {
+      "version": "1523bc10bff5f557616e3a84aa12f6e392f7eb98",
+      "filename": "img/gouwuche.png"
+    },
+    "add": {
+      "version": "1523bc10bff5f557616e3a84aa12f6e392f7eb98",
+      "filename": "img/add.png"
+    },
+    "hongjiantou": {
+      "version": "42a76bdc2d31f8ace192a3a1598bd1332755ed5f",
+      "filename": "img/hongjiantou.png"
+    },
+    "detail": {
+      "version": "1523bc10bff5f557616e3a84aa12f6e392f7eb98",
+      "filename": "img/detail.png"
+    },
+    "wuyouquan_10": {
+      "version": "1523bc10bff5f557616e3a84aa12f6e392f7eb98",
+      "filename": "img/wuyouquan_10.png"
+    },
+    "wodejifen": {
+      "version": "42a76bdc2d31f8ace192a3a1598bd1332755ed5f",
+      "filename": "img/wodejifen.png"
+    },
+    "jifenjilu": {
+      "version": "42a76bdc2d31f8ace192a3a1598bd1332755ed5f",
+      "filename": "img/jifenjilu.png"
+    },
+    "jifenduihuan": {
+      "version": "42a76bdc2d31f8ace192a3a1598bd1332755ed5f",
+      "filename": "img/jifenduihuan.png"
+    },
+    "canicon": {
+      "version": "42a76bdc2d31f8ace192a3a1598bd1332755ed5f",
+      "filename": "img/canicon.png"
+    },
+    "quanxuanzhong": {
+      "version": "42a76bdc2d31f8ace192a3a1598bd1332755ed5f",
+      "filename": "img/quanxuanzhong.png"
+      },
+    "ms": {
+      "version": "42a76bdc2d31f8ace192a3a1598bd1332755ed5f",
+      "filename": "img/ms.png"
+    },
+    "msProduct": {
+      "version": "42a76bdc2d31f8ace192a3a1598bd1332755ed5f",
+      "filename": "img/msProduct.png"
+    },
+    "shandian": {
+      "version": "42a76bdc2d31f8ace192a3a1598bd1332755ed5f",
+      "filename": "img/shandian.png"
+    },
+    "msCart": {
+      "version": "42a76bdc2d31f8ace192a3a1598bd1332755ed5f",
+      "filename": "img/msCart.png"
+    }
+  },
+  "load": [
+    "templates.js",
+    "app.js",
+    "css/style.css",
+    "img/xiangshang_03.png",
+    "img/xiangxia_03.png",
+    "img/jiage_03.png",
+    "img/brand.png",
+    "img/header-select.png",
+    "img/xuanzhong.png",
+    "img/shouji_03.png",
+    "img/mima_03.png",
+    "img/coupon.png",
+    "img/couponbg.png",
+    "img/couponbg1.jpg",
+    "img/feedback.png",
+    "img/shoucangyindaoye.png",
+    "img/header-select-up.png",
+    "img/fenxiang_03.png",
+    "img/wuyouquan_03.png",
+    "img/saoyisao_03.png",
+    "img/duanxin_03.png",
+    "img/weixinhaoyou_03.png",
+    "img/pengyouquan_03.png",
+    "img/cgwy_03.png",
+    "img/fenxiangye_03.png",
+    "img/logo_weixin_03.png",
+    "img/duigou.png",
+    "img/wodedingdan-shouye.png",
+    "img/location.png",
+    "img/jindutiao.png",
+    "img/overdue.png",
+    "img/friendIcon.png",
+    "img/newIcon.png",
+    "img/settingIcon.png",
+    "img/complain.png",
+    "img/phone.png",
+    "img/quanIcon.png",
+    "img/quanpinlei_03.png",
+    "img/gouwuche-shouye_03.png",
+    "img/wuyoutehui_03.png",
+    "img/changgouqingdan.png",
+    "img/map-icon_04.png",
+    "img/map-icon_03.png",
+    "img/gouwuche.png",
+    "img/add.png",
+    "img/xin.png",
+    "img/tuoyuan.png",
+    "img/line.png",
+    "img/gouwucheicon.png",
+    "img/hongjiantou.png",
+    "img/detail.png",
+    "img/wuyouquan_10.png",
+    "img/fangdajing.png",
+    "img/wodejifen.png",
+    "img/jifenjilu.png",
+    "img/jifenduihuan.png",
+    "img/canicon.png",
+    "img/quanxuanzhong.png",
+    "img/ms.png",
+    "img/msProduct.png",
+    "img/shandian.png",
+    "img/msCart.png"
+  ],
+    "version": "7a8543a4fde024883121aa86ca9c018c46ab6f83"
+}

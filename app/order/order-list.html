@@ -1,0 +1,97 @@
+<ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
+    <h1 class="title">我的订单</h1>
+</ion-header-bar>
+
+<div ng-if="hasOrders === true">
+    <ion-view>
+        <ion-content scroll="true" lazy-scroll id="order-list">
+            <ion-list>
+                <div ng-repeat="order in ordersDisplayed">
+                    <ion-item class="order-list-divider"></ion-item>
+
+                    <div class="order-item-info">
+                        <ion-item class="item order-item-top">
+                            <span style="color: #6e6e6e;">下单时间</span>&nbsp;
+                            <span style="color: #323232;">{{order.submitDate | date: "yyyy-MM-dd HH:mm"}}</span>
+                            <span class="order-status" ng-if="order.status.value!=-1">{{order.status.name}}</span>
+                            <span style="float: right;color: #969696;" ng-if="order.status.value==-1">{{order.status.name}}</span>
+                        </ion-item>
+
+                        <ion-item class="item item-icon-right order-item-center">
+                            <span style="color: #323232;">预计送达：</span>
+                            <span style="color: #6e6e6e;white-space: normal;">
+                                <span ng-if="order.status.value!=-1">{{order.expectedArrivedDate | date: "yyyy-MM-dd"}}&nbsp;14点－19点</span>
+                                <span ng-if="order.status.value==-1">已失效</span>
+                            </span>
+                            <br/>
+                            <span>应付金额：</span>
+                            <span style="color: #eb2828;">{{order.total | currency: '￥'}}</span>
+                            <br/>
+                            <div ng-if="((!hasTimeout(order) && isShowContactBtn(order.submitDate)) || order.status.value==2) && order.tracker.telephone">
+                                <span style="color: #323232;">配送员电话：</span>
+                                <span style="color: #1564e8;" ng-click="contact(order.tracker.telephone)">{{order.tracker.telephone}}</span>
+                            </div>
+                            <i class="icon ion-ios-arrow-right" ui-sref="order-detail({id:order.id})"></i>
+                        </ion-item>
+                    </div>
+
+                    <div class="order-item-buttons">
+                        <div class="row">
+                            <div class="col buttons-col-left" ng-click="orderAgain(order.id)" ng-if="order.status.value==2 || order.status.value==-1 || order.status.value==4">再来一单</div>
+                            
+                            <div class="col buttons-col-left" ng-click="orderCancel(order)" ng-if="order.status.value==3">取消订单</div>
+
+                            <!-- <div class="col" ui-sref="order-evaluate({id:order.id})" ng-if="!hasTimeout(order) && !order.hasEvaluated">评价</div> -->
+                           
+                            <div class="col" ui-sref="order-evaluate({id:order.id})" ng-if="!order.hasEvaluated&&order.status.value==4">评价</div>
+                           
+                            <div class="col" ui-sref="order-evaluate({id:order.id,hasEvaluated:true})" ng-if="order.hasEvaluated">查看评价</div>
+                        </div>
+                    </div>
+                </div>
+            </ion-list>
+
+            <ion-infinite-scroll
+                ng-if="moreDataCanBeLoaded"
+                on-infinite="loadMore()"
+                distance="5%"
+                icon="ion-load-d">
+            </ion-infinite-scroll>
+        </ion-content>
+    </ion-view>
+</div>
+
+<div class="spinner-page" ng-if="showLoading === true">
+    <div class="spinner-container container1">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+    </div>
+    <div class="spinner-container container2">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+    </div>
+    <div class="spinner-container container3">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+    </div>
+
+    <p>加载中...</p>
+</div>
+
+<div id="orders-null" ng-if="hasOrders === false">
+    <div class="orders-null-box">
+        <i class="icon">
+            <span class="orders-null-img"></span>
+        </i>
+        <p class="myQuan">您还没有订单哦</p>
+        <div class="myFooter">
+            <button class="button button-small button-assertive" id="orders-null-btn" ui-sref="main.category">去逛逛</button>
+        </div>
+    </div>
+</div>

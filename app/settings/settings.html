@@ -1,0 +1,27 @@
+<ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
+    <button class="button button-clear button-assertive button-back" ui-sref="main.profile">
+        <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <h1 class="title">我的设置</h1>
+</ion-header-bar>
+
+<ion-content scroll="false" id="settings">
+	<ion-list>
+		<ion-item class="item-icon-right border-top-none border-bottom-none" ui-sref="modify-password">
+			<label>修改密码</label>
+            <i class="icon ion-ios-arrow-right"></i>
+		</ion-item>
+		<ion-item class="item-icon-right border-bottom-none" ui-sref="help-center">
+			<label>帮助中心</label>
+            <i class="icon ion-ios-arrow-right"></i>
+		</ion-item>
+		<ion-item class="item-icon-right border-bottom-none" ng-click="checkVersion()" style="padding: 14px 50px 14px 16px;">
+			<label>版本更新</label>
+			<span class="current-version" ng-if="currentVersion">当前版本V{{currentVersion}}</span>
+            <i class="icon ion-ios-arrow-right"></i>
+		</ion-item>
+	</ion-list>
+	<button class="button button-block button-light button-logout" ng-click="logout()">退出登录</button>
+</ion-content>
+
+<div id='versionToast' class='hide'></div>

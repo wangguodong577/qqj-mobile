@@ -1,0 +1,15 @@
+{
+  "name": "cgwy-mobile",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.0.0"
+  },
+  "dependencies": {
+    "ion-image-lazy-load": "*",
+    "ngCordova": "~0.1.17-alpha",
+    "angular-google-analytics": "~0.0.16",
+    "angular-ui": "~0.4.0",
+    "cordova-app-loader": "~0.17.0",
+    "cordova-promise-fs": "~0.12.0"
+  }
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Expires" content="0" />
+    <!-- Enable all requests, inline styles, and eval() -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' cdvfile://*; style-src * 'unsafe-inline' 'self' cdvfile://*; script-src * 'self' 'unsafe-inline' 'unsafe-eval' cdvfile://*">
+
+    <title>餐馆无忧</title>
+
+    <style type="text/css">
+        .spinner {
+            display: none;
+        }
+
+        [ng-cloak].spinner {
+            display: block !important;
+        }
+
+        .spinner {
+            margin: 55% auto;
+            width: 50px;
+            height: 60px;
+            text-align: center;
+            font-size: 10px;
+            opacity: 0.6;
+        }
+         
+        .spinner > div {
+            background-color: #444;
+            height: 100%;
+            width: 6px;
+            display: inline-block;
+           
+            -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+            animation: stretchdelay 1.2s infinite ease-in-out;
+        }
+         
+        .spinner .rect2 {
+            -webkit-animation-delay: -1.1s;
+            animation-delay: -1.1s;
+        }
+         
+        .spinner .rect3 {
+            -webkit-animation-delay: -1.0s;
+            animation-delay: -1.0s;
+        }
+         
+        .spinner .rect4 {
+            -webkit-animation-delay: -0.9s;
+            animation-delay: -0.9s;
+        }
+         
+        .spinner .rect5 {
+            -webkit-animation-delay: -0.8s;
+            animation-delay: -0.8s;
+        }
+         
+        @-webkit-keyframes stretchdelay {
+            0%, 40%, 100% { -webkit-transform: scaleY(0.4) } 
+            20% { -webkit-transform: scaleY(1.0) }
+        }
+         
+        @keyframes stretchdelay {
+            0%, 40%, 100% {
+              transform: scaleY(0.4);
+              -webkit-transform: scaleY(0.4);
+            }  20% {
+              transform: scaleY(1.0);
+              -webkit-transform: scaleY(1.0);
+            }
+        }
+    </style>
+
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=kTPXBr7VXv7vaheBEHjiVsYK"></script>
+	
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+    <script src="jweixin-1.0.0.js"></script>
+
+    <link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.min.js"></script>
+    <script src="lib/angular-ui/common/module.js"></script>
+    <script src="lib/angular-ui/modules/filters/unique/unique.js"></script>
+    <script src="lib/angular-google-analytics/dist/angular-google-analytics.min.js"></script>
+    <script src="lib/ion-image-lazy-load/ionic-image-lazy-load.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
+    <script src="cordova.js"></script>
+    <script src="cordova-app-loader-complete.js"></script>
+    <script type="text/javascript"
+            timeout="5100"
+            manifest="manifest.json"
+            src="bootstrap.js"></script>
+</head>
+<body id="custom" class="platform-android platform-cordova platform-webview">
+    <div class="spinner" ng-cloak="" ng-if="false">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+
+        <p style="font-size: 15px; width: 60px; text-align: center;">加载中...</p>
+    </div>
+
+    <ion-nav-view name="main"></ion-nav-view>
+</body>
+</html>

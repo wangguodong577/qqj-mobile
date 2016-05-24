@@ -1,0 +1,26 @@
+<ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center" id="category">
+    <h1 class="title">食材、调料</h1>
+    <button class="button button-clear button-assertive" ui-sref="keyword-search({backUrl: '/main/home'})">
+        <i class="icon ion-ios-search cate"></i>
+        <span class="searchTitle">搜索</span>
+    </button>
+</ion-header-bar>
+
+<ion-side-menus>
+    <ion-side-menu-content>
+        <ion-nav-view name="subCategoryMenuContent"></ion-nav-view>
+    </ion-side-menu-content>
+
+    <ion-side-menu class='menus' side="left" expose-aside-when="(min-width:180px)" width="135">
+        <ion-content scroll="true" lazy-scroll >
+            <ion-list>
+                <ion-item ng-repeat="category in categories" ng-click="clickCategory(category)" ng-class="{'category-selected':category.id==selectedCategoryId}" class="menusBox">
+                    <div>
+                        <img image-lazy-src="{{category.mediaFile.url}}" width="50px" height="50px" style="padding:5px 5px 5px 5px;margin-top: 10px"/>
+                    </div>
+                    <div>{{category.name}}</div>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

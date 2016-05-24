@@ -1,0 +1,92 @@
+<ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
+    <button class="button button-clear button-assertive button-back" ng-click="back()">
+        <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <h1 class="title">购物车</h1>
+    <button class="button button-clear button-assertive" ng-if="profile && isNullCart === false" ui-sref="cart-edit({unselectAll:true})">编辑</button>
+</ion-header-bar>
+
+<div ng-if="profile && !isNullCart" id="cartContent">
+
+    <div id="shopping-tip" ng-if="shoopingTips">
+        <div class="bar bar-subheader shopping-tip">
+            <center style="margin-top:0px;">{{shoppingTip}}</center>
+        </div>
+    </div>
+
+    <ion-content scroll="true" lazy-scroll id="subheader-tip" ng-class="{false:'subheader-not-tip',true:'subheader-tip'}[shoopingTips]">
+        <ion-list class="carList">
+            <ion-item ng-repeat="orderItem in cart.orderItems | orderBy:'id':true" class="item" id="cartItme" style="height: 140px;">
+                <div class="checkBox">
+                    <ion-checkbox ng-model="orderItem.chosen" ng-change="calculateTotal();checkChosen();"></ion-checkbox>
+                </div>
+                <div class="productImg" style="margin-left: -10px;">
+                    <img ng-src="{{orderItem.sku.mediaFileUrls[0]}}" height="80px" ng-click="productDetail(orderItem.sku.id,orderItem.spikeItem)" style="margin-top: 10px;"/>
+                </div>
+                <div class="productInfo">
+                    <h2 ng-click="productDetail(orderItem.sku.id,orderItem.spikeItem)">
+                        {{orderItem.sku.name}}</h2>
+                    <div style="height: 20px; margin-bottom: 5px;">
+                        <span ng-if="orderItem.spikeItem && orderItem.spikeItem.spikeActiveStatus==2" style="color: red;font-size: 12px; height: 20px;">秒杀商品，限购{{orderItem.spikeItem.perMaxNum}}件</span>
+                        <span ng-if="orderItem.spikeItem && orderItem.spikeItem.spikeActiveStatus!=2" style="color: red;font-size: 12px; height: 20px;">秒杀商品已经过期了</span>
+                    </div>
+                    <div class="infoBox">
+                        <h3 ng-click="productDetail(orderItem.sku.id,orderItem.spikeItem)">
+                            <span  class="cart-dabaojia" ng-if="orderItem.bundle"><font color="red">{{orderItem.price | currency : "￥"}}</font>/<font style="font-size: 12px">{{orderItem.unit}}</font></span>
+                            <span  class="cart-dabaojia" ng-if="orderItem.bundle===false"><font color="red">{{orderItem.price | currency : "￥"}}</font>/<font style="font-size: 12px">{{orderItem.unit}}</font></span>
+                        </h3>
+                        <div>
+                            <a ng-click="lessQuantity(orderItem)" class="button button-small button-outline button-dark button-icon icon ion-ios-minus-empty minus-btn-left" style="padding-top: 3px;height: 29px;width:35px;border-color: #e2e2e2;" ng-disabled="orderItem.quantity==1"></a>
+                            <a class="num">{{orderItem.quantity}}</a>
+                            <a ng-click="moreQuantity(orderItem)" class="button button-small button-outline button-dark button-icon icon ion-ios-plus-empty minus-btn-right" style="padding-top: 3px;height: 29px;width:35px;border-color: #e2e2e2;"></a>
+                        </div>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+
+    <ion-footer-bar align-title="left" class="submit bar bar-footer bar-stable">
+        <ion-checkbox ng-model="dataModel.selectAll" ng-change="onSelectAllChange()">全选</ion-checkbox>
+
+        <h3 class="title">
+            <div>&nbsp;</div>
+            <div>
+                <p style="">
+                    共计{{orderItemCount}}种{{orderItemQuantity}}件商品
+                </p>
+                <p color="red">{{total | currency : "￥"}}</p>
+            </div>
+        </h3>
+
+        <button class="button button-light button-footer" ng-click="orderConfirm(cart)">提交订单</button>
+    </ion-footer-bar>
+</div>
+
+<div ng-if="profile === null">
+    <ion-content class="has-header" >
+        <center>
+            <br/>
+            <br/>
+            <h4>欢迎来到餐馆无忧</h4>
+            <h4>亲，您还未登录哦</h4>
+            <br/>
+            <br/>
+            <button class="button button-small button-assertive button-go-favorite" ui-sref="main.profile">登录/注册</button>
+        </center>
+    </ion-content>
+</div>
+
+<div ng-if="profile && isNullCart === true">
+    <ion-content class="has-header" >
+        <center>
+            <br/>
+            <br/>
+            <h4>欢迎来到餐馆无忧</h4>
+            <h4>亲，您的购物车还是空的哦</h4>
+            <br/>
+            <br/>
+            <button class="button button-small button-assertive button-go-favorite" ui-sref="main.category">逛一逛</button>
+        </center>
+    </ion-content>
+</div>

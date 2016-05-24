@@ -1,0 +1,69 @@
+<ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
+    <button class="button button-clear button-assertive" ng-click="goBackView()">
+        <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <h1 class="title">
+		 请选择您的送货地址
+    </h1>
+</ion-header-bar>
+
+
+<div class="bar bar-subheader" style="height:250px;padding:0px;">
+	<div id="allmap" style="width: 100%;height: 100%"></div>
+ 	<div id="map-marker"></div>
+</div>
+
+<div ng-if="!near">
+	<ion-view>
+		<ion-content style="margin-top:249px; margin-bottom:48px;">
+			<ion-list>
+				<ion-item ng-repeat="local in locals" id="local" ng-click="clickItem(local,2)" >
+					<div ng-if="$first">
+						<div style="font-size:17px; color:#d43030;">
+							<div id="map-icon04"></div>
+							[当前]{{local.title}}
+						</div>
+						<div style="font-size:15px; color:#6e6e6e; margin-top:8px; margin-left: 24px; overflow: hidden;">
+							{{local.address}}
+						</div>
+					</div>
+					<div ng-if="!$first">
+						<div style="font-size:17px; color:#505050;">
+							<div id="map-icon03"></div>{{local.title}}
+						</div>
+						<div style="font-size:15px; color:#b4b4b4; margin-top:8px; margin-left: 24px; overflow: hidden;">
+							{{local.address}}
+						</div>
+					</div>
+				</ion-item>
+			</ion-list>
+		</ion-content>
+	</ion-view>
+</div>
+
+
+<div ng-if="near">
+	<ion-view>
+		<ion-content style="margin-top:249px; margin-bottom:48px;">
+			<ion-list>
+				<ion-item ng-repeat="poi in pois" id="poi" ng-click="clickItem(poi,2)" >
+					<div>
+						<div style="font-size:17px; color:#505050;">
+							{{poi.title}}
+						</div>
+						<div style="font-size:15px; color:#b4b4b4; margin-top:8px; overflow: hidden;">
+							{{poi.address}}
+						</div>
+					</div>
+				</ion-item>
+			</ion-list>
+		</ion-content>
+	</ion-view>
+</div>
+
+
+<div class="tabs" id="map-tabs">
+  <a class="{{locaitonClass}}" style="{{locationFontcolor}}" ng-click="clickTab(false)">位置</a>
+	|
+  <a class="{{nearClass}}" style="{{nearFontcolor}}" ng-click="clickTab(true)">附近餐馆</a>
+</div>

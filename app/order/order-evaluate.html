@@ -1,0 +1,37 @@
+<ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
+    <button class="button button-clear button-assertive button-back" back>
+        <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <h1 class="title" ng-if="hasEvaluated === false">编辑评价</h1>
+    <h1 class="title" ng-if="hasEvaluated === true">查看评价</h1>
+</ion-header-bar>
+
+<ion-content id="order-evaluate-page">
+  <ion-list id="order-evaluate">
+      <ion-item class="head">
+        服务评价：
+      </ion-item>
+      <ion-item>
+        <span class="head-text">商品质量满意度</span>
+        <rating ng-model="data.productCount" max="5" readonly="hasEvaluated === true"></rating> 
+      </ion-item>
+      <ion-item>
+        <span class="head-text">送货速度满意度</span>
+        <rating ng-model="data.deliveryCount" max="5" readonly="hasEvaluated === true"></rating> 
+      </ion-item>
+      <ion-item>
+        <span class="head-text">司机服务满意度</span>
+        <rating ng-model="data.trackerCount" max="5" readonly="hasEvaluated === true"></rating> 
+      </ion-item>
+      <ion-item class="bottom">其他：</ion-item>
+  </ion-list>
+	<div class="list list-inset" ng-if="hasEvaluated === false">
+		  <label class="item item-input">
+    		  <textarea placeholder="如果您还有其他反馈，请在此处填写" rows="5" ng-model="OrderEvaluateForm.msg" style="resize: none;"></textarea>
+  		</label>
+	</div>
+  <div class="list list-inset msg" ng-if="hasEvaluated === true">{{OrderEvaluateForm.msg}}</div>
+  <div class="padding" ng-if="hasEvaluated === false">
+        <button class="button button-block button-light button-evaluate-commit" ng-click="submitOrderEvaluation();" ng-disabled="isCommitState">提交</button>
+  </div>
+</ion-content>

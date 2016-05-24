@@ -1,0 +1,47 @@
+<ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
+    <button class="button button-clear button-assertive button-back" ui-sref="main.profile">
+        <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <h1 class="title">分享好友得奖励</h1>
+</ion-header-bar>
+
+<ion-content id="share">
+	<ion-list>
+		<ion-item style="border-top: none;">
+			<!--成都-->
+			<p class="share-caption" ng-if="currentCityId==2">每成功邀请一位好友注册成功，您的好友立即获取10元无忧券，当您的好友首次下单成功后，您的账户会立刻获得共20元无忧券。</p>
+			<!--北京-->
+			<p class="share-caption" ng-if="currentCityId==1">每邀请一位好友注册成功，您的好友立即获取共35元无忧券，当您的好友首次下单成功后，您的账户会立刻获得共20元无忧券。</p>
+			<!-- 优惠券 -->
+			<div class="share-coupon-pic"></div>
+		</ion-item>
+
+		<ion-item style="text-align: center;">
+			<p class="share-head-text">扫一扫</p>
+			<!-- 二维码 -->
+			<img class="share-QR-code" src="http://qr.liantu.com/api.php?text={{webpageUrlEncode}}" />
+		</ion-item>
+
+		<ion-item style="border-bottom-style: none;">
+			<p class="share-head-text">分享至</p>
+			<div class="share-way">
+				<div class='fxIcon'>
+					<div class="friends" ng-click="toWeChatFriends();" id='onMenuShareAppMessage'></div>
+					<div class="share-way-tip">微信好友</div>
+				</div>
+				<div class='fxIcon'>
+					<div class="wechat" ng-click="toWeChatTimeline();"></div>
+					<div class="share-way-tip">微信朋友圈</div>
+				</div>
+				<div class='fxIcon'>
+					<div class="message" ng-click="toSendMessage();"></div>
+					<div class="share-way-tip">短信</div>
+				</div>
+			</div>
+		</ion-item>
+	</ion-list>
+</ion-content>
+<div id="fxGuidePage" class='fxGuidePage'>
+	<img src="img/fx-ts1.png">
+	<img id="hideBtn" src="img/fx-ts2.png">
+</div>

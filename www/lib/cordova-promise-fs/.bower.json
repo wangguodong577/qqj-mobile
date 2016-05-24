@@ -1,0 +1,32 @@
+{
+  "name": "cordova-promise-fs",
+  "main": "dist/CordovaPromiseFS.js",
+  "version": "0.12.0",
+  "homepage": "https://github.com/markmarijnissen/cordova-promise-fs",
+  "authors": [
+    "Mark Marijnissen <markmarijnissen@gmail.com>"
+  ],
+  "description": "Wraps Cordova File API in convenience functions (that return a Promise)",
+  "keywords": [
+    "cordova",
+    "file",
+    "promise"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "0.12.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.12.0",
+    "commit": "98a3d79aeeeff42ed3ee127d8ae27fca6cdf0126"
+  },
+  "_source": "git://github.com/markmarijnissen/cordova-promise-fs.git",
+  "_target": "~0.12.0",
+  "_originalSource": "cordova-promise-fs"
+}

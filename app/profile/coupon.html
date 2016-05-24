@@ -1,0 +1,62 @@
+<ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
+    <button class="button button-clear button-assertive button-back" back>
+        <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <h1 class="title">我的无忧券</h1>
+    <!-- <button class="button button-clear button-assertive" ui-sref="couponExp">使用规则</button> -->
+</ion-header-bar>
+
+<div ng-if="hasCoupons === true">
+	<ion-content class='coupons' scroll="true" lazy-scroll>
+		<ion-list>
+			<ion-item class="item couBox" ng-class="{ 'used': coupon.status.value==2,'overdue':coupon.status.value==3||coupon.status.value==4}" ng-repeat='coupon in coupons'>
+				<div class="couContent">
+					<span class='top'></span>
+					<span class='left'></span>
+					<div class='money'>￥{{coupon.coupon.discount}}</div>
+					<div class='info'>
+						<h4><span>{{coupon.coupon.remark}}</span></h4>
+						<p>使用条件：<span class="condition" >{{coupon.coupon.description}}</span></p>
+						<p>{{coupon.start | date:'yyyy-MM-dd'}}至{{coupon.end | date:'yyyy-MM-dd'}}</p>
+						<span class='sign'>{{coupon.status.name}}</span>
+					</div>
+				</div>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</div>
+
+<div class="coupon" ng-if="hasCoupons === false">
+	<div class="quanBox">
+		<i class="icon">
+			<span class='quan'></span>
+		</i>
+		<p class="myQuan">没有券</p>
+		<div class="myFooter">
+			<button class="button couBtn button-small button-assertive" id="couBtn" ui-sref="main.category">去逛逛</button>
+		</div>
+	</div>
+</div>
+
+<div class="spinner-page" ng-if="showLoading === true">
+    <div class="spinner-container container1">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+    </div>
+    <div class="spinner-container container2">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+    </div>
+    <div class="spinner-container container3">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+    </div>
+
+    <p>加载中...</p>
+</div>

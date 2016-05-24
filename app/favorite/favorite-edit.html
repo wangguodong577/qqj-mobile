@@ -1,0 +1,35 @@
+<ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
+    <button class="button button-clear button-assertive button-back" back>
+        <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <h1 class="title">常购清单</h1>
+</ion-header-bar>
+
+<ion-content id='searchText' scroll="true" lazy-scroll ng-show="hasFavorites" style="background-color: #FFF;">
+    <ion-list class="carList favList">
+        <ion-item id="delete-f" ng-repeat="favorite in favorites" class="item item-thumbnail-left">
+            <div class="checkBox">
+                <ion-checkbox ng-model="favorite.chosen" ng-change="checkChosen()" ></ion-checkbox>
+            </div>
+            <div class="content">
+                <div class="img">
+                    <img ng-src="{{favorite.sku.mediaFileUrls[0]}}" height="80px"/>
+                </div>
+                <div class="text">
+                    <h2 style="white-space: normal;height: 55px;">{{favorite.sku.name}}</h2>
+                    <h3  ng-click="productDetail(favorite.sku.id)" class="price favorite-edit" style="height: 45px;">
+                        <p class="favorite-dabao" ng-if="favorite.sku.bundlePrice.bundleAvailable && favorite.sku.bundlePrice.bundleInSale">打包价:<font style="color: #eb2927">{{favorite.sku.bundlePrice.bundleSalePrice | currency : "￥"}}</font>/{{favorite.sku.bundleUnit}}</p>&nbsp;
+                        <p class="favorite-dabao danpin" style="margin-top: -20px;" ng-if="favorite.sku.singlePrice.singleAvailable && favorite.sku.singlePrice.singleInSale">单品价:<font style="color: #eb2927;">{{favorite.sku.singlePrice.singleSalePrice | currency : "￥"}}</font>/{{favorite.sku.singleUnit}}</p>&nbsp;
+                    </h3>
+                </div>
+            </div>
+        </ion-item>
+    </ion-list>
+</ion-content>
+
+<ion-footer-bar align-title="center" class="submit bar bar-footer bar-stable" ng-show="!isNullCart">
+    <ion-checkbox ng-model="selectAll" ng-change="clickSelectAll()">全选</ion-checkbox>
+    <h1 class="title">&nbsp;</h1>
+    <button class="button button-light button-footer" ng-click="removeSelectedFavorite()" style="padding: 0 24px;">删&nbsp;&nbsp;除</button>
+</ion-footer-bar>
+

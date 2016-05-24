@@ -1,0 +1,122 @@
+<ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
+    <h1 class="title">我的</h1>
+<!--
+    <button class="button button-clear button-assertive button-back" ng-click="logout()" ng-if="profile">
+        退出登录
+    </button>
+-->
+</ion-header-bar>
+
+<ion-content  ng-class="{ 'myBox': profile}">
+    <!--我的登录页面-->
+    <ion-item ng-if="!profile" id="login" class="item item-button-center"  style="background-size: 100% 100%; border-top-style: none;">
+        <div class="logoBox">
+            <center><img src="img/login-logo.png" class="login-logo"></center>
+        </div>
+
+        <form ng-submit="login(user)" id="loginForm">
+            <div class="list list-inset formBox">
+                <label class="item item-input loginLabel">
+                    <i class="mirror-phone-icon"></i>
+                    <input class="mirror-phone" type="tel" ng-model="user.username" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="手机号">
+                </label>
+                <label class="item item-input loginLabel" id="loginLabel">
+                    <i class="mirror-pwd-icon loginIcon"></i>
+                    <input class="mirror-pwd loginInput" type="password" ng-model="user.password" placeholder="输入密码">
+                </label>
+            </div>
+
+            <div class="padding">
+                <button class="button button-block button-light button-login" type="submit" ng-disabled="isLoginState">
+                    <span ng-if="!isLoginState" class="paddingFont">登录</span>
+                    <span ng-if="isLoginState">正在登录...</span>
+                </button>
+                <!-- <button class="button button-block button-light button-login-regist" ui-sref="register">注册</button>
+                <a class="login-link-button" ui-sref="forgot-password">找回密码</a> -->
+            </div>
+        </form>
+    </ion-item>
+    <!--我的页面-->
+    <ion-list ng-if="profile">
+        <ion-item class="item item-avatar"  style="background-image:url('img/mine-title.jpg'); background-size: 100% 100%; border-top-style: none;border-bottom-color: #fff;">
+            <img src="img/mine-logo.png">
+            <h2 class="avatar-userNumber"><font color="white"><strong>{{profile.username}}</strong></font></h2>
+        </ion-item>
+        <div class="my">
+            <ion-item ui-sref="restaurant-list" class="item-icon-left item-icon-right mirror-userItem restaurant">
+                <i class="icon"><span class='wodecanguan'></span></i>
+                <label>我的餐馆</label>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+
+            <ion-item ui-sref="favorite" class="item-icon-left item-icon-right mirror-userItem">
+                <i class="icon"><span class='changgou'></span></i>
+                <label>常购清单</label>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+
+            <ion-item ui-sref="coupon" class="item-icon-left item-icon-right mirror-userItem">
+                <i class="icon"><span class='couponIcon'></span></i>
+                <label>我的无忧券</label>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+
+            <ion-item ui-sref="invite-friends" class="item-icon-left item-icon-right mirror-userItem" ng-if="profile && currentLoginCityId==2 || currentLoginCityId==1">
+                <i class="icon"><span class='friendIcon'></span></i>
+                <label>邀请朋友得奖励</label>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+
+            <ion-item ui-sref="new-product-feedback" class="item-icon-left item-icon-right mirror-userItem" ng-if="feedbackAvailable">
+                <i class="icon"><span class='feedback-icon'></span></i>
+                <label>新品反馈</label>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+
+            <ion-item ui-sref="membership-point" class="item-icon-left item-icon-right mirror-userItem">
+                <i class="icon"><span class="my-score"></span></i>
+                <label>我的积分</label>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+
+            <ion-item ui-sref="settings" class="item-icon-left item-icon-right mirror-userItem" style="border-bottom: none;">
+                <i class="icon"><span class='moreIcon'></span></i>
+                <label>更多设置</label>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+        </div>
+        <div class="item" id="myItem"></div>
+
+        <div class="consultant" id="consultant">
+           <ion-item class="item item-button-right mirror-serve-info conFirst" ng-if="profile" id="conFirst">
+                <span class="mirror-serve-title mirror-login-serve">销售顾问：</span>
+                <span ng-click="dial(profile.adminUser.telephone,2)" class="realName" style="display: inline-block;width: 76px">{{profile.adminUser.realname}}</span>
+                <span ng-click="dial(profile.adminUser.telephone,2)">{{profile.adminUser.telephone}}</span>
+                <i class="icon phone" ng-if="profile.adminUser" ng-click="dial(profile.adminUser.telephone,2)">
+                    <span class='phoneIcon'></span>
+                </i>
+                <i class="icon comment" ng-if="profile.adminUser" ng-click="complain()">
+                    <span class='complainIcon'></span>
+                </i>
+                <div class="conComment" ng-if="profile.adminUser">
+                    <span class="call" ng-click="dial(profile.adminUser.telephone,2)">拨打</span>
+                    <span class="complain" ng-click="complain()">投诉</span>
+                </div>
+               </ion-item>
+                <div class="Last">
+                    <ion-item class="conLast">
+                        <label class="mirror-serve-info" ng-click="dial('{{servicePhone}}',1)">
+                            <span class="mirror-serve-title" class="realName">客服热线：</span>{{servicePhone}}
+                        </label>
+                        <i class="icon comment rexian" ng-click="dial(servicePhone,1)">
+                            <span class='phoneIcon'></span>
+                        </i>
+
+                        <div class="conComment" ng-click="dial(servicePhone,1)">
+                            <span class="complain boda">拨打</span>
+                        </div>
+                    </ion-item>
+                </div>
+           </div>
+    </ion-list>
+</ion-content>

@@ -7,8 +7,8 @@
 function initialize() {
     var elem = angular.element(document.querySelector('#custom')); //get your angular element
     var injector = elem.injector(); //get the injector.
-    var MapService = injector.get('MapService'); //get the service.
-    MapService.geolocation(); //定位
+    // var MapService = injector.get('MapService'); //get the service.
+    // MapService.geolocation(); //定位
 }
 
 angular.module('ngIOS9UIWebViewPatch', ['ng']).config(function ($provide) {
@@ -51,11 +51,10 @@ angular.module('ngIOS9UIWebViewPatch', ['ng']).config(function ($provide) {
 
 angular.module('cgwy', ['ionic', 'templatesCache', 'ionicLazyLoad', 'ngCordova', 'angular-google-analytics', 'ui.filters', 'ionic.rating', 'uuid', 'ngIOS9UIWebViewPatch'])
     .constant('apiConfig', {
-        "host": "http://www.canguanwuyou.cn"
-        //"host":"http://114.215.100.12:8083/",
-        //"host": "",
-        //"environment": "develop"
-
+        // "host": "http://www.canguanwuyou.cn"
+        // "host":"http://121.42.176.228:8083",
+        "host": "",
+        "environment": "develop"
     })
 
     .run(function ($state, $window, $ionicPlatform, DeviceUtil, $ionicPopup, $ionicLoading, NetworkUtil, BackUrlUtil, WxReadyService, WxTokenService, CartService, ProfileService, $rootScope, $ionicHistory, FavoriteService, UpdateService, VersionService, ActivityService, AlertService, MapService, $cordovaToast, $interval, $cordovaFileTransfer, $cordovaFileOpener2, $timeout, $cordovaBadge) {
@@ -104,76 +103,76 @@ angular.module('cgwy', ['ionic', 'templatesCache', 'ionicLazyLoad', 'ngCordova',
             }
 
             //加载百度地图API JS
-            var script = document.createElement("script");
-            script.src = "http://api.map.baidu.com/api?v=2.0&ak=kTPXBr7VXv7vaheBEHjiVsYK&callback=initialize";
-            document.body.appendChild(script);
+            // var script = document.createElement("script");
+            // script.src = "http://api.map.baidu.com/api?v=2.0&ak=kTPXBr7VXv7vaheBEHjiVsYK&callback=initialize";
+            // document.body.appendChild(script);
 
-            var currentPlatform = ionic.Platform.platform();
-            var currentPlatformVersion = ionic.Platform.version();
-            DeviceUtil.getDeviceId();
-            ProfileService.setDisplayWelcome(true);
+            // var currentPlatform = ionic.Platform.platform();
+            // var currentPlatformVersion = ionic.Platform.version();
+            // DeviceUtil.getDeviceId();
+            // ProfileService.setDisplayWelcome(true);
 
-            try{
-                window.plugins.jPushPlugin.init();
-            }catch(e){
-                console.log("JPush plugin is undefined");
-            }
-            if(ionic.Platform.isWebView()){
-                cordova.getAppVersion.getVersionCode(function (versionCode) {
-                    VersionService.versionCode = versionCode;
-                    VersionService.checkApp(versionCode).then(function (ver) {
-                        //if(ver){
-                        //    if(ionic.Platform.isAndroid()){
-                        //        var cancelText = ver.forceUpdate ? "退出" : "取消";
-                        //        $ionicPopup.confirm({
-                        //            template: '<center>版本已最新,是否升级？</center>',
-                        //            cancelText: cancelText, cancelType: 'button-default',
-                        //            okText: '升级', okType: 'button-assertive'
-                        //        }).then(function (res) {
-                        //            if (res) {
-                        //                $ionicLoading.show({template: "已经下载：0%"});
-                        //                var url = ver.url;
-                        //                var targetPath = cordova.file.externalApplicationStorageDirectory + 'cgwy/cgwy_' + versionCode + '.apk';
-                        //                var trustHosts = true;
-                        //                var options = {};
-                        //                $cordovaFileTransfer.download(url, targetPath, options, trustHosts)
-                        //                    .then(function (result) {
-                        //                        // 打开下载下来的APP
-                        //                        $cordovaFileOpener2.open(targetPath, 'application/vnd.android.package-archive')
-                        //                            .then(function () {
-                        //                            }, function (err) {
-                        //                                $ionicPopup.alert({template: '<center>文件打开失败,请稍后重试!</center>', okText: '确定', okType: 'button-light'});
-                        //                                $ionicLoading.hide();
-                        //                            });
-                        //                        $ionicLoading.hide();
-                        //                    }, function (err) {
-                        //                        $ionicPopup.alert({template: '<center>当前网络不稳定,下载失败!</center>', okText: '确定', okType: 'button-light'});
-                        //                        $ionicLoading.hide();
-                        //                    }, function (progress) {
-                        //                        $timeout(function () {
-                        //                            var downloadProgress = (progress.loaded / progress.total) * 100;
-                        //                            $ionicLoading.show({template: "已经下载：" + Math.floor(downloadProgress) + "%"});
-                        //                            if (downloadProgress > 99) {
-                        //                                $ionicLoading.hide();
-                        //                            }
-                        //                        })
-                        //                    });
-                        //            } else {
-                        //                //取消或者退出
-                        //                if(ver.forceUpdate == true)
-                        //                    ionic.Platform.exitApp();
-                        //                return;
-                        //            }
-                        //        });
-                        //    }else if(ionic.Platform.isIOS()){
-                        //        $ionicPopup.alert({
-                        //            template: '<center>版本已经更新,请到App store市场下载!</center>', okText: '确定', okType: 'button-light'
-                        //        });
-                        //    }
-                        //}
-                    });
-                });
-            }
+            // try{
+            //     window.plugins.jPushPlugin.init();
+            // }catch(e){
+            //     console.log("JPush plugin is undefined");
+            // }
+            // if(ionic.Platform.isWebView()){
+            //     cordova.getAppVersion.getVersionCode(function (versionCode) {
+            //         VersionService.versionCode = versionCode;
+            //         VersionService.checkApp(versionCode).then(function (ver) {
+            //             //if(ver){
+            //             //    if(ionic.Platform.isAndroid()){
+            //             //        var cancelText = ver.forceUpdate ? "退出" : "取消";
+            //             //        $ionicPopup.confirm({
+            //             //            template: '<center>版本已最新,是否升级？</center>',
+            //             //            cancelText: cancelText, cancelType: 'button-default',
+            //             //            okText: '升级', okType: 'button-assertive'
+            //             //        }).then(function (res) {
+            //             //            if (res) {
+            //             //                $ionicLoading.show({template: "已经下载：0%"});
+            //             //                var url = ver.url;
+            //             //                var targetPath = cordova.file.externalApplicationStorageDirectory + 'cgwy/cgwy_' + versionCode + '.apk';
+            //             //                var trustHosts = true;
+            //             //                var options = {};
+            //             //                $cordovaFileTransfer.download(url, targetPath, options, trustHosts)
+            //             //                    .then(function (result) {
+            //             //                        // 打开下载下来的APP
+            //             //                        $cordovaFileOpener2.open(targetPath, 'application/vnd.android.package-archive')
+            //             //                            .then(function () {
+            //             //                            }, function (err) {
+            //             //                                $ionicPopup.alert({template: '<center>文件打开失败,请稍后重试!</center>', okText: '确定', okType: 'button-light'});
+            //             //                                $ionicLoading.hide();
+            //             //                            });
+            //             //                        $ionicLoading.hide();
+            //             //                    }, function (err) {
+            //             //                        $ionicPopup.alert({template: '<center>当前网络不稳定,下载失败!</center>', okText: '确定', okType: 'button-light'});
+            //             //                        $ionicLoading.hide();
+            //             //                    }, function (progress) {
+            //             //                        $timeout(function () {
+            //             //                            var downloadProgress = (progress.loaded / progress.total) * 100;
+            //             //                            $ionicLoading.show({template: "已经下载：" + Math.floor(downloadProgress) + "%"});
+            //             //                            if (downloadProgress > 99) {
+            //             //                                $ionicLoading.hide();
+            //             //                            }
+            //             //                        })
+            //             //                    });
+            //             //            } else {
+            //             //                //取消或者退出
+            //             //                if(ver.forceUpdate == true)
+            //             //                    ionic.Platform.exitApp();
+            //             //                return;
+            //             //            }
+            //             //        });
+            //             //    }else if(ionic.Platform.isIOS()){
+            //             //        $ionicPopup.alert({
+            //             //            template: '<center>版本已经更新,请到App store市场下载!</center>', okText: '确定', okType: 'button-light'
+            //             //        });
+            //             //    }
+            //             //}
+            //         });
+            //     });
+            // }
 
             document.addEventListener("resume", function () {
                 $cordovaBadge.clear().then(function () {
@@ -392,98 +391,100 @@ angular.module('cgwy', ['ionic', 'templatesCache', 'ionicLazyLoad', 'ngCordova',
                     controller: 'HomeCtrl'
                 }
             }
-        }).state('main.category', {
-            url: '/category',
-            views: {
-                category: {
-                    templateUrl: 'category/category.html',
-                    controller: 'CategoryCtrl'
-                }
-            }
-        }).state('main.category.sub', {
-            url: '/sub-category/{id:int}',
-            views: {
-                subCategoryMenuContent: {
-                    templateUrl: 'category/sub-category.html',
-                    controller: 'SubCategoryCtrl'
-                }
-            }
-        }).state('search', {
-            url: '/search?{categoryId:int}&{brandId:int}&{page:int}&sortProperty&sortDirection&backUrl&query&{parentCategoryId:int}&{mainParentCategoryId:int}',
-            views: {
-                main: {
-                    templateUrl: 'product/product.html',
-                    controller: 'ProductCtrl'
-                }
-            }
-        }).state('product-detail', {
-            url: '/product-detail?{id:int}&backUrl',
-            views: {
-                main: {
-                    templateUrl: 'product/product-detail.html',
-                    controller: 'ProductDetailCtrl'
-                }
-            }
-        }).state('cart', {
-            url: '/cart?backUrl',
-            views: {
-                main: {
-                    templateUrl: 'cart/cart.html',
-                    controller: 'CartCtrl'
-                }
-            },
-            onExit: ['CartService', function (CartService) {
-                CartService.syncCart();
-            }]
-        }).state('cart-edit', {
-            url: '/cart-edit?unselectAll',
-            views: {
-                main: {
-                    templateUrl: 'cart/cart-edit.html',
-                    controller: 'CartCtrl'
-                }
-            }
-        }).state('order-list', {
-            url: '/order-list',
-            views: {
-                main: {
-                    templateUrl: 'order/order-list.html',
-                    controller: 'OrderListCtrl'
-                }
-            }
-        }).state('order-detail', {
-            url: '/order-detail?{id:int}&{confirmStatus:int}&backUrl',
-            views: {
-                main: {
-                    templateUrl: 'order/order-detail.html',
-                    controller: 'OrderDetailCtrl'
-                }
-            }
-        }).state('favorite', {
-            url: '/favorite',
-            views: {
-                main: {
-                    templateUrl: 'favorite/favorite.html',
-                    controller: 'FavoriteCtrl'
-                }
-            }
-        }).state('favorite-rebuy', {
-            url: '/favorite-rebuy?selectAll',
-            views: {
-                main: {
-                    templateUrl: 'favorite/favorite-rebuy.html',
-                    controller: 'FavoriteCtrl'
-                }
-            }
-        }).state('favorite-edit', {
-            url: '/favorite-edit',
-            views: {
-                main: {
-                    templateUrl: 'favorite/favorite-edit.html',
-                    controller: 'FavoriteCtrl'
-                }
-            }
-        }).state('main.profile', {
+        })
+        // .state('main.category', {
+        //     url: '/category',
+        //     views: {
+        //         category: {
+        //             templateUrl: 'category/category.html',
+        //             controller: 'CategoryCtrl'
+        //         }
+        //     }
+        // }).state('main.category.sub', {
+        //     url: '/sub-category/{id:int}',
+        //     views: {
+        //         subCategoryMenuContent: {
+        //             templateUrl: 'category/sub-category.html',
+        //             controller: 'SubCategoryCtrl'
+        //         }
+        //     }
+        // }).state('search', {
+        //     url: '/search?{categoryId:int}&{brandId:int}&{page:int}&sortProperty&sortDirection&backUrl&query&{parentCategoryId:int}&{mainParentCategoryId:int}',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'product/product.html',
+        //             controller: 'ProductCtrl'
+        //         }
+        //     }
+        // }).state('product-detail', {
+        //     url: '/product-detail?{id:int}&backUrl',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'product/product-detail.html',
+        //             controller: 'ProductDetailCtrl'
+        //         }
+        //     }
+        // }).state('cart', {
+        //     url: '/cart?backUrl',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'cart/cart.html',
+        //             controller: 'CartCtrl'
+        //         }
+        //     },
+        //     onExit: ['CartService', function (CartService) {
+        //         CartService.syncCart();
+        //     }]
+        // }).state('cart-edit', {
+        //     url: '/cart-edit?unselectAll',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'cart/cart-edit.html',
+        //             controller: 'CartCtrl'
+        //         }
+        //     }
+        // }).state('order-list', {
+        //     url: '/order-list',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'order/order-list.html',
+        //             controller: 'OrderListCtrl'
+        //         }
+        //     }
+        // }).state('order-detail', {
+        //     url: '/order-detail?{id:int}&{confirmStatus:int}&backUrl',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'order/order-detail.html',
+        //             controller: 'OrderDetailCtrl'
+        //         }
+        //     }
+        // }).state('favorite', {
+        //     url: '/favorite',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'favorite/favorite.html',
+        //             controller: 'FavoriteCtrl'
+        //         }
+        //     }
+        // }).state('favorite-rebuy', {
+        //     url: '/favorite-rebuy?selectAll',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'favorite/favorite-rebuy.html',
+        //             controller: 'FavoriteCtrl'
+        //         }
+        //     }
+        // }).state('favorite-edit', {
+        //     url: '/favorite-edit',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'favorite/favorite-edit.html',
+        //             controller: 'FavoriteCtrl'
+        //         }
+        //     }
+        // })
+        .state('main.profile', {
             url: '/profile',
             views: {
                 profile: {
@@ -491,7 +492,8 @@ angular.module('cgwy', ['ionic', 'templatesCache', 'ionicLazyLoad', 'ngCordova',
                     controller: 'ProfileCtrl'
                 }
             }
-        }).state('restaurant-list', {
+        })
+        .state('restaurant-list', {
             url: '/restaurant-list',
             views: {
                 main: {
@@ -499,15 +501,17 @@ angular.module('cgwy', ['ionic', 'templatesCache', 'ionicLazyLoad', 'ngCordova',
                     controller: 'RestaurantListCtrl'
                 }
             }
-        }).state('restaurant-detail', {
-            url: '/restaurant-detail?{id:int}',
-            views: {
-                main: {
-                    templateUrl: 'restaurant/restaurant-detail.html',
-                    controller: 'RestaurantDetailCtrl'
-                }
-            }
-        }).state('login', {
+        })
+        // .state('restaurant-detail', {
+        //     url: '/restaurant-detail?{id:int}',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'restaurant/restaurant-detail.html',
+        //             controller: 'RestaurantDetailCtrl'
+        //         }
+        //     }
+        // })
+        .state('login', {
             url: '/login',
             views: {
                 main: {
@@ -515,7 +519,8 @@ angular.module('cgwy', ['ionic', 'templatesCache', 'ionicLazyLoad', 'ngCordova',
                     controller: 'LoginCtrl'
                 }
             }
-        }).state('register', {
+        })
+        .state('register', {
             url: '/register?sharerId',
             views: {
                 main: {
@@ -523,279 +528,280 @@ angular.module('cgwy', ['ionic', 'templatesCache', 'ionicLazyLoad', 'ngCordova',
                     controller: 'RegisterCtrl'
                 }
             }
-        }).state('forgot-password', {
-            url: "/forgot-password",
-            views: {
-                main: {
-                    templateUrl: "forget-password/forget-password.html",
-                    controller: 'ForgetPasswordCtrl'
-
-                }
-            }
-        }).state('activity', {
-            url: "/activity?{index:int}",
-            views: {
-                main: {
-                    templateUrl: "activity/activity.html",
-                    controller: 'ActivityCtrl'
-                }
-            }
-        }).state('new-product-feedback', {
-            url: '/new-product-feedback',
-            views: {
-                main: {
-                    templateUrl: 'feedback/feedback.html',
-                    controller: 'FeedbackCtrl'
-                }
-            }
-        }).state('confirm', {
-            url: '/confirm?cId=?',
-            views: {
-                main: {
-                    templateUrl: 'confirm/confirm.html',
-                    controller: 'ConfirmCtrl'
-                }
-            }
-        }).state('regist-success', {
-            url: '/regist-success?sharerId',
-            views: {
-                main: {
-                    templateUrl: 'profile/success.html',
-                    controller: 'SuccessCtrl'
-                }
-            }
-        }).state('provision', {
-            url: '/provision',
-            views: {
-                main: {
-                    templateUrl: 'provision/provision.html'
-                }
-            }
-        }).state('order-evaluate', {
-            url: '/order-evaluate/?id&hasEvaluated',
-            views: {
-                main: {
-                    templateUrl: 'order/order-evaluate.html',
-                    controller: 'OrderEvaluateCtrl'
-                }
-            }
-        }).state('coupon', {
-            url: '/coupon',
-            views: {
-                main: {
-                    templateUrl: 'profile/coupon.html',
-                    controller: 'coupon'
-                }
-            }
-        }).state('couponExp', {
-            url: '/couponExp',
-            views: {
-                main: {
-                    templateUrl: 'profile/couponExp.html'
-                }
-            }
-        }).state('couponEdit', {
-            url: '/couponEdit',
-            views: {
-                main: {
-                    templateUrl: 'profile/couponEdit.html',
-                    controller: 'couponEditCtrl'
-                }
-            }
-        }).state('keyword-search', {
-            url: '/keyword-search/?backUrl&queryWords',
-            views: {
-                main: {
-                    templateUrl: 'search/search.html',
-                    controller: 'SearchCtrl'
-                }
-            }
-        }).state('add-restaurant', {
-            url: '/add-restaurant',
-            views: {
-                main: {
-                    templateUrl: 'restaurant/add-restaurant.html',
-                    controller: 'AddRestaurantCtrl'
-                }
-            }
-        }).state('invite-friends', {
-            url: '/share',
-            views: {
-                main: {
-                    templateUrl: 'share/share.html',
-                    controller: 'ShareCtrl'
-                }
-            }
-        }).state('share-page', {
-            url: '/share-page?sharerId',
-            views: {
-                main: {
-                    templateUrl: 'share/share-page.html',
-                    controller: 'SharePageCtrl'
-                }
-            }
-        }).state('map', {
-            url: '/map',
-            views: {
-                main: {
-                    templateUrl: 'map/map.html',
-                    controller: 'MapCtrl'
-                }
-            }
-        }).state('settings', {
-            url: '/settings',
-            views: {
-                main: {
-                    templateUrl: 'settings/settings.html',
-                    controller: 'SettingsCtrl'
-                }
-            }
-        }).state('modify-password', {
-            url: '/modify-password',
-            views: {
-                main: {
-                    templateUrl: 'modify-password/modify-password.html',
-                    controller: 'ModifyPasswordCtrl'
-                }
-            }
-        }).state('help-center', {
-            url: '/help-center',
-            views: {
-                main: {
-                    templateUrl: 'help-center/help-center.html',
-                    controller: 'HelpCenterCtrl'
-                }
-            }
-        }).state('help-order', {
-            url: '/help-order',
-            views: {
-                main: {
-                    templateUrl: 'help-center/help-order.html',
-                    controller: 'HelpOrderCtrl'
-                }
-            }
-        }).state('help-buying', {
-            url: '/help-buying',
-            views: {
-                main: {
-                    templateUrl: 'help-center/help-buying.html',
-                    controller: 'HelpBuyCtrl'
-                }
-            }
-        }).state('help-time', {
-            url: '/help-time',
-            views: {
-                main: {
-                    templateUrl: 'help-center/help-time.html',
-                    controller: 'HelpTimeCtrl'
-                }
-            }
-        }).state('help-range', {
-            url: '/help-range',
-            views: {
-                main: {
-                    templateUrl: 'help-center/help-range.html',
-                    controller: 'HelpRangeCtrl'
-                }
-            }
-        }).state('help-charge', {
-            url: '/help-charge',
-            views: {
-                main: {
-                    templateUrl: 'help-center/help-charge.html',
-                    controller: 'HelpChargeCtrl'
-                }
-            }
         })
-            .state('help-onlineCharge', {
-                url: '/help-onlineCharge',
-                views: {
-                    main: {
-                        templateUrl: 'help-center/help-onlineCharge.html',
-                        controller: 'HelpOnlineChargeCtrl'
-                    }
-                }
-            }).state('help-service', {
-                url: '/help-service',
-                views: {
-                    main: {
-                        templateUrl: 'help-center/help-service.html',
-                        controller: 'HelpServiceCtrl'
-                    }
-                }
-            }).state('help-change', {
-                url: '/help-change',
-                views: {
-                    main: {
-                        templateUrl: 'help-center/help-change.html',
-                        controller: 'HelpChangeCtrl'
-                    }
-                }
-            }).state('main.order-list', {
-                url: '/order-list',
-                views: {
-                    orderList: {
-                        templateUrl: 'order/order-list.html',
-                        controller: 'OrderListCtrl'
-                    }
-                }
-            }).state('seckill-product', {
-                url: '/seckill-product?{activeId:int}',
-                views: {
-                    main: {
-                        templateUrl: 'product/seckill-product.html',
-                        controller: 'SeckillProductCtrl'
-                    }
-                }
-            })
-            .state('seckillProduct-detail', {
-                url: '/seckillProduct-detail?{activeId:int}&{itemId:int}&backUrl',
-                views: {
-                    main: {
-                        templateUrl: 'product/seckillProduct-detail.html',
-                        controller: 'SeckillProductDetail'
-                    }
-                }
-            }).state('membership-point', {
-                url: '/membership-point',
-                views: {
-                    main: {
-                        templateUrl: 'point/membership-point.html',
-                        controller: 'MembershipPointCtrl'
-                    }
-                }
-            }).state('redeem-point', {
-                url: '/redeem-point/?restaurantName&availableScore',
-                views: {
-                    main: {
-                        templateUrl: 'point/redeem-point.html',
-                        controller: 'RedeemPointCtrl'
-                    }
-                }
-            }).state('generate-records', {
-                url: '/generate-records/?availableScore',
-                views: {
-                    main: {
-                        templateUrl: 'point/generate-records.html',
-                        controller: 'GenerateRecordCtrl'
-                    }
-                }
-            }).state('exchange-records', {
-                url: '/exchange-records/?availableScore',
-                views: {
-                    main: {
-                        templateUrl: 'point/exchange-records.html',
-                        controller: 'ExchangeRecordCtrl'
-                    }
-                }
-            }).state('point-rule', {
-                url: '/point-rule',
-                views: {
-                    main: {
-                        templateUrl: 'point/point-rule.html'
-                    }
-                }
-            })
+        // .state('forgot-password', {
+        //     url: "/forgot-password",
+        //     views: {
+        //         main: {
+        //             templateUrl: "forget-password/forget-password.html",
+        //             controller: 'ForgetPasswordCtrl'
+
+        //         }
+        //     }
+        // }).state('activity', {
+        //     url: "/activity?{index:int}",
+        //     views: {
+        //         main: {
+        //             templateUrl: "activity/activity.html",
+        //             controller: 'ActivityCtrl'
+        //         }
+        //     }
+        // }).state('new-product-feedback', {
+        //     url: '/new-product-feedback',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'feedback/feedback.html',
+        //             controller: 'FeedbackCtrl'
+        //         }
+        //     }
+        // }).state('confirm', {
+        //     url: '/confirm?cId=?',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'confirm/confirm.html',
+        //             controller: 'ConfirmCtrl'
+        //         }
+        //     }
+        // }).state('regist-success', {
+        //     url: '/regist-success?sharerId',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'profile/success.html',
+        //             controller: 'SuccessCtrl'
+        //         }
+        //     }
+        // }).state('provision', {
+        //     url: '/provision',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'provision/provision.html'
+        //         }
+        //     }
+        // }).state('order-evaluate', {
+        //     url: '/order-evaluate/?id&hasEvaluated',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'order/order-evaluate.html',
+        //             controller: 'OrderEvaluateCtrl'
+        //         }
+        //     }
+        // }).state('coupon', {
+        //     url: '/coupon',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'profile/coupon.html',
+        //             controller: 'coupon'
+        //         }
+        //     }
+        // }).state('couponExp', {
+        //     url: '/couponExp',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'profile/couponExp.html'
+        //         }
+        //     }
+        // }).state('couponEdit', {
+        //     url: '/couponEdit',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'profile/couponEdit.html',
+        //             controller: 'couponEditCtrl'
+        //         }
+        //     }
+        // }).state('keyword-search', {
+        //     url: '/keyword-search/?backUrl&queryWords',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'search/search.html',
+        //             controller: 'SearchCtrl'
+        //         }
+        //     }
+        // }).state('add-restaurant', {
+        //     url: '/add-restaurant',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'restaurant/add-restaurant.html',
+        //             controller: 'AddRestaurantCtrl'
+        //         }
+        //     }
+        // }).state('invite-friends', {
+        //     url: '/share',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'share/share.html',
+        //             controller: 'ShareCtrl'
+        //         }
+        //     }
+        // }).state('share-page', {
+        //     url: '/share-page?sharerId',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'share/share-page.html',
+        //             controller: 'SharePageCtrl'
+        //         }
+        //     }
+        // }).state('map', {
+        //     url: '/map',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'map/map.html',
+        //             controller: 'MapCtrl'
+        //         }
+        //     }
+        // }).state('settings', {
+        //     url: '/settings',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'settings/settings.html',
+        //             controller: 'SettingsCtrl'
+        //         }
+        //     }
+        // }).state('modify-password', {
+        //     url: '/modify-password',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'modify-password/modify-password.html',
+        //             controller: 'ModifyPasswordCtrl'
+        //         }
+        //     }
+        // }).state('help-center', {
+        //     url: '/help-center',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'help-center/help-center.html',
+        //             controller: 'HelpCenterCtrl'
+        //         }
+        //     }
+        // }).state('help-order', {
+        //     url: '/help-order',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'help-center/help-order.html',
+        //             controller: 'HelpOrderCtrl'
+        //         }
+        //     }
+        // }).state('help-buying', {
+        //     url: '/help-buying',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'help-center/help-buying.html',
+        //             controller: 'HelpBuyCtrl'
+        //         }
+        //     }
+        // }).state('help-time', {
+        //     url: '/help-time',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'help-center/help-time.html',
+        //             controller: 'HelpTimeCtrl'
+        //         }
+        //     }
+        // }).state('help-range', {
+        //     url: '/help-range',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'help-center/help-range.html',
+        //             controller: 'HelpRangeCtrl'
+        //         }
+        //     }
+        // }).state('help-charge', {
+        //     url: '/help-charge',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'help-center/help-charge.html',
+        //             controller: 'HelpChargeCtrl'
+        //         }
+        //     }
+        // })
+        //     .state('help-onlineCharge', {
+        //         url: '/help-onlineCharge',
+        //         views: {
+        //             main: {
+        //                 templateUrl: 'help-center/help-onlineCharge.html',
+        //                 controller: 'HelpOnlineChargeCtrl'
+        //             }
+        //         }
+        //     }).state('help-service', {
+        //         url: '/help-service',
+        //         views: {
+        //             main: {
+        //                 templateUrl: 'help-center/help-service.html',
+        //                 controller: 'HelpServiceCtrl'
+        //             }
+        //         }
+        //     }).state('help-change', {
+        //         url: '/help-change',
+        //         views: {
+        //             main: {
+        //                 templateUrl: 'help-center/help-change.html',
+        //                 controller: 'HelpChangeCtrl'
+        //             }
+        //         }
+        //     }).state('main.order-list', {
+        //         url: '/order-list',
+        //         views: {
+        //             orderList: {
+        //                 templateUrl: 'order/order-list.html',
+        //                 controller: 'OrderListCtrl'
+        //             }
+        //         }
+        //     }).state('seckill-product', {
+        //         url: '/seckill-product?{activeId:int}',
+        //         views: {
+        //             main: {
+        //                 templateUrl: 'product/seckill-product.html',
+        //                 controller: 'SeckillProductCtrl'
+        //             }
+        //         }
+        //     })
+        //     .state('seckillProduct-detail', {
+        //         url: '/seckillProduct-detail?{activeId:int}&{itemId:int}&backUrl',
+        //         views: {
+        //             main: {
+        //                 templateUrl: 'product/seckillProduct-detail.html',
+        //                 controller: 'SeckillProductDetail'
+        //             }
+        //         }
+        //     }).state('membership-point', {
+        //         url: '/membership-point',
+        //         views: {
+        //             main: {
+        //                 templateUrl: 'point/membership-point.html',
+        //                 controller: 'MembershipPointCtrl'
+        //             }
+        //         }
+        //     }).state('redeem-point', {
+        //         url: '/redeem-point/?restaurantName&availableScore',
+        //         views: {
+        //             main: {
+        //                 templateUrl: 'point/redeem-point.html',
+        //                 controller: 'RedeemPointCtrl'
+        //             }
+        //         }
+        //     }).state('generate-records', {
+        //         url: '/generate-records/?availableScore',
+        //         views: {
+        //             main: {
+        //                 templateUrl: 'point/generate-records.html',
+        //                 controller: 'GenerateRecordCtrl'
+        //             }
+        //         }
+        //     }).state('exchange-records', {
+        //         url: '/exchange-records/?availableScore',
+        //         views: {
+        //             main: {
+        //                 templateUrl: 'point/exchange-records.html',
+        //                 controller: 'ExchangeRecordCtrl'
+        //             }
+        //         }
+        //     }).state('point-rule', {
+        //         url: '/point-rule',
+        //         views: {
+        //             main: {
+        //                 templateUrl: 'point/point-rule.html'
+        //             }
+        //         }
+        //     })
     })
     .directive('back', function ($ionicHistory) {
         return {
@@ -1343,6 +1349,237 @@ angular.module('cgwy')
         return service;
     })
 angular.module('cgwy')
+    .controller('ConfirmCtrl', function ($scope, $state, $stateParams, $rootScope, $filter, $ionicPopup, $location, ProfileService, DeviceUtil, CartService, OrderService, Analytics, AlertService) {
+        ProfileService.getProfile().then(function (profile) {
+            $scope.profile = profile;
+        });
+
+        ProfileService.getRestaurants().then(function (data) {
+            $scope.myRestaurant = data[0];
+        });
+
+        $scope.currentUrl = $location.url();
+
+        $scope.chosenItem = [];
+        $scope.previewOrder = function () {
+            var array = [];
+            $scope.chosenItem = CartService.getChosenItem();
+            $scope.chosenItem.forEach(function (orderItem) {
+                if (orderItem.spikeItem) {
+                    array.push({
+                        skuId: orderItem.sku.id,
+                        quantity: orderItem.quantity,
+                        bundle: orderItem.bundle,
+                        spikeItemId: orderItem.spikeItem.id,
+                        cartSkuType: 2
+                    })
+                } else {
+                    array.push({
+                        skuId: orderItem.sku.id,
+                        quantity: orderItem.quantity,
+                        bundle: orderItem.bundle
+                    })
+                }
+
+            })
+
+            OrderService.previewOrder(array).then(function (orders) {
+                $scope.total = 0;
+                $scope.subTotal = 0;
+                $scope.shipping = 0;
+
+                $scope.promotions = [];
+
+                var date = new Date();
+
+
+                orders.forEach(function (o) {
+                    $scope.total += o.total;
+                    $scope.subTotal += o.subTotal;
+                    $scope.shipping += o.shipping;
+                    date = o.expectedArrivedDate;
+                    $scope.expectedArrivedDate = $filter('date')(date, 'yyyy-MM-dd');
+
+                    o.promotions.forEach(function (p) {
+                        $scope.promotions.push(p);
+                    })
+                });
+                var arr = [];
+
+                $scope.chosenItem.forEach(function (orderItem) {
+                    if (orderItem.spikeItem) {
+                        arr.push({
+                            skuId: orderItem.sku.id,
+                            quantity: orderItem.quantity,
+                            bundle: orderItem.bundle,
+                            spikeItemId: orderItem.spikeItem.id,
+                            cartSkuType: 2
+                        })
+                    } else {
+                        arr.push({
+                            skuId: orderItem.sku.id,
+                            quantity: orderItem.quantity,
+                            bundle: orderItem.bundle
+                        })
+                    }
+                })
+                $scope.cId = $stateParams.cId;
+
+                ProfileService.couponEdit(arr).then(function (data) {
+                    $scope.coupons = data.data;
+                    //console.log($scope.coupons)
+                    //alert(JSON.stringify($scope.coupons));
+                    // console.log(data);
+                    ProfileService.setCouponInfo($scope.coupons);
+
+                    if ($scope.cId) {
+                        $scope.hasPromotion = false;
+                        $scope.coupons.forEach(function (couponItem) {
+                            if (couponItem.id == $scope.cId) {
+                                $scope.thisCoupon = couponItem;
+                                //alert(JSON.stringify($scope.thisCoupon));
+
+                                $scope.total = $scope.total - $scope.thisCoupon.coupon.discount;
+                                if ($scope.total < 0) {
+                                    $scope.total = 0;
+                                }
+                                couponItem.chosen = true;
+                                // console.log($scope.total);
+                                // console.log($scope.thisCoupon.coupon.discount);
+                            }
+                        })
+                    } else {
+                        $scope.hasPromotion = true;
+                    }
+                });
+            });
+        };
+
+        $scope.previewOrder();
+
+        $scope.submitOrder = function (cart) {
+            var submitOrderConfirm = $ionicPopup.confirm({
+                template: '<center>是否确认订单？</center>',
+                cancelText: '取消',
+                cancelType: 'button-default',
+                okText: '确定',
+                okType: 'button-assertive'
+            });
+            submitOrderConfirm.then(function (res) {
+                if (res) {
+                    var form = [];
+                    $scope.chosenItem = CartService.getChosenItem();
+                    $scope.chosenItem.forEach(function (orderItem) {
+                        if (orderItem.spikeItem) {
+                            form.push({
+                                skuId: orderItem.sku.id,
+                                quantity: orderItem.quantity,
+                                bundle: orderItem.bundle,
+                                spikeItemId: orderItem.spikeItem.id,
+                                cartSkuType: 2
+                            })
+                        } else {
+                            form.push({
+                                skuId: orderItem.sku.id,
+                                quantity: orderItem.quantity,
+                                bundle: orderItem.bundle
+                            })
+                        }
+
+                    })
+
+                    var deviceId = DeviceUtil.deviceId;
+                    if ($stateParams.cId) {
+                        var data = {
+                            skuarray: form,
+                            couponId: $stateParams.cId,
+                            deviceId: deviceId
+                        }
+                    } else {
+                        var data = {
+                            skuarray: form,
+                            couponId: null,
+                            deviceId: deviceId
+                        }
+                    }
+
+                    OrderService.submitOrder(data).then(function (orders) {
+                        CartService.resetCart();
+                        CartService.getCart();
+
+                        ProfileService.getProfile().then(function () {
+                            Analytics.trackEvent('cart', 'click', 'submitOrder');
+                        })
+
+                        if (orders.length == 1) {
+                            $state.go("order-detail", {id: orders[0].id, confirmStatus: 1});
+                        } else {
+                            $state.go("order-list");
+                        }
+                    }, function (data) {
+                        if(data.stockOut && data.stockOut>0){
+                            var msg = "";
+                            data.stockOut.forEach(function(dataItem){
+                                if(dataItem.outOfInfo.spikeActivityState==2){
+                                    var leftoverNum = dataItem.outOfInfo.num-dataItem.outOfInfo.takeNum;
+                                    if(leftoverNum>0){
+                                        if(dataItem.outOfInfo.customerTakeNum<dataItem.outOfInfo.perMaxNum){
+                                            if(dataItem.outOfInfo.customerTakeNum+dataItem.outOfInfo.currentBuyQuantity>=dataItem.outOfInfo.perMaxNum){
+                                                $scope.canBuy = dataItem.outOfInfo.perMaxNum - dataItem.outOfInfo.customerTakeNum;
+
+                                                message = "秒杀商品"+vdataItem.outOfInfo.skuName+"您已经购买了" + dataItem.outOfInfo.customerTakeNum +"件，还可以购买"+$scope.canBuy+"件";
+                                            }
+
+                                        }else{
+                                            msg+=dataItem.outOfInfo.skuName+"已经买够了活动限购数量";
+                                        }
+                                    }else{
+                                        msg+=dataItem.outOfInfo.skuName+"已经抢光了！";
+
+
+                                    }
+
+                                }else{
+                                    msg=dataItem.outOfInfo.skuName+"抢购结束";
+
+                                }
+                            })
+                            AlertService.alertMsg(msg);
+                        }else{
+                            AlertService.alertMsg(data.errmsg);
+                        }
+
+
+                    });
+                } else {
+                    return;
+                }
+            });
+        }
+
+        $scope.gotoCouponEdit = function () {
+            if ($scope.coupons && $scope.coupons.length > 0) {
+                $state.go('couponEdit');
+            }
+        }
+
+        //商品详情页
+        $scope.productDetail = function (skuId, spikeItem) {
+            $scope.burl = $location.url()
+            if (spikeItem) {
+                $state.go("seckillProduct-detail", {
+                    activeId: spikeItem.spikeId,
+                    itemId: spikeItem.id,
+                    backUrl: $scope.burl
+                });
+            } else {
+                $state.go("product-detail", {id: skuId, backUrl: $scope.burl});
+            }
+
+        }
+
+    })
+angular.module('cgwy')
     .controller('CategoryCtrl', function ($scope, BackUrlUtil,CategoryService, $state, AlertService, Analytics) {
         CategoryService.updateCategory();
         CategoryService.getLevel1Categories().then(function (data) {
@@ -1573,237 +1810,6 @@ angular.module('cgwy')
             }
 
         })
-    })
-angular.module('cgwy')
-    .controller('ConfirmCtrl', function ($scope, $state, $stateParams, $rootScope, $filter, $ionicPopup, $location, ProfileService, DeviceUtil, CartService, OrderService, Analytics, AlertService) {
-        ProfileService.getProfile().then(function (profile) {
-            $scope.profile = profile;
-        });
-
-        ProfileService.getRestaurants().then(function (data) {
-            $scope.myRestaurant = data[0];
-        });
-
-        $scope.currentUrl = $location.url();
-
-        $scope.chosenItem = [];
-        $scope.previewOrder = function () {
-            var array = [];
-            $scope.chosenItem = CartService.getChosenItem();
-            $scope.chosenItem.forEach(function (orderItem) {
-                if (orderItem.spikeItem) {
-                    array.push({
-                        skuId: orderItem.sku.id,
-                        quantity: orderItem.quantity,
-                        bundle: orderItem.bundle,
-                        spikeItemId: orderItem.spikeItem.id,
-                        cartSkuType: 2
-                    })
-                } else {
-                    array.push({
-                        skuId: orderItem.sku.id,
-                        quantity: orderItem.quantity,
-                        bundle: orderItem.bundle
-                    })
-                }
-
-            })
-
-            OrderService.previewOrder(array).then(function (orders) {
-                $scope.total = 0;
-                $scope.subTotal = 0;
-                $scope.shipping = 0;
-
-                $scope.promotions = [];
-
-                var date = new Date();
-
-
-                orders.forEach(function (o) {
-                    $scope.total += o.total;
-                    $scope.subTotal += o.subTotal;
-                    $scope.shipping += o.shipping;
-                    date = o.expectedArrivedDate;
-                    $scope.expectedArrivedDate = $filter('date')(date, 'yyyy-MM-dd');
-
-                    o.promotions.forEach(function (p) {
-                        $scope.promotions.push(p);
-                    })
-                });
-                var arr = [];
-
-                $scope.chosenItem.forEach(function (orderItem) {
-                    if (orderItem.spikeItem) {
-                        arr.push({
-                            skuId: orderItem.sku.id,
-                            quantity: orderItem.quantity,
-                            bundle: orderItem.bundle,
-                            spikeItemId: orderItem.spikeItem.id,
-                            cartSkuType: 2
-                        })
-                    } else {
-                        arr.push({
-                            skuId: orderItem.sku.id,
-                            quantity: orderItem.quantity,
-                            bundle: orderItem.bundle
-                        })
-                    }
-                })
-                $scope.cId = $stateParams.cId;
-
-                ProfileService.couponEdit(arr).then(function (data) {
-                    $scope.coupons = data.data;
-                    //console.log($scope.coupons)
-                    //alert(JSON.stringify($scope.coupons));
-                    // console.log(data);
-                    ProfileService.setCouponInfo($scope.coupons);
-
-                    if ($scope.cId) {
-                        $scope.hasPromotion = false;
-                        $scope.coupons.forEach(function (couponItem) {
-                            if (couponItem.id == $scope.cId) {
-                                $scope.thisCoupon = couponItem;
-                                //alert(JSON.stringify($scope.thisCoupon));
-
-                                $scope.total = $scope.total - $scope.thisCoupon.coupon.discount;
-                                if ($scope.total < 0) {
-                                    $scope.total = 0;
-                                }
-                                couponItem.chosen = true;
-                                // console.log($scope.total);
-                                // console.log($scope.thisCoupon.coupon.discount);
-                            }
-                        })
-                    } else {
-                        $scope.hasPromotion = true;
-                    }
-                });
-            });
-        };
-
-        $scope.previewOrder();
-
-        $scope.submitOrder = function (cart) {
-            var submitOrderConfirm = $ionicPopup.confirm({
-                template: '<center>是否确认订单？</center>',
-                cancelText: '取消',
-                cancelType: 'button-default',
-                okText: '确定',
-                okType: 'button-assertive'
-            });
-            submitOrderConfirm.then(function (res) {
-                if (res) {
-                    var form = [];
-                    $scope.chosenItem = CartService.getChosenItem();
-                    $scope.chosenItem.forEach(function (orderItem) {
-                        if (orderItem.spikeItem) {
-                            form.push({
-                                skuId: orderItem.sku.id,
-                                quantity: orderItem.quantity,
-                                bundle: orderItem.bundle,
-                                spikeItemId: orderItem.spikeItem.id,
-                                cartSkuType: 2
-                            })
-                        } else {
-                            form.push({
-                                skuId: orderItem.sku.id,
-                                quantity: orderItem.quantity,
-                                bundle: orderItem.bundle
-                            })
-                        }
-
-                    })
-
-                    var deviceId = DeviceUtil.deviceId;
-                    if ($stateParams.cId) {
-                        var data = {
-                            skuarray: form,
-                            couponId: $stateParams.cId,
-                            deviceId: deviceId
-                        }
-                    } else {
-                        var data = {
-                            skuarray: form,
-                            couponId: null,
-                            deviceId: deviceId
-                        }
-                    }
-
-                    OrderService.submitOrder(data).then(function (orders) {
-                        CartService.resetCart();
-                        CartService.getCart();
-
-                        ProfileService.getProfile().then(function () {
-                            Analytics.trackEvent('cart', 'click', 'submitOrder');
-                        })
-
-                        if (orders.length == 1) {
-                            $state.go("order-detail", {id: orders[0].id, confirmStatus: 1});
-                        } else {
-                            $state.go("order-list");
-                        }
-                    }, function (data) {
-                        if(data.stockOut && data.stockOut>0){
-                            var msg = "";
-                            data.stockOut.forEach(function(dataItem){
-                                if(dataItem.outOfInfo.spikeActivityState==2){
-                                    var leftoverNum = dataItem.outOfInfo.num-dataItem.outOfInfo.takeNum;
-                                    if(leftoverNum>0){
-                                        if(dataItem.outOfInfo.customerTakeNum<dataItem.outOfInfo.perMaxNum){
-                                            if(dataItem.outOfInfo.customerTakeNum+dataItem.outOfInfo.currentBuyQuantity>=dataItem.outOfInfo.perMaxNum){
-                                                $scope.canBuy = dataItem.outOfInfo.perMaxNum - dataItem.outOfInfo.customerTakeNum;
-
-                                                message = "秒杀商品"+vdataItem.outOfInfo.skuName+"您已经购买了" + dataItem.outOfInfo.customerTakeNum +"件，还可以购买"+$scope.canBuy+"件";
-                                            }
-
-                                        }else{
-                                            msg+=dataItem.outOfInfo.skuName+"已经买够了活动限购数量";
-                                        }
-                                    }else{
-                                        msg+=dataItem.outOfInfo.skuName+"已经抢光了！";
-
-
-                                    }
-
-                                }else{
-                                    msg=dataItem.outOfInfo.skuName+"抢购结束";
-
-                                }
-                            })
-                            AlertService.alertMsg(msg);
-                        }else{
-                            AlertService.alertMsg(data.errmsg);
-                        }
-
-
-                    });
-                } else {
-                    return;
-                }
-            });
-        }
-
-        $scope.gotoCouponEdit = function () {
-            if ($scope.coupons && $scope.coupons.length > 0) {
-                $state.go('couponEdit');
-            }
-        }
-
-        //商品详情页
-        $scope.productDetail = function (skuId, spikeItem) {
-            $scope.burl = $location.url()
-            if (spikeItem) {
-                $state.go("seckillProduct-detail", {
-                    activeId: spikeItem.spikeId,
-                    itemId: spikeItem.id,
-                    backUrl: $scope.burl
-                });
-            } else {
-                $state.go("product-detail", {id: skuId, backUrl: $scope.burl});
-            }
-
-        }
-
     })
 angular.module('cgwy')
     .controller('FavoriteCtrl', function ($scope, $rootScope, $ionicPopup, $location, $state, $stateParams, ProductService, ProfileService, CartService, FavoriteService, AlertService, Analytics) {
@@ -5389,10 +5395,23 @@ angular.module('cgwy')
 
         $scope.isLoginState = false;
 
-        if (window.localStorage['cachedUsername']) {
-            $scope.user.username = window.localStorage['cachedUsername'];
-        }
+        if (window.localStorage['cachedUsername'] != '') {
+            console.log(window.localStorage['cachedUsername']+'.////111');
+            $scope.user.username = window.localStorage['cachedU'];
+            $scope.user.password = window.localStorage['cachedP'];
+            ProfileService.login($scope.user).then(function (data) {
+                console.log(data);
+                $scope.profile = data;
+                Analytics.trackEvent('profile', 'login', 'success', 1);
+                FavoriteService.syncFavorite();
+                ProfileService.setDisplayWelcome(true);
 
+                ProfileService.bindBaiduPush();
+
+                var currentPlatform = ionic.Platform.platform();
+            })
+        }
+        console.log($scope.user);
         $scope.login = function (user) {
             if (user.username === "") {
                 AlertService.alertMsg("请输入手机号");
@@ -5402,10 +5421,14 @@ angular.module('cgwy')
                 AlertService.alertMsg("请输入密码");
                 return;
             }
-
+            window.localStorage['cachedU'] = $scope.user.username;
+            window.localStorage['cachedP'] = $scope.user.password;
+            // console.log(user);
             $scope.isLoginState = true;
 
             ProfileService.login(user).then(function (data) {
+                console.log(data);
+                $scope.profile = data;
                 Analytics.trackEvent('profile', 'login', 'success', 1);
                 FavoriteService.syncFavorite();
                 ProfileService.setDisplayWelcome(true);
@@ -5423,7 +5446,7 @@ angular.module('cgwy')
 
                 }
 
-                //获取当前登录的城市，存入缓存中
+                // //获取当前登录的城市，存入缓存中
                 // ProfileService.getCustomerCityId().then(function(cityId){
                 //     var cityName;
                 //     if(cityId==1){
@@ -5439,17 +5462,18 @@ angular.module('cgwy')
                 //     CategoryService.updateCategory();
                 // });
 
-                ActivityService.reloadActivities().then(function () {
-                    $state.go("main.home");
-                    $scope.isLoginState = false;
-                });
+                // ActivityService.reloadActivities().then(function () {
+                //     $state.go("main.home");
+                //     console.log(111);
+                //     $scope.isLoginState = false;
+                // });
 
-                ProfileService.getProfile().then(function (profile) {
-                    if (profile.id) {
-                        WxReadyService.wxOnMenuShare(profile.id);
-                        // console.log(profile.id);
-                    }
-                })
+                // ProfileService.getProfile().then(function (profile) {
+                //     if (profile.id) {
+                //         WxReadyService.wxOnMenuShare(profile.id);
+                //         // console.log(profile.id);
+                //     }
+                // })
             }, function (data) {
                 Analytics.trackEvent('profile', 'login', 'failure', 1);
 
@@ -5461,43 +5485,43 @@ angular.module('cgwy')
 
 
 
-        ProfileService.getProfile().then(function (profile) {
-            $scope.profile = profile;
-			
-            if (profile) {
-            	$scope.currentLoginCityId = profile.cityId;
-//  				if(profile.block) {
-//                     $scope.currentLoginCityId = profile.city.id;
-//                 } else if(profile.zone) {
-//                     $scope.currentLoginCityId = profile.zone.warehouse.city.id;
-//                 }
-            } else {
-                $scope.hasRestaurants = true;
-            }
-        });
-        // WxReadyService.isWeChat(function () {
-        //     wx.hideAllNonBaseMenuItem();
-        // });
+//         ProfileService.getProfile().then(function (profile) {
+//             $scope.profile = profile;
+// 			console.log(profile);
+//             if (profile) {
+//             	$scope.currentLoginCityId = profile.cityId;
+// //  				if(profile.block) {
+// //                     $scope.currentLoginCityId = profile.city.id;
+// //                 } else if(profile.zone) {
+// //                     $scope.currentLoginCityId = profile.zone.warehouse.city.id;
+// //                 }
+//             } else {
+//                 $scope.hasRestaurants = true;
+//             }
+//         });
+//         // WxReadyService.isWeChat(function () {
+//         //     wx.hideAllNonBaseMenuItem();
+//         // });
 
-        //$scope.gotoView = function (cursor){
-        //	var stateName = "restaurant-list";
-        //	switch(cursor){
-        //		case 2:
-        //			stateName = "order-list";
-        //			break;
-        //		case 3:
-        //			stateName = "coupon";
-        //			break;
-        //        case 4:
-        //            stateName = "new-product-feedback";
-        //            break;
-        //	}
-        //	stateName = $scope.profile ? stateName : "login";
-        //	$state.go(stateName);
-        //}
-        //
-        //ProfileService.getRestaurants().then(function (data) {
-        //    $scope.restaurants = data;
+//         //$scope.gotoView = function (cursor){
+//         //	var stateName = "restaurant-list";
+//         //	switch(cursor){
+//         //		case 2:
+//         //			stateName = "order-list";
+//         //			break;
+//         //		case 3:
+//         //			stateName = "coupon";
+//         //			break;
+//         //        case 4:
+//         //            stateName = "new-product-feedback";
+//         //            break;
+//         //	}
+//         //	stateName = $scope.profile ? stateName : "login";
+//         //	$state.go(stateName);
+//         //}
+//         //
+//         //ProfileService.getRestaurants().then(function (data) {
+//         //    $scope.restaurants = data;
 
 
         $scope.logout = function () {
@@ -5513,11 +5537,12 @@ angular.module('cgwy')
                     Analytics.trackEvent('profile', 'logout');
 
                     ProfileService.logout().then(function() {
-                        CartService.resetCart();
-                        ActivityService.reloadActivities();
+                        $scope.user.username ='';
+                        $scope.user.password ='';
                         $scope.profile = null;
-                        WxReadyService.wxOnMenuShare();
-                        $scope.hasRestaurants = true;
+                        window.localStorage['cachedUsername'] = '';
+                        window.localStorage['cachedU'] = '';
+                        window.localStorage['cachedP'] = '';
                     });
 
                 } else {
@@ -5526,64 +5551,64 @@ angular.module('cgwy')
             });
         };
 
-        $scope.complain = function () {
-            var complainConfirm = $ionicPopup.confirm({
-                template: '<center>确定投诉客服？</center>',
-                cancelText: '取消',
-                cancelType: 'button-default',
-                okText: '确定',
-                okType: 'button-assertive'
-            });
-            complainConfirm.then(function (res) {
-                if (res) {
-                    AlertService.alertMsg("投诉成功");
-                } else {
-                    return;
-                }
-            });
-        };
+//         $scope.complain = function () {
+//             var complainConfirm = $ionicPopup.confirm({
+//                 template: '<center>确定投诉客服？</center>',
+//                 cancelText: '取消',
+//                 cancelType: 'button-default',
+//                 okText: '确定',
+//                 okType: 'button-assertive'
+//             });
+//             complainConfirm.then(function (res) {
+//                 if (res) {
+//                     AlertService.alertMsg("投诉成功");
+//                 } else {
+//                     return;
+//                 }
+//             });
+//         };
 
 
-        if(LocationService.getChosenCity().id === 2){
-            window.sessionStorage['CSH'] = "028-8774-8154"; // 成都客服
-            $scope.servicePhone = "028-8774-8154";
-        }else{
-            window.sessionStorage['CSH'] = "400-898-1100";
-            $scope.servicePhone = "400-898-1100";
-        }
+//         if(LocationService.getChosenCity().id === 2){
+//             window.sessionStorage['CSH'] = "028-8774-8154"; // 成都客服
+//             $scope.servicePhone = "028-8774-8154";
+//         }else{
+//             window.sessionStorage['CSH'] = "400-898-1100";
+//             $scope.servicePhone = "400-898-1100";
+//         }
 
 
-        $scope.dial = function (telephone,state) {
-            var msg =  state == 1 ? "确定拨打客服热线" : "确定要拨打的客服专员电话";
-            var serviceConfirm = $ionicPopup.confirm({
-                template: '<center style="margin-left: -12px;margin-right: -12px;">' + msg + '<div style="color: red;margin-bottom: -10px;">' + telephone + '</div></center>',
-                cancelText: '取消',
-                cancelType: 'button-default',
-                okText: '拨打',
-                okType: 'button-assertive'
-            });
-            serviceConfirm.then(function (res) {
-                if (res) {
+//         $scope.dial = function (telephone,state) {
+//             var msg =  state == 1 ? "确定拨打客服热线" : "确定要拨打的客服专员电话";
+//             var serviceConfirm = $ionicPopup.confirm({
+//                 template: '<center style="margin-left: -12px;margin-right: -12px;">' + msg + '<div style="color: red;margin-bottom: -10px;">' + telephone + '</div></center>',
+//                 cancelText: '取消',
+//                 cancelType: 'button-default',
+//                 okText: '拨打',
+//                 okType: 'button-assertive'
+//             });
+//             serviceConfirm.then(function (res) {
+//                 if (res) {
 
-                    window.open('tel:' + telephone, '_system');
-                } else {
-                    return;
-                }
-            });
+//                     window.open('tel:' + telephone, '_system');
+//                 } else {
+//                     return;
+//                 }
+//             });
 
-            //浏览器、微信情况下,物理键返回处理
-            if(!ionic.Platform.isWebView()){
-                window.onhashchange = function(){
-                    serviceConfirm.close(); //关闭
-                    window.onhashchange = null;
-                }
-            }
-        }
+//             //浏览器、微信情况下,物理键返回处理
+//             if(!ionic.Platform.isWebView()){
+//                 window.onhashchange = function(){
+//                     serviceConfirm.close(); //关闭
+//                     window.onhashchange = null;
+//                 }
+//             }
+//         }
 
 
-        if(ionic.Platform.isWebView()) {
-            $scope.feedbackAvailable = true;
-        }
+//         if(ionic.Platform.isWebView()) {
+//             $scope.feedbackAvailable = true;
+//         }
     })
 
 angular.module('cgwy')
@@ -5672,145 +5697,145 @@ angular.module('cgwy')
             }
         }
 
-        service.anyValidatedRestaurants = function (restaurants) {
-            var anyValidatedRestaurants = false;
-            restaurants.forEach(function (r) {
-                if (r.status.value == 2) {
-                    anyValidatedRestaurants = true;
-                }
-            });
+        // service.anyValidatedRestaurants = function (restaurants) {
+        //     var anyValidatedRestaurants = false;
+        //     restaurants.forEach(function (r) {
+        //         if (r.status.value == 2) {
+        //             anyValidatedRestaurants = true;
+        //         }
+        //     });
 
-            return anyValidatedRestaurants;
-        }
+        //     return anyValidatedRestaurants;
+        // }
 
-        service.containsValidatedRestaurants = function () {
-            if (service.restaurants) {
-                var deferred = $q.defer();
-                deferred.resolve(service.anyValidatedRestaurants(service.restaurants));
-                return deferred.promise;
-            } else {
-                return $http({
-                    url: apiConfig.host + "/api/v2/restaurant",
-                    method: 'GET'
-                }).then(function (payload) {
-                    service.restaurants = payload.data;
-                    return service.anyValidatedRestaurants(service.restaurants);
-                }, function (error) {
-                    console.log(error);
-                    return false;
-                })
-            }
-        };
+        // service.containsValidatedRestaurants = function () {
+        //     if (service.restaurants) {
+        //         var deferred = $q.defer();
+        //         deferred.resolve(service.anyValidatedRestaurants(service.restaurants));
+        //         return deferred.promise;
+        //     } else {
+        //         return $http({
+        //             url: apiConfig.host + "/api/v2/restaurant",
+        //             method: 'GET'
+        //         }).then(function (payload) {
+        //             service.restaurants = payload.data;
+        //             return service.anyValidatedRestaurants(service.restaurants);
+        //         }, function (error) {
+        //             console.log(error);
+        //             return false;
+        //         })
+        //     }
+        // };
 
-        service.checkUserName = function (username) {
-            return $http({
-                url: apiConfig.host + "/api/v2/check-username",
-                method: 'GET',
-                params: {username: username}
-            }).then(function () {
-            }, function (payload) {
-                return $q.reject(payload.data)
-            })
-        };
+        // service.checkUserName = function (username) {
+        //     return $http({
+        //         url: apiConfig.host + "/api/v2/check-username",
+        //         method: 'GET',
+        //         params: {username: username}
+        //     }).then(function () {
+        //     }, function (payload) {
+        //         return $q.reject(payload.data)
+        //     })
+        // };
 
-        service.coupon = function (array) {
-            return $http({
-                url: apiConfig.host + "/api/v2/coupon",
-                method: 'GET'
-            }).then(function (data) {
-                return data;
-            }, function (payload) {
-                return $q.reject(payload.data)
-            })
-        }
+        // service.coupon = function (array) {
+        //     return $http({
+        //         url: apiConfig.host + "/api/v2/coupon",
+        //         method: 'GET'
+        //     }).then(function (data) {
+        //         return data;
+        //     }, function (payload) {
+        //         return $q.reject(payload.data)
+        //     })
+        // }
 
-        service.couponEdit = function (array) {
-            return $http({
-                url: apiConfig.host + "/api/v2/order/available-coupon",
-                method: 'POST',
-                data: array
-            }).then(function (data) {
-                return data;
-            }, function (payload) {
-                return $q.reject(payload.data)
-            })
-        }
+        // service.couponEdit = function (array) {
+        //     return $http({
+        //         url: apiConfig.host + "/api/v2/order/available-coupon",
+        //         method: 'POST',
+        //         data: array
+        //     }).then(function (data) {
+        //         return data;
+        //     }, function (payload) {
+        //         return $q.reject(payload.data)
+        //     })
+        // }
 
-        service.getRestaurants = function () {
-            // if (service.restaurants) {
-            //     var deferred = $q.defer();
-            //     deferred.resolve(service.restaurants);
-            //     return deferred.promise;
-            // } else {
-                return service.forceRefreshRestaurants();
-            // }
-        };
-
-
-        service.forceRefreshRestaurants = function () {
-            return $http({
-                url: apiConfig.host + "/api/v2/restaurant",
-                method: 'GET'
-            }).then(function (payload) {
-                service.restaurants = payload.data;
-                return payload.data;
-            }, function (error) {
-                console.log(error);
-                return [];
-            })
-        }
+        // service.getRestaurants = function () {
+        //     // if (service.restaurants) {
+        //     //     var deferred = $q.defer();
+        //     //     deferred.resolve(service.restaurants);
+        //     //     return deferred.promise;
+        //     // } else {
+        //         return service.forceRefreshRestaurants();
+        //     // }
+        // };
 
 
-        service.getRestaurant = function (id) {
-            return service.getRestaurants().then(function (restaurants) {
-                for (var i = 0; i < restaurants.length; i++) {
-                    if (restaurants[i].id == id) {
-                        return restaurants[i];
-                    }
-                }
+        // service.forceRefreshRestaurants = function () {
+        //     return $http({
+        //         url: apiConfig.host + "/api/v2/restaurant",
+        //         method: 'GET'
+        //     }).then(function (payload) {
+        //         service.restaurants = payload.data;
+        //         return payload.data;
+        //     }, function (error) {
+        //         console.log(error);
+        //         return [];
+        //     })
+        // }
 
-                return null;
-            })
-        };
 
-        service.updateRestaurant = function (restaurant) {
-            return $http({
-                url: apiConfig.host + "/api/v2/restaurant/" + restaurant.id,
-                method: 'PUT',
-                data: {
-                    id: restaurant.id,
-                    name: restaurant.name,
-                    realname: restaurant.receiver,
-                    telephone: restaurant.telephone,
-                    lat : restaurant.lat,
-                    lng : restaurant.lng,
-                    restaurantAddress : restaurant.restaurantAddress,
-                    restaurantStreetNumber : restaurant.restaurantStreetNumber
-                }
-            }).then(function (payload) {
-                return payload.data;
-            },function (payload) {
-                if (payload.data) {
-                    return $q.reject(payload.data);
-                }
-            })
+        // service.getRestaurant = function (id) {
+        //     return service.getRestaurants().then(function (restaurants) {
+        //         for (var i = 0; i < restaurants.length; i++) {
+        //             if (restaurants[i].id == id) {
+        //                 return restaurants[i];
+        //             }
+        //         }
 
-        };
+        //         return null;
+        //     })
+        // };
+
+        // service.updateRestaurant = function (restaurant) {
+        //     return $http({
+        //         url: apiConfig.host + "/api/v2/restaurant/" + restaurant.id,
+        //         method: 'PUT',
+        //         data: {
+        //             id: restaurant.id,
+        //             name: restaurant.name,
+        //             realname: restaurant.receiver,
+        //             telephone: restaurant.telephone,
+        //             lat : restaurant.lat,
+        //             lng : restaurant.lng,
+        //             restaurantAddress : restaurant.restaurantAddress,
+        //             restaurantStreetNumber : restaurant.restaurantStreetNumber
+        //         }
+        //     }).then(function (payload) {
+        //         return payload.data;
+        //     },function (payload) {
+        //         if (payload.data) {
+        //             return $q.reject(payload.data);
+        //         }
+        //     })
+
+        // };
 
 
         service.login = function (user) {
             return $http({
-                url: apiConfig.host + "/api/v2/login",
+                url: apiConfig.host + "/api/login",
                 method: 'POST',
                 data: user
             }).then(function (payload) {
                 service.profile = payload.data;
-
+                console.log(service.profile);
                 // set user id
                 // https://developers.google.com/analytics/devguides/collection/analyticsjs/user-id
                 Analytics.set('userId', service.profile.id);
 
-                window.localStorage['cachedUsername'] = service.profile.username;
+                window.localStorage['cachedUsername'] = service.profile.name;
 
                 return service.profile;
             }, function (payload) {
@@ -5827,7 +5852,7 @@ angular.module('cgwy')
 
         service.logout = function () {
             return $http({
-                url: apiConfig.host + "/api/v2/logout",
+                url: apiConfig.host + "/api/logout",
                 method: 'GET'
             }).then(function () {
                 service.profile = null;
@@ -5839,68 +5864,68 @@ angular.module('cgwy')
             })
         };
 
-        service.register = function (user) {
-            return $http({
-                url: apiConfig.host + "/api/v2/register",
-                method: 'POST',
-                data: user
-            }).then(function (payload) {
-                service.profile = null;
-                service.getProfile();
-                return payload.data;
-            }, function (payload) {
-                if (payload.data) {
-                    return $q.reject(payload.data);
-                }
-            })
-        };
+        // service.register = function (user) {
+        //     return $http({
+        //         url: apiConfig.host + "/api/v2/register",
+        //         method: 'POST',
+        //         data: user
+        //     }).then(function (payload) {
+        //         service.profile = null;
+        //         service.getProfile();
+        //         return payload.data;
+        //     }, function (payload) {
+        //         if (payload.data) {
+        //             return $q.reject(payload.data);
+        //         }
+        //     })
+        // };
 
-        service.askCode = function (telephone) {
-            return $http({
-                url: apiConfig.host + "/api/v2/code",
-                method: 'GET',
-                params: {telephone: telephone}
-            })
-        };
+        // service.askCode = function (telephone) {
+        //     return $http({
+        //         url: apiConfig.host + "/api/v2/code",
+        //         method: 'GET',
+        //         params: {telephone: telephone}
+        //     })
+        // };
 
-        service.transformRequest = function (obj) {
-            var str = [];
-            for (var p in obj)
-                str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-            return str.join("&");
-        }
+        // service.transformRequest = function (obj) {
+        //     var str = [];
+        //     for (var p in obj)
+        //         str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+        //     return str.join("&");
+        // }
 
 
-        service.checkCode = function (telephone, code) {
-            return $http({
-                url: apiConfig.host + "/api/v2/code",
-                method: 'PUT',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                transformRequest: service.transformRequest,
-                data: {telephone: telephone, code: code}
-            }).then(function (payload) {
-                return payload.data;
-            }, function (error) {
-                return $q.reject(error.data);
-            })
-        };
+        // service.checkCode = function (telephone, code) {
+        //     return $http({
+        //         url: apiConfig.host + "/api/v2/code",
+        //         method: 'PUT',
+        //         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        //         transformRequest: service.transformRequest,
+        //         data: {telephone: telephone, code: code}
+        //     }).then(function (payload) {
+        //         return payload.data;
+        //     }, function (error) {
+        //         return $q.reject(error.data);
+        //     })
+        // };
 
-        service.resetPassword = function (telephone, code, password) {
-            return $http({
-                url: apiConfig.host + "/api/v2/" + telephone + "/reset-password",
-                method: 'PUT',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                transformRequest: service.transformRequest,
-                data: {code: code, password: password}
-            }).then(function (payload) {
-                return payload.data;
-            })
-        };
+        // service.resetPassword = function (telephone, code, password) {
+        //     return $http({
+        //         url: apiConfig.host + "/api/v2/" + telephone + "/reset-password",
+        //         method: 'PUT',
+        //         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        //         transformRequest: service.transformRequest,
+        //         data: {code: code, password: password}
+        //     }).then(function (payload) {
+        //         return payload.data;
+        //     })
+        // };
 
-        service.couponInfo = [];
-        service.setCouponInfo = function (couponInfo) {
-            service.couponInfo = couponInfo;
-        };
+        // service.couponInfo = [];
+        // service.setCouponInfo = function (couponInfo) {
+        //     service.couponInfo = couponInfo;
+        // };
         service.bindBaiduPush = function (platform, baiduChannelId) {
             if (baiduChannelId) {
                 service.baiduChannelId = baiduChannelId;
@@ -5921,68 +5946,68 @@ angular.module('cgwy')
             }
         }
 
-        service.getCouponInfo = function () {
-            return service.couponInfo;
-        };
+        // service.getCouponInfo = function () {
+        //     return service.couponInfo;
+        // };
 
-        service.createRestaurant = function (restaurant) {
-            return $http({
-                url: apiConfig.host + "/api/v2/restaurant",
-                method: 'POST',
-                data: restaurant
-            }).then(function (payload) {
-                service.forceRefreshRestaurants();
-                return payload.data;
-            }, function (error) {
-                return $q.reject(error.data);
-            })
-        }
+        // service.createRestaurant = function (restaurant) {
+        //     return $http({
+        //         url: apiConfig.host + "/api/v2/restaurant",
+        //         method: 'POST',
+        //         data: restaurant
+        //     }).then(function (payload) {
+        //         service.forceRefreshRestaurants();
+        //         return payload.data;
+        //     }, function (error) {
+        //         return $q.reject(error.data);
+        //     })
+        // }
 
-        service.getDeviceId = function () {
-            if (window.localStorage['deviceId']) {
-                console.log('deviceId:' + window.localStorage['deviceId']);
-                return window.localStorage['deviceId'];
-            } else {
-                window.localStorage['deviceId'] = rfc4122.v4();
-                console.log('deviceId:' + window.localStorage['deviceId']);
-                return window.localStorage['deviceId'];
-            }
-        }
+        // service.getDeviceId = function () {
+        //     if (window.localStorage['deviceId']) {
+        //         console.log('deviceId:' + window.localStorage['deviceId']);
+        //         return window.localStorage['deviceId'];
+        //     } else {
+        //         window.localStorage['deviceId'] = rfc4122.v4();
+        //         console.log('deviceId:' + window.localStorage['deviceId']);
+        //         return window.localStorage['deviceId'];
+        //     }
+        // }
 
-        service.bindDevice = function (platform, deviceId) {
-            if (deviceId) {
-                return $http({
-                    url: apiConfig.host + "/api/v2/device",
-                    method: 'PUT',
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                    transformRequest: service.transformRequest,
-                    data: {deviceId: deviceId, platform: platform}
-                })
-            }
-        }
+        // service.bindDevice = function (platform, deviceId) {
+        //     if (deviceId) {
+        //         return $http({
+        //             url: apiConfig.host + "/api/v2/device",
+        //             method: 'PUT',
+        //             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        //             transformRequest: service.transformRequest,
+        //             data: {deviceId: deviceId, platform: platform}
+        //         })
+        //     }
+        // }
 
-        service.bindWxCode = function (code) {
-            return $http({
-                url: apiConfig.host + "/api/v2/weixin",
-                method: 'PUT',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                transformRequest: service.transformRequest,
-                data: {code:code, state:"weixin"}
-            })
-        }
+        // service.bindWxCode = function (code) {
+        //     return $http({
+        //         url: apiConfig.host + "/api/v2/weixin",
+        //         method: 'PUT',
+        //         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        //         transformRequest: service.transformRequest,
+        //         data: {code:code, state:"weixin"}
+        //     })
+        // }
 
 
-        service.modifyPassword = function (username, password, newPassword) {
-            return $http({
-                url: apiConfig.host + "/api/v2/restaurant/updatePassword",
-                method: 'POST',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                transformRequest: service.transformRequest,
-                data: {username: username, password: password, newpassword:newPassword}
-            }).then(function (payload) {
-                return payload.data;
-            })
-        };
+        // service.modifyPassword = function (username, password, newPassword) {
+        //     return $http({
+        //         url: apiConfig.host + "/api/v2/restaurant/updatePassword",
+        //         method: 'POST',
+        //         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        //         transformRequest: service.transformRequest,
+        //         data: {username: username, password: password, newpassword:newPassword}
+        //     }).then(function (payload) {
+        //         return payload.data;
+        //     })
+        // };
 
         return service;
     })
@@ -6832,82 +6857,6 @@ angular.module('cgwy')
     })
 
 angular.module('cgwy')
-    .factory('WxReadyService', function ($http, $q, apiConfig, $rootScope) {
-        var service = {};
-
-        service.wxConfig = function (callback) {
-            var ua = navigator.userAgent.toLowerCase();
-            if(ua.match(/MicroMessenger/i)=="micromessenger") {
-                // return true;
-                return callback();
-            } else {
-                // console.log("config 1");
-                return false;
-            }
-        }
-
-        service.isWeChat = function (callback) {
-            var ua = navigator.userAgent.toLowerCase();
-            if(ua.match(/MicroMessenger/i)=="micromessenger") {
-
-                wx.ready(function () {
-                    callback();
-                });
-
-                return true;
-            } else {
-                // console.log('isWeChat');
-                return false;
-            }
-        }
-        service.wxOnMenuShare = function (sharerId){
-            var title = "都知道在餐馆无忧食材便宜，哪知道分享给朋友还有20元！";
-            var description = "价格便宜品牌正，服务靠谱免配送，帮朋友省食材成本，你就是super壕！";
-            var imgUrl = "http://www.canguanwuyou.cn/www/img/logo_weixin_03.png";
-            var webpageUrl = "http://www.canguanwuyou.cn/www/browser.html#/share-page?sharerId=" + sharerId;
-            service.isWeChat(function () {
-                var shareData = {
-                    title: title,
-                    desc: description,
-                    link: webpageUrl,
-                    imgUrl: imgUrl
-                };
-                wx.showAllNonBaseMenuItem();
-                wx.onMenuShareAppMessage(shareData);
-                wx.onMenuShareTimeline(shareData);
-                wx.onMenuShareQQ(shareData);
-                wx.onMenuShareQZone(shareData);
-            });
-        }
-        // console.log(service.getAccess_token());
-        return service;
-    })
-angular.module('cgwy')
-    .factory('WxTokenService', function ($http, $q, apiConfig, $rootScope) {
-        var service = {};
-        service.getAccess_token = function (url) {
-            /**
-             * 微信推荐
-             *  url从  http://www.canguanwuyou.cn/www/browser.html
-             *  改变为 http://www.canguanwuyou.cn/www/browser.html?from=singlemessage&isappinstalled=0
-             *  导致省生成微信 signature 不正确,无法正确使用微信sdk
-             *  扩展url参数
-             *  by linsen 2015.10.15
-             * */
-            var array = url.split("#");
-            return  $http({
-                url: "http://www.canguanwuyou.cn/wechat",
-                method: 'POST',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                data: "url="+encodeURIComponent(array[0])
-            }).then(function (wechatToken) {
-                return wechatToken;
-            });
-        }
-        // console.log(service.getAccess_token());
-        return service;
-    })
-angular.module('cgwy')
     .factory('BackUrlUtil', function ($ionicHistory,$timeout) {
 	    var service = {};
 
@@ -7070,6 +7019,82 @@ angular.module('cgwy')
     return service;
 });
 
+angular.module('cgwy')
+    .factory('WxReadyService', function ($http, $q, apiConfig, $rootScope) {
+        var service = {};
+
+        service.wxConfig = function (callback) {
+            var ua = navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i)=="micromessenger") {
+                // return true;
+                return callback();
+            } else {
+                // console.log("config 1");
+                return false;
+            }
+        }
+
+        service.isWeChat = function (callback) {
+            var ua = navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i)=="micromessenger") {
+
+                wx.ready(function () {
+                    callback();
+                });
+
+                return true;
+            } else {
+                // console.log('isWeChat');
+                return false;
+            }
+        }
+        service.wxOnMenuShare = function (sharerId){
+            var title = "都知道在餐馆无忧食材便宜，哪知道分享给朋友还有20元！";
+            var description = "价格便宜品牌正，服务靠谱免配送，帮朋友省食材成本，你就是super壕！";
+            var imgUrl = "http://www.canguanwuyou.cn/www/img/logo_weixin_03.png";
+            var webpageUrl = "http://www.canguanwuyou.cn/www/browser.html#/share-page?sharerId=" + sharerId;
+            service.isWeChat(function () {
+                var shareData = {
+                    title: title,
+                    desc: description,
+                    link: webpageUrl,
+                    imgUrl: imgUrl
+                };
+                wx.showAllNonBaseMenuItem();
+                wx.onMenuShareAppMessage(shareData);
+                wx.onMenuShareTimeline(shareData);
+                wx.onMenuShareQQ(shareData);
+                wx.onMenuShareQZone(shareData);
+            });
+        }
+        // console.log(service.getAccess_token());
+        return service;
+    })
+angular.module('cgwy')
+    .factory('WxTokenService', function ($http, $q, apiConfig, $rootScope) {
+        var service = {};
+        service.getAccess_token = function (url) {
+            /**
+             * 微信推荐
+             *  url从  http://www.canguanwuyou.cn/www/browser.html
+             *  改变为 http://www.canguanwuyou.cn/www/browser.html?from=singlemessage&isappinstalled=0
+             *  导致省生成微信 signature 不正确,无法正确使用微信sdk
+             *  扩展url参数
+             *  by linsen 2015.10.15
+             * */
+            var array = url.split("#");
+            return  $http({
+                url: "http://www.canguanwuyou.cn/wechat",
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                data: "url="+encodeURIComponent(array[0])
+            }).then(function (wechatToken) {
+                return wechatToken;
+            });
+        }
+        // console.log(service.getAccess_token());
+        return service;
+    })
 angular.module('cgwy')
     .controller('WelcomeCtrl', function ($scope, $state) {
         if(window.localStorage['isWelcomeShowed']) {

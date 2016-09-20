@@ -7,8 +7,8 @@
 function initialize() {
     var elem = angular.element(document.querySelector('#custom')); //get your angular element
     var injector = elem.injector(); //get the injector.
-    var MapService = injector.get('MapService'); //get the service.
-    MapService.geolocation(); //定位
+    // var MapService = injector.get('MapService'); //get the service.
+    // MapService.geolocation(); //定位
 }
 
 angular.module('ngIOS9UIWebViewPatch', ['ng']).config(function ($provide) {
@@ -51,11 +51,10 @@ angular.module('ngIOS9UIWebViewPatch', ['ng']).config(function ($provide) {
 
 angular.module('cgwy', ['ionic', 'templatesCache', 'ionicLazyLoad', 'ngCordova', 'angular-google-analytics', 'ui.filters', 'ionic.rating', 'uuid', 'ngIOS9UIWebViewPatch'])
     .constant('apiConfig', {
-        "host": "http://www.canguanwuyou.cn"
-        //"host":"http://114.215.100.12:8083/",
-        //"host": "",
-        //"environment": "develop"
-
+        // "host": "http://www.canguanwuyou.cn"
+        // "host":"http://121.42.176.228:8083",
+        "host": "",
+        "environment": "develop"
     })
 
     .run(function ($state, $window, $ionicPlatform, DeviceUtil, $ionicPopup, $ionicLoading, NetworkUtil, BackUrlUtil, WxReadyService, WxTokenService, CartService, ProfileService, $rootScope, $ionicHistory, FavoriteService, UpdateService, VersionService, ActivityService, AlertService, MapService, $cordovaToast, $interval, $cordovaFileTransfer, $cordovaFileOpener2, $timeout, $cordovaBadge) {
@@ -104,76 +103,76 @@ angular.module('cgwy', ['ionic', 'templatesCache', 'ionicLazyLoad', 'ngCordova',
             }
 
             //加载百度地图API JS
-            var script = document.createElement("script");
-            script.src = "http://api.map.baidu.com/api?v=2.0&ak=kTPXBr7VXv7vaheBEHjiVsYK&callback=initialize";
-            document.body.appendChild(script);
+            // var script = document.createElement("script");
+            // script.src = "http://api.map.baidu.com/api?v=2.0&ak=kTPXBr7VXv7vaheBEHjiVsYK&callback=initialize";
+            // document.body.appendChild(script);
 
-            var currentPlatform = ionic.Platform.platform();
-            var currentPlatformVersion = ionic.Platform.version();
-            DeviceUtil.getDeviceId();
-            ProfileService.setDisplayWelcome(true);
+            // var currentPlatform = ionic.Platform.platform();
+            // var currentPlatformVersion = ionic.Platform.version();
+            // DeviceUtil.getDeviceId();
+            // ProfileService.setDisplayWelcome(true);
 
-            try{
-                window.plugins.jPushPlugin.init();
-            }catch(e){
-                console.log("JPush plugin is undefined");
-            }
-            if(ionic.Platform.isWebView()){
-                cordova.getAppVersion.getVersionCode(function (versionCode) {
-                    VersionService.versionCode = versionCode;
-                    VersionService.checkApp(versionCode).then(function (ver) {
-                        //if(ver){
-                        //    if(ionic.Platform.isAndroid()){
-                        //        var cancelText = ver.forceUpdate ? "退出" : "取消";
-                        //        $ionicPopup.confirm({
-                        //            template: '<center>版本已最新,是否升级？</center>',
-                        //            cancelText: cancelText, cancelType: 'button-default',
-                        //            okText: '升级', okType: 'button-assertive'
-                        //        }).then(function (res) {
-                        //            if (res) {
-                        //                $ionicLoading.show({template: "已经下载：0%"});
-                        //                var url = ver.url;
-                        //                var targetPath = cordova.file.externalApplicationStorageDirectory + 'cgwy/cgwy_' + versionCode + '.apk';
-                        //                var trustHosts = true;
-                        //                var options = {};
-                        //                $cordovaFileTransfer.download(url, targetPath, options, trustHosts)
-                        //                    .then(function (result) {
-                        //                        // 打开下载下来的APP
-                        //                        $cordovaFileOpener2.open(targetPath, 'application/vnd.android.package-archive')
-                        //                            .then(function () {
-                        //                            }, function (err) {
-                        //                                $ionicPopup.alert({template: '<center>文件打开失败,请稍后重试!</center>', okText: '确定', okType: 'button-light'});
-                        //                                $ionicLoading.hide();
-                        //                            });
-                        //                        $ionicLoading.hide();
-                        //                    }, function (err) {
-                        //                        $ionicPopup.alert({template: '<center>当前网络不稳定,下载失败!</center>', okText: '确定', okType: 'button-light'});
-                        //                        $ionicLoading.hide();
-                        //                    }, function (progress) {
-                        //                        $timeout(function () {
-                        //                            var downloadProgress = (progress.loaded / progress.total) * 100;
-                        //                            $ionicLoading.show({template: "已经下载：" + Math.floor(downloadProgress) + "%"});
-                        //                            if (downloadProgress > 99) {
-                        //                                $ionicLoading.hide();
-                        //                            }
-                        //                        })
-                        //                    });
-                        //            } else {
-                        //                //取消或者退出
-                        //                if(ver.forceUpdate == true)
-                        //                    ionic.Platform.exitApp();
-                        //                return;
-                        //            }
-                        //        });
-                        //    }else if(ionic.Platform.isIOS()){
-                        //        $ionicPopup.alert({
-                        //            template: '<center>版本已经更新,请到App store市场下载!</center>', okText: '确定', okType: 'button-light'
-                        //        });
-                        //    }
-                        //}
-                    });
-                });
-            }
+            // try{
+            //     window.plugins.jPushPlugin.init();
+            // }catch(e){
+            //     console.log("JPush plugin is undefined");
+            // }
+            // if(ionic.Platform.isWebView()){
+            //     cordova.getAppVersion.getVersionCode(function (versionCode) {
+            //         VersionService.versionCode = versionCode;
+            //         VersionService.checkApp(versionCode).then(function (ver) {
+            //             //if(ver){
+            //             //    if(ionic.Platform.isAndroid()){
+            //             //        var cancelText = ver.forceUpdate ? "退出" : "取消";
+            //             //        $ionicPopup.confirm({
+            //             //            template: '<center>版本已最新,是否升级？</center>',
+            //             //            cancelText: cancelText, cancelType: 'button-default',
+            //             //            okText: '升级', okType: 'button-assertive'
+            //             //        }).then(function (res) {
+            //             //            if (res) {
+            //             //                $ionicLoading.show({template: "已经下载：0%"});
+            //             //                var url = ver.url;
+            //             //                var targetPath = cordova.file.externalApplicationStorageDirectory + 'cgwy/cgwy_' + versionCode + '.apk';
+            //             //                var trustHosts = true;
+            //             //                var options = {};
+            //             //                $cordovaFileTransfer.download(url, targetPath, options, trustHosts)
+            //             //                    .then(function (result) {
+            //             //                        // 打开下载下来的APP
+            //             //                        $cordovaFileOpener2.open(targetPath, 'application/vnd.android.package-archive')
+            //             //                            .then(function () {
+            //             //                            }, function (err) {
+            //             //                                $ionicPopup.alert({template: '<center>文件打开失败,请稍后重试!</center>', okText: '确定', okType: 'button-light'});
+            //             //                                $ionicLoading.hide();
+            //             //                            });
+            //             //                        $ionicLoading.hide();
+            //             //                    }, function (err) {
+            //             //                        $ionicPopup.alert({template: '<center>当前网络不稳定,下载失败!</center>', okText: '确定', okType: 'button-light'});
+            //             //                        $ionicLoading.hide();
+            //             //                    }, function (progress) {
+            //             //                        $timeout(function () {
+            //             //                            var downloadProgress = (progress.loaded / progress.total) * 100;
+            //             //                            $ionicLoading.show({template: "已经下载：" + Math.floor(downloadProgress) + "%"});
+            //             //                            if (downloadProgress > 99) {
+            //             //                                $ionicLoading.hide();
+            //             //                            }
+            //             //                        })
+            //             //                    });
+            //             //            } else {
+            //             //                //取消或者退出
+            //             //                if(ver.forceUpdate == true)
+            //             //                    ionic.Platform.exitApp();
+            //             //                return;
+            //             //            }
+            //             //        });
+            //             //    }else if(ionic.Platform.isIOS()){
+            //             //        $ionicPopup.alert({
+            //             //            template: '<center>版本已经更新,请到App store市场下载!</center>', okText: '确定', okType: 'button-light'
+            //             //        });
+            //             //    }
+            //             //}
+            //         });
+            //     });
+            // }
 
             document.addEventListener("resume", function () {
                 $cordovaBadge.clear().then(function () {
@@ -392,98 +391,100 @@ angular.module('cgwy', ['ionic', 'templatesCache', 'ionicLazyLoad', 'ngCordova',
                     controller: 'HomeCtrl'
                 }
             }
-        }).state('main.category', {
-            url: '/category',
-            views: {
-                category: {
-                    templateUrl: 'category/category.html',
-                    controller: 'CategoryCtrl'
-                }
-            }
-        }).state('main.category.sub', {
-            url: '/sub-category/{id:int}',
-            views: {
-                subCategoryMenuContent: {
-                    templateUrl: 'category/sub-category.html',
-                    controller: 'SubCategoryCtrl'
-                }
-            }
-        }).state('search', {
-            url: '/search?{categoryId:int}&{brandId:int}&{page:int}&sortProperty&sortDirection&backUrl&query&{parentCategoryId:int}&{mainParentCategoryId:int}',
-            views: {
-                main: {
-                    templateUrl: 'product/product.html',
-                    controller: 'ProductCtrl'
-                }
-            }
-        }).state('product-detail', {
-            url: '/product-detail?{id:int}&backUrl',
-            views: {
-                main: {
-                    templateUrl: 'product/product-detail.html',
-                    controller: 'ProductDetailCtrl'
-                }
-            }
-        }).state('cart', {
-            url: '/cart?backUrl',
-            views: {
-                main: {
-                    templateUrl: 'cart/cart.html',
-                    controller: 'CartCtrl'
-                }
-            },
-            onExit: ['CartService', function (CartService) {
-                CartService.syncCart();
-            }]
-        }).state('cart-edit', {
-            url: '/cart-edit?unselectAll',
-            views: {
-                main: {
-                    templateUrl: 'cart/cart-edit.html',
-                    controller: 'CartCtrl'
-                }
-            }
-        }).state('order-list', {
-            url: '/order-list',
-            views: {
-                main: {
-                    templateUrl: 'order/order-list.html',
-                    controller: 'OrderListCtrl'
-                }
-            }
-        }).state('order-detail', {
-            url: '/order-detail?{id:int}&{confirmStatus:int}&backUrl',
-            views: {
-                main: {
-                    templateUrl: 'order/order-detail.html',
-                    controller: 'OrderDetailCtrl'
-                }
-            }
-        }).state('favorite', {
-            url: '/favorite',
-            views: {
-                main: {
-                    templateUrl: 'favorite/favorite.html',
-                    controller: 'FavoriteCtrl'
-                }
-            }
-        }).state('favorite-rebuy', {
-            url: '/favorite-rebuy?selectAll',
-            views: {
-                main: {
-                    templateUrl: 'favorite/favorite-rebuy.html',
-                    controller: 'FavoriteCtrl'
-                }
-            }
-        }).state('favorite-edit', {
-            url: '/favorite-edit',
-            views: {
-                main: {
-                    templateUrl: 'favorite/favorite-edit.html',
-                    controller: 'FavoriteCtrl'
-                }
-            }
-        }).state('main.profile', {
+        })
+        // .state('main.category', {
+        //     url: '/category',
+        //     views: {
+        //         category: {
+        //             templateUrl: 'category/category.html',
+        //             controller: 'CategoryCtrl'
+        //         }
+        //     }
+        // }).state('main.category.sub', {
+        //     url: '/sub-category/{id:int}',
+        //     views: {
+        //         subCategoryMenuContent: {
+        //             templateUrl: 'category/sub-category.html',
+        //             controller: 'SubCategoryCtrl'
+        //         }
+        //     }
+        // }).state('search', {
+        //     url: '/search?{categoryId:int}&{brandId:int}&{page:int}&sortProperty&sortDirection&backUrl&query&{parentCategoryId:int}&{mainParentCategoryId:int}',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'product/product.html',
+        //             controller: 'ProductCtrl'
+        //         }
+        //     }
+        // }).state('product-detail', {
+        //     url: '/product-detail?{id:int}&backUrl',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'product/product-detail.html',
+        //             controller: 'ProductDetailCtrl'
+        //         }
+        //     }
+        // }).state('cart', {
+        //     url: '/cart?backUrl',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'cart/cart.html',
+        //             controller: 'CartCtrl'
+        //         }
+        //     },
+        //     onExit: ['CartService', function (CartService) {
+        //         CartService.syncCart();
+        //     }]
+        // }).state('cart-edit', {
+        //     url: '/cart-edit?unselectAll',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'cart/cart-edit.html',
+        //             controller: 'CartCtrl'
+        //         }
+        //     }
+        // }).state('order-list', {
+        //     url: '/order-list',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'order/order-list.html',
+        //             controller: 'OrderListCtrl'
+        //         }
+        //     }
+        // }).state('order-detail', {
+        //     url: '/order-detail?{id:int}&{confirmStatus:int}&backUrl',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'order/order-detail.html',
+        //             controller: 'OrderDetailCtrl'
+        //         }
+        //     }
+        // }).state('favorite', {
+        //     url: '/favorite',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'favorite/favorite.html',
+        //             controller: 'FavoriteCtrl'
+        //         }
+        //     }
+        // }).state('favorite-rebuy', {
+        //     url: '/favorite-rebuy?selectAll',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'favorite/favorite-rebuy.html',
+        //             controller: 'FavoriteCtrl'
+        //         }
+        //     }
+        // }).state('favorite-edit', {
+        //     url: '/favorite-edit',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'favorite/favorite-edit.html',
+        //             controller: 'FavoriteCtrl'
+        //         }
+        //     }
+        // })
+        .state('main.profile', {
             url: '/profile',
             views: {
                 profile: {
@@ -491,7 +492,8 @@ angular.module('cgwy', ['ionic', 'templatesCache', 'ionicLazyLoad', 'ngCordova',
                     controller: 'ProfileCtrl'
                 }
             }
-        }).state('restaurant-list', {
+        })
+        .state('restaurant-list', {
             url: '/restaurant-list',
             views: {
                 main: {
@@ -499,15 +501,17 @@ angular.module('cgwy', ['ionic', 'templatesCache', 'ionicLazyLoad', 'ngCordova',
                     controller: 'RestaurantListCtrl'
                 }
             }
-        }).state('restaurant-detail', {
-            url: '/restaurant-detail?{id:int}',
-            views: {
-                main: {
-                    templateUrl: 'restaurant/restaurant-detail.html',
-                    controller: 'RestaurantDetailCtrl'
-                }
-            }
-        }).state('login', {
+        })
+        // .state('restaurant-detail', {
+        //     url: '/restaurant-detail?{id:int}',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'restaurant/restaurant-detail.html',
+        //             controller: 'RestaurantDetailCtrl'
+        //         }
+        //     }
+        // })
+        .state('login', {
             url: '/login',
             views: {
                 main: {
@@ -515,7 +519,8 @@ angular.module('cgwy', ['ionic', 'templatesCache', 'ionicLazyLoad', 'ngCordova',
                     controller: 'LoginCtrl'
                 }
             }
-        }).state('register', {
+        })
+        .state('register', {
             url: '/register?sharerId',
             views: {
                 main: {
@@ -523,279 +528,280 @@ angular.module('cgwy', ['ionic', 'templatesCache', 'ionicLazyLoad', 'ngCordova',
                     controller: 'RegisterCtrl'
                 }
             }
-        }).state('forgot-password', {
-            url: "/forgot-password",
-            views: {
-                main: {
-                    templateUrl: "forget-password/forget-password.html",
-                    controller: 'ForgetPasswordCtrl'
-
-                }
-            }
-        }).state('activity', {
-            url: "/activity?{index:int}",
-            views: {
-                main: {
-                    templateUrl: "activity/activity.html",
-                    controller: 'ActivityCtrl'
-                }
-            }
-        }).state('new-product-feedback', {
-            url: '/new-product-feedback',
-            views: {
-                main: {
-                    templateUrl: 'feedback/feedback.html',
-                    controller: 'FeedbackCtrl'
-                }
-            }
-        }).state('confirm', {
-            url: '/confirm?cId=?',
-            views: {
-                main: {
-                    templateUrl: 'confirm/confirm.html',
-                    controller: 'ConfirmCtrl'
-                }
-            }
-        }).state('regist-success', {
-            url: '/regist-success?sharerId',
-            views: {
-                main: {
-                    templateUrl: 'profile/success.html',
-                    controller: 'SuccessCtrl'
-                }
-            }
-        }).state('provision', {
-            url: '/provision',
-            views: {
-                main: {
-                    templateUrl: 'provision/provision.html'
-                }
-            }
-        }).state('order-evaluate', {
-            url: '/order-evaluate/?id&hasEvaluated',
-            views: {
-                main: {
-                    templateUrl: 'order/order-evaluate.html',
-                    controller: 'OrderEvaluateCtrl'
-                }
-            }
-        }).state('coupon', {
-            url: '/coupon',
-            views: {
-                main: {
-                    templateUrl: 'profile/coupon.html',
-                    controller: 'coupon'
-                }
-            }
-        }).state('couponExp', {
-            url: '/couponExp',
-            views: {
-                main: {
-                    templateUrl: 'profile/couponExp.html'
-                }
-            }
-        }).state('couponEdit', {
-            url: '/couponEdit',
-            views: {
-                main: {
-                    templateUrl: 'profile/couponEdit.html',
-                    controller: 'couponEditCtrl'
-                }
-            }
-        }).state('keyword-search', {
-            url: '/keyword-search/?backUrl&queryWords',
-            views: {
-                main: {
-                    templateUrl: 'search/search.html',
-                    controller: 'SearchCtrl'
-                }
-            }
-        }).state('add-restaurant', {
-            url: '/add-restaurant',
-            views: {
-                main: {
-                    templateUrl: 'restaurant/add-restaurant.html',
-                    controller: 'AddRestaurantCtrl'
-                }
-            }
-        }).state('invite-friends', {
-            url: '/share',
-            views: {
-                main: {
-                    templateUrl: 'share/share.html',
-                    controller: 'ShareCtrl'
-                }
-            }
-        }).state('share-page', {
-            url: '/share-page?sharerId',
-            views: {
-                main: {
-                    templateUrl: 'share/share-page.html',
-                    controller: 'SharePageCtrl'
-                }
-            }
-        }).state('map', {
-            url: '/map',
-            views: {
-                main: {
-                    templateUrl: 'map/map.html',
-                    controller: 'MapCtrl'
-                }
-            }
-        }).state('settings', {
-            url: '/settings',
-            views: {
-                main: {
-                    templateUrl: 'settings/settings.html',
-                    controller: 'SettingsCtrl'
-                }
-            }
-        }).state('modify-password', {
-            url: '/modify-password',
-            views: {
-                main: {
-                    templateUrl: 'modify-password/modify-password.html',
-                    controller: 'ModifyPasswordCtrl'
-                }
-            }
-        }).state('help-center', {
-            url: '/help-center',
-            views: {
-                main: {
-                    templateUrl: 'help-center/help-center.html',
-                    controller: 'HelpCenterCtrl'
-                }
-            }
-        }).state('help-order', {
-            url: '/help-order',
-            views: {
-                main: {
-                    templateUrl: 'help-center/help-order.html',
-                    controller: 'HelpOrderCtrl'
-                }
-            }
-        }).state('help-buying', {
-            url: '/help-buying',
-            views: {
-                main: {
-                    templateUrl: 'help-center/help-buying.html',
-                    controller: 'HelpBuyCtrl'
-                }
-            }
-        }).state('help-time', {
-            url: '/help-time',
-            views: {
-                main: {
-                    templateUrl: 'help-center/help-time.html',
-                    controller: 'HelpTimeCtrl'
-                }
-            }
-        }).state('help-range', {
-            url: '/help-range',
-            views: {
-                main: {
-                    templateUrl: 'help-center/help-range.html',
-                    controller: 'HelpRangeCtrl'
-                }
-            }
-        }).state('help-charge', {
-            url: '/help-charge',
-            views: {
-                main: {
-                    templateUrl: 'help-center/help-charge.html',
-                    controller: 'HelpChargeCtrl'
-                }
-            }
         })
-            .state('help-onlineCharge', {
-                url: '/help-onlineCharge',
-                views: {
-                    main: {
-                        templateUrl: 'help-center/help-onlineCharge.html',
-                        controller: 'HelpOnlineChargeCtrl'
-                    }
-                }
-            }).state('help-service', {
-                url: '/help-service',
-                views: {
-                    main: {
-                        templateUrl: 'help-center/help-service.html',
-                        controller: 'HelpServiceCtrl'
-                    }
-                }
-            }).state('help-change', {
-                url: '/help-change',
-                views: {
-                    main: {
-                        templateUrl: 'help-center/help-change.html',
-                        controller: 'HelpChangeCtrl'
-                    }
-                }
-            }).state('main.order-list', {
-                url: '/order-list',
-                views: {
-                    orderList: {
-                        templateUrl: 'order/order-list.html',
-                        controller: 'OrderListCtrl'
-                    }
-                }
-            }).state('seckill-product', {
-                url: '/seckill-product?{activeId:int}',
-                views: {
-                    main: {
-                        templateUrl: 'product/seckill-product.html',
-                        controller: 'SeckillProductCtrl'
-                    }
-                }
-            })
-            .state('seckillProduct-detail', {
-                url: '/seckillProduct-detail?{activeId:int}&{itemId:int}&backUrl',
-                views: {
-                    main: {
-                        templateUrl: 'product/seckillProduct-detail.html',
-                        controller: 'SeckillProductDetail'
-                    }
-                }
-            }).state('membership-point', {
-                url: '/membership-point',
-                views: {
-                    main: {
-                        templateUrl: 'point/membership-point.html',
-                        controller: 'MembershipPointCtrl'
-                    }
-                }
-            }).state('redeem-point', {
-                url: '/redeem-point/?restaurantName&availableScore',
-                views: {
-                    main: {
-                        templateUrl: 'point/redeem-point.html',
-                        controller: 'RedeemPointCtrl'
-                    }
-                }
-            }).state('generate-records', {
-                url: '/generate-records/?availableScore',
-                views: {
-                    main: {
-                        templateUrl: 'point/generate-records.html',
-                        controller: 'GenerateRecordCtrl'
-                    }
-                }
-            }).state('exchange-records', {
-                url: '/exchange-records/?availableScore',
-                views: {
-                    main: {
-                        templateUrl: 'point/exchange-records.html',
-                        controller: 'ExchangeRecordCtrl'
-                    }
-                }
-            }).state('point-rule', {
-                url: '/point-rule',
-                views: {
-                    main: {
-                        templateUrl: 'point/point-rule.html'
-                    }
-                }
-            })
+        // .state('forgot-password', {
+        //     url: "/forgot-password",
+        //     views: {
+        //         main: {
+        //             templateUrl: "forget-password/forget-password.html",
+        //             controller: 'ForgetPasswordCtrl'
+
+        //         }
+        //     }
+        // }).state('activity', {
+        //     url: "/activity?{index:int}",
+        //     views: {
+        //         main: {
+        //             templateUrl: "activity/activity.html",
+        //             controller: 'ActivityCtrl'
+        //         }
+        //     }
+        // }).state('new-product-feedback', {
+        //     url: '/new-product-feedback',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'feedback/feedback.html',
+        //             controller: 'FeedbackCtrl'
+        //         }
+        //     }
+        // }).state('confirm', {
+        //     url: '/confirm?cId=?',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'confirm/confirm.html',
+        //             controller: 'ConfirmCtrl'
+        //         }
+        //     }
+        // }).state('regist-success', {
+        //     url: '/regist-success?sharerId',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'profile/success.html',
+        //             controller: 'SuccessCtrl'
+        //         }
+        //     }
+        // }).state('provision', {
+        //     url: '/provision',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'provision/provision.html'
+        //         }
+        //     }
+        // }).state('order-evaluate', {
+        //     url: '/order-evaluate/?id&hasEvaluated',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'order/order-evaluate.html',
+        //             controller: 'OrderEvaluateCtrl'
+        //         }
+        //     }
+        // }).state('coupon', {
+        //     url: '/coupon',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'profile/coupon.html',
+        //             controller: 'coupon'
+        //         }
+        //     }
+        // }).state('couponExp', {
+        //     url: '/couponExp',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'profile/couponExp.html'
+        //         }
+        //     }
+        // }).state('couponEdit', {
+        //     url: '/couponEdit',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'profile/couponEdit.html',
+        //             controller: 'couponEditCtrl'
+        //         }
+        //     }
+        // }).state('keyword-search', {
+        //     url: '/keyword-search/?backUrl&queryWords',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'search/search.html',
+        //             controller: 'SearchCtrl'
+        //         }
+        //     }
+        // }).state('add-restaurant', {
+        //     url: '/add-restaurant',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'restaurant/add-restaurant.html',
+        //             controller: 'AddRestaurantCtrl'
+        //         }
+        //     }
+        // }).state('invite-friends', {
+        //     url: '/share',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'share/share.html',
+        //             controller: 'ShareCtrl'
+        //         }
+        //     }
+        // }).state('share-page', {
+        //     url: '/share-page?sharerId',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'share/share-page.html',
+        //             controller: 'SharePageCtrl'
+        //         }
+        //     }
+        // }).state('map', {
+        //     url: '/map',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'map/map.html',
+        //             controller: 'MapCtrl'
+        //         }
+        //     }
+        // }).state('settings', {
+        //     url: '/settings',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'settings/settings.html',
+        //             controller: 'SettingsCtrl'
+        //         }
+        //     }
+        // }).state('modify-password', {
+        //     url: '/modify-password',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'modify-password/modify-password.html',
+        //             controller: 'ModifyPasswordCtrl'
+        //         }
+        //     }
+        // }).state('help-center', {
+        //     url: '/help-center',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'help-center/help-center.html',
+        //             controller: 'HelpCenterCtrl'
+        //         }
+        //     }
+        // }).state('help-order', {
+        //     url: '/help-order',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'help-center/help-order.html',
+        //             controller: 'HelpOrderCtrl'
+        //         }
+        //     }
+        // }).state('help-buying', {
+        //     url: '/help-buying',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'help-center/help-buying.html',
+        //             controller: 'HelpBuyCtrl'
+        //         }
+        //     }
+        // }).state('help-time', {
+        //     url: '/help-time',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'help-center/help-time.html',
+        //             controller: 'HelpTimeCtrl'
+        //         }
+        //     }
+        // }).state('help-range', {
+        //     url: '/help-range',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'help-center/help-range.html',
+        //             controller: 'HelpRangeCtrl'
+        //         }
+        //     }
+        // }).state('help-charge', {
+        //     url: '/help-charge',
+        //     views: {
+        //         main: {
+        //             templateUrl: 'help-center/help-charge.html',
+        //             controller: 'HelpChargeCtrl'
+        //         }
+        //     }
+        // })
+        //     .state('help-onlineCharge', {
+        //         url: '/help-onlineCharge',
+        //         views: {
+        //             main: {
+        //                 templateUrl: 'help-center/help-onlineCharge.html',
+        //                 controller: 'HelpOnlineChargeCtrl'
+        //             }
+        //         }
+        //     }).state('help-service', {
+        //         url: '/help-service',
+        //         views: {
+        //             main: {
+        //                 templateUrl: 'help-center/help-service.html',
+        //                 controller: 'HelpServiceCtrl'
+        //             }
+        //         }
+        //     }).state('help-change', {
+        //         url: '/help-change',
+        //         views: {
+        //             main: {
+        //                 templateUrl: 'help-center/help-change.html',
+        //                 controller: 'HelpChangeCtrl'
+        //             }
+        //         }
+        //     }).state('main.order-list', {
+        //         url: '/order-list',
+        //         views: {
+        //             orderList: {
+        //                 templateUrl: 'order/order-list.html',
+        //                 controller: 'OrderListCtrl'
+        //             }
+        //         }
+        //     }).state('seckill-product', {
+        //         url: '/seckill-product?{activeId:int}',
+        //         views: {
+        //             main: {
+        //                 templateUrl: 'product/seckill-product.html',
+        //                 controller: 'SeckillProductCtrl'
+        //             }
+        //         }
+        //     })
+        //     .state('seckillProduct-detail', {
+        //         url: '/seckillProduct-detail?{activeId:int}&{itemId:int}&backUrl',
+        //         views: {
+        //             main: {
+        //                 templateUrl: 'product/seckillProduct-detail.html',
+        //                 controller: 'SeckillProductDetail'
+        //             }
+        //         }
+        //     }).state('membership-point', {
+        //         url: '/membership-point',
+        //         views: {
+        //             main: {
+        //                 templateUrl: 'point/membership-point.html',
+        //                 controller: 'MembershipPointCtrl'
+        //             }
+        //         }
+        //     }).state('redeem-point', {
+        //         url: '/redeem-point/?restaurantName&availableScore',
+        //         views: {
+        //             main: {
+        //                 templateUrl: 'point/redeem-point.html',
+        //                 controller: 'RedeemPointCtrl'
+        //             }
+        //         }
+        //     }).state('generate-records', {
+        //         url: '/generate-records/?availableScore',
+        //         views: {
+        //             main: {
+        //                 templateUrl: 'point/generate-records.html',
+        //                 controller: 'GenerateRecordCtrl'
+        //             }
+        //         }
+        //     }).state('exchange-records', {
+        //         url: '/exchange-records/?availableScore',
+        //         views: {
+        //             main: {
+        //                 templateUrl: 'point/exchange-records.html',
+        //                 controller: 'ExchangeRecordCtrl'
+        //             }
+        //         }
+        //     }).state('point-rule', {
+        //         url: '/point-rule',
+        //         views: {
+        //             main: {
+        //                 templateUrl: 'point/point-rule.html'
+        //             }
+        //         }
+        //     })
     })
     .directive('back', function ($ionicHistory) {
         return {

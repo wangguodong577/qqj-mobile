@@ -13,6 +13,8 @@
   <access origin="sms:*" launch-external="yes"/>
   <allow-navigation href="*"/>
   <allow-navigation href="cdvfile://*"/>
+  <allow-navigation href="http://*/*" />
+  <allow-intent href="*" />
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>

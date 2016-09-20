@@ -102,9 +102,6 @@
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.mirror.cgwy"
         },
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.mirror.cgwy"
-        },
         "nl.x-services.plugins.toast": {
             "PACKAGE_NAME": "com.mirror.cgwy"
         },
@@ -113,6 +110,9 @@
         },
         "xu.li.cordova.wechat": {
             "WECHATAPPID": "wxc1dec966afec1e1b",
+            "PACKAGE_NAME": "com.mirror.cgwy"
+        },
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.mirror.cgwy"
         }
     },

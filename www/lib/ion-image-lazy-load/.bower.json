@@ -24,11 +24,11 @@
     "test",
     "tests"
   ],
-  "_release": "fd1812ec1c",
+  "_release": "4cbbad71d2",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "fd1812ec1cec3d3e44ef2e9f823104ceed0b196b"
+    "commit": "4cbbad71d23360f297c080e3eecea927e3e0e076"
   },
   "_source": "git://github.com/paveisistemas/ionic-image-lazy-load.git",
   "_target": "*",

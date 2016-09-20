@@ -2,18 +2,26 @@
     <button class="button button-clear button-assertive button-back" ui-sref="main.profile">
         <i class="icon ion-ios-arrow-back"></i>
     </button>
-    <h1 class="title">我的餐馆</h1>
+    <h1 class="title">个人信息</h1>
     <button id="restaurant-edit-btn" class="button button-clear button-assertive" ui-sref="restaurant-detail({id:restaurants[0].id})">修改</button>
 </ion-header-bar>
 
 <ion-content scroll="false" class="has-header" id="restaurant-list">
     <ion-list ng-repeat="restaurant in restaurants">
         <ion-item class="item-input border-top-none border-bottom-none">
-            <label class="input-label">餐馆名称</label>
+            <label class="input-label">姓名</label>
+            <span class="restaurant-content">{{restaurant.name}}</span>
+        </ion-item>
+        <ion-item class="item-input border-top-none border-bottom-none">
+            <label class="input-label">等级</label>
             <span class="restaurant-content">{{restaurant.name}}</span>
         </ion-item>
         <ion-item class="item-input border-bottom-none">
-            <label class="input-label">收货人</label>
+            <label class="input-label">直属上级</label>
+            <span class="restaurant-content">{{restaurant.receiver}}</span>
+        </ion-item>
+        <ion-item class="item-input border-bottom-none">
+            <label class="input-label">直属总代</label>
             <span class="restaurant-content">{{restaurant.receiver}}</span>
         </ion-item>
         <ion-item class="item-input border-bottom-none">

@@ -1,5 +1,5 @@
 <ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
-    <button class="button button-clear button-assertive" ng-click="goBackView()">
+    <button class="button button-clear button-assertive button-back" ui-sref="main.profile">
         <i class="icon ion-ios-arrow-back"></i>
     </button>
     <h1 class="title">注册</h1>
@@ -7,7 +7,7 @@
 
 <ion-content id="regist-page">
     <div class="list">
-        <label class="item item-input border-top-none border-bottom-none">
+        <!-- <label class="item item-input border-top-none border-bottom-none">
             <span class="input-label">登录帐号</span>
             <input type="tel" ng-model="form.telephone" placeholder="请输入手机号" onkeyup="this.value=this.value.replace(/\D/g,'');" ng-blur="checkUserName(form.telephone)"/>
         </label>
@@ -20,23 +20,28 @@
         <label class="item item-input border-bottom-none">
             <span class="input-label">确认密码</span>
             <input type="password" ng-model="form.repeatPassword" placeholder="请再次输入密码"/>
-        </label>
+        </label> -->
 
-        <label class="item item-input item-select item-icon-right border-top-none border-bottom-none" style="margin-top: 15px;">
+        <!-- <label class="item item-input item-select item-icon-right border-top-none border-bottom-none" style="margin-top: 15px;">
             <span class="input-label">所在城市</span>
             <select ng-model="form.cityId" ng-options="o.id as o.name for o in cities">
                 <option value="">请选择</option>
             </select>
             <i class="icon ion-ios-arrow-right" style="right: 2px;color: #969696;"></i>
+        </label> -->
+
+        <label class="item item-input border-bottom-none" >
+            <span class="input-label">上级总代</span>
+            <input type="text" disabled='disabled' >
+        </label>
+
+        <label class="item item-input border-bottom-none" >
+            <span class="input-label">直属上级</span>
+            <input type="text" disabled='disabled' >
         </label>
 
         <label class="item item-input border-bottom-none">
-            <span class="input-label">餐馆名称</span>
-            <input type="text" ng-model="form.restaurantName" placeholder="请输入餐馆名称">
-        </label>
-
-        <label class="item item-input border-bottom-none">
-            <span class="input-label">收货人</span>
+            <span class="input-label">注册人</span>
             <input type="text" ng-model="form.receiver" placeholder="请输入收货人名字">
         </label>
 
@@ -45,26 +50,34 @@
             <input type="tel" ng-model="form.contact" placeholder="请输入收货人的电话" onkeyup="this.value=this.value.replace(/\D/g,'');">
         </label>
 
-        <label class="item item-input item-icon-right border-bottom-none">
+        <label class="item item-input border-bottom-none">
             <span class="input-label">收货地址</span>
-            <input type="text" ng-model="form.restaurantAddress" id="restaurantAddress" ng-click="toMap()" placeholder="请选择您的餐馆位置">
+            <input type="text" ng-model="form.restaurantStreetNumber" id="restaurantStreetNumber" placeholder="请输入注册代理的详细地址">
+        </label>
+
+        <label class="item item-input item-select item-icon-right border-top-none border-bottom-none" style="margin-top: 15px;">
+            <span class="input-label">注册等级</span>
+            <select>
+                <option value="">请选择</option>
+                <option value="0">总代</option>
+                <option value="1">一级</option>
+                <option value="2">二级</option>
+                <option value="3">养颜</option>
+            </select>
+            <i class="icon ion-ios-arrow-right" style="right: 2px;color: #969696;"></i>
+        </label>
+        <label class="item item-input item-select item-icon-right border-top-none border-bottom-none" style="margin-top: 15px;">
+            <span class="input-label">选择产品</span>
+            <select>
+                <option value="">请选择</option>
+                <option value="0">产品1</option>
+                <option value="1">产品2</option>
+                <option value="2">产品3</option>
+                <option value="3">产品4</option>
+            </select>
             <i class="icon ion-ios-arrow-right" style="right: 2px;color: #969696;"></i>
         </label>
 
-        <label class="item item-input border-bottom-none">
-            <span class="input-label">详细地址</span>
-            <input type="text" ng-model="form.restaurantStreetNumber" id="restaurantStreetNumber" placeholder="请输入街道或门牌号等详细信息">
-        </label>
-
-        <label class="item item-input border-bottom-none">
-            <span class="input-label">邀请码</span>
-            <input type="text" ng-model="form.recommendNumber" placeholder="请输入邀请码">
-        </label>
-
-        <div class="provision">
-             <span style="color: #323232;">点击申请注册即同意</span>
-             <span style="color: #0185e2;" ui-sref="provision">注册协议</span>
-        </div>
     </div>
 
     <div class="padding">

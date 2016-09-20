@@ -51,7 +51,7 @@ function loadManifest(manifest,fromLocalStorage,timeout){
       if(!window.BOOTSTRAP_OK){
         console.warn('BOOTSTRAP_OK !== true; Resetting to original manifest.json...');
         localStorage.removeItem('manifest');
-        location.reload();
+        //location.reload();
       }
     },timeout);
   }

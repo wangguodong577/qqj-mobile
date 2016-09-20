@@ -1,10 +1,10 @@
 <ion-header-bar class="bar-stable nav-title-slide-ios7" align-title="center">
     <h1 class="title">我的</h1>
-<!--
+
     <button class="button button-clear button-assertive button-back" ng-click="logout()" ng-if="profile">
         退出登录
     </button>
--->
+
 </ion-header-bar>
 
 <ion-content  ng-class="{ 'myBox': profile}">
@@ -40,42 +40,36 @@
     <ion-list ng-if="profile">
         <ion-item class="item item-avatar"  style="background-image:url('img/mine-title.jpg'); background-size: 100% 100%; border-top-style: none;border-bottom-color: #fff;">
             <img src="img/mine-logo.png">
-            <h2 class="avatar-userNumber"><font color="white"><strong>{{profile.username}}</strong></font></h2>
+            <h2 class="avatar-userNumber"><font color="white"><strong>{{profile.name}}</strong></font></h2>
         </ion-item>
         <div class="my">
             <ion-item ui-sref="restaurant-list" class="item-icon-left item-icon-right mirror-userItem restaurant">
                 <i class="icon"><span class='wodecanguan'></span></i>
-                <label>我的餐馆</label>
+                <label>我的团队</label>
                 <i class="icon ion-ios-arrow-right"></i>
             </ion-item>
 
             <ion-item ui-sref="favorite" class="item-icon-left item-icon-right mirror-userItem">
                 <i class="icon"><span class='changgou'></span></i>
-                <label>常购清单</label>
+                <label>任务列表</label>
                 <i class="icon ion-ios-arrow-right"></i>
             </ion-item>
 
             <ion-item ui-sref="coupon" class="item-icon-left item-icon-right mirror-userItem">
                 <i class="icon"><span class='couponIcon'></span></i>
-                <label>我的无忧券</label>
-                <i class="icon ion-ios-arrow-right"></i>
-            </ion-item>
-
-            <ion-item ui-sref="invite-friends" class="item-icon-left item-icon-right mirror-userItem" ng-if="profile && currentLoginCityId==2 || currentLoginCityId==1">
-                <i class="icon"><span class='friendIcon'></span></i>
-                <label>邀请朋友得奖励</label>
+                <label>补货</label>
                 <i class="icon ion-ios-arrow-right"></i>
             </ion-item>
 
             <ion-item ui-sref="new-product-feedback" class="item-icon-left item-icon-right mirror-userItem" ng-if="feedbackAvailable">
                 <i class="icon"><span class='feedback-icon'></span></i>
-                <label>新品反馈</label>
+                <label>发货</label>
                 <i class="icon ion-ios-arrow-right"></i>
             </ion-item>
 
-            <ion-item ui-sref="membership-point" class="item-icon-left item-icon-right mirror-userItem">
+            <ion-item ui-sref="register" class="item-icon-left item-icon-right mirror-userItem">
                 <i class="icon"><span class="my-score"></span></i>
-                <label>我的积分</label>
+                <label>注册代理</label>
                 <i class="icon ion-ios-arrow-right"></i>
             </ion-item>
 
@@ -87,7 +81,7 @@
         </div>
         <div class="item" id="myItem"></div>
 
-        <div class="consultant" id="consultant">
+        <!-- <div class="consultant" id="consultant">
            <ion-item class="item item-button-right mirror-serve-info conFirst" ng-if="profile" id="conFirst">
                 <span class="mirror-serve-title mirror-login-serve">销售顾问：</span>
                 <span ng-click="dial(profile.adminUser.telephone,2)" class="realName" style="display: inline-block;width: 76px">{{profile.adminUser.realname}}</span>
@@ -117,6 +111,6 @@
                         </div>
                     </ion-item>
                 </div>
-           </div>
+           </div> -->
     </ion-list>
 </ion-content>
